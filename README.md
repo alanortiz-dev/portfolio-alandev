@@ -1,27 +1,44 @@
-# 👨🏻‍💻 Porfolio para programadores y desarrolladores
-
-<div align="center">
-<a href="https://porfolio.dev/">
-<img src="./public/porfolio.webp">
-</a>
-<p></p>
-</div>
-
-<div align="center">
+# 🧑‍💻 portfolio-alandev
 
 ![Astro Badge](https://img.shields.io/badge/Astro-FF3E00?logo=astro&logoColor=fff&style=flat)
 ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
-![GitHub stars](https://img.shields.io/github/stars/midudev/porfolio.dev)
-![GitHub PRs](https://img.shields.io/github/issues-pr/midudev/porfolio.dev)
-![GitHub forks](https://img.shields.io/github/forks/midudev/porfolio.dev)
-![GitHub issues](https://img.shields.io/github/issues/midudev/porfolio.dev)
+![TypeScript Badge](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=flat)
+![React Badge](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB&style=flat)
 
-</div>
+Un vistazo rápido a mi trabajo como desarrollador fullstack, sin tantos rodeos.
 
-## 🫂 Contribuidores
+---
 
-<a href="https://github.com/midudev/porfolio.dev/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=midudev/porfolio.dev" />
-</a>
+## 🚀 Sobre este proyecto
 
-<p></p>
+Este es mi portafolio personal, donde muestro algunos de mis proyectos, tecnologías que domino y formas de contactarme. Fue creado para compartir de forma simple y directa quién soy y qué hago como desarrollador.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- Astro
+- TailwindCSS
+- TypeScript
+- React
+- Node.js
+- Playwright
+
+---
+
+## 📄 Descargar CV
+
+📄 [Descargar CV (PDF)](./public/docs/Alan_Ortiz_ES.pdf)
+
+---
+
+## 🔧 Estado del proyecto
+
+🚧 Portafolio activo y en proceso de mejora continua.  
+El objetivo es mantenerlo actualizado con nuevos proyectos y aprendizajes a lo largo de mi trayectoria profesional.
+
+---
+
+## 🤝 Créditos
+
+Gracias a la comunidad de desarrollo que comparte recursos increíbles. Este portafolio tomó como base un template público de [Midudev](https://github.com/midudev/porfolio.dev), el cual adapté a mi estilo y perfil profesional.

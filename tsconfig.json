@@ -6,6 +6,8 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "moduleResolution": "Node",
+    "target": "ESNext"
   }
 }
