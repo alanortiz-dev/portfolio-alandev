@@ -41,4 +41,4 @@ El objetivo es mantenerlo actualizado con nuevos proyectos y aprendizajes a lo l
 
 ## 🤝 Créditos
 
-Gracias a la comunidad de desarrollo que comparte recursos increíbles. Este portafolio tomó como base un template público de [Midudev](https://github.com/midudev/porfolio.dev), el cual adapté a mi estilo y perfil profesional.
+Gracias a la comunidad de desarrollo que comparte recursos increíbles. Este portafolio fue desarrollado a medida, adaptando un template de código abierto y personalizándolo a mi estilo y perfil profesional.
