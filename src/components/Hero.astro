@@ -1,8 +1,8 @@
 ---
-import Badge from "@/components/Badge.astro"
-import LinkedInIcon from "@/components/icons/LinkedIn.astro"
-import MailIcon from "@/components/icons/Mail.astro"
-import SocialPill from "@/components/SocialPill.astro"
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import MailIcon from "@/components/icons/Mail.astro";
+import SocialPill from "@/components/SocialPill.astro";
 
 export interface Props {
   name: string;
@@ -34,20 +34,32 @@ const { name, profession, avatar, email, social } = Astro.props;
       <Badge>Disponible para trabajar</Badge>
     </a>
   </div>
-  <h1 class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white">
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
     Hey, soy {name}
   </h1>
-  <p class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300">
-    {profession}. Desarrollador web desde Valencia, España 🇪🇸. Enfocado en construir soluciones prácticas con tecnologías modernas.
+  <p
+    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+  >
+    <strong>{profession}</strong>. <strong>Desarrollador Fullstack</strong> con <strong
+      >+6 años de experiencia</strong
+    > en <strong>React, Node.js y TypeScript</strong>. Siempre busco crear
+    aplicaciones web escalables y funcionales. Actualmente, resido en <strong
+      >Valencia (España 🇪🇸).</strong
+    > Estoy siempre dispuesto a asumir nuevos retos y a aportar <strong
+      >soluciones prácticas e innovadoras</strong
+    >.
   </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href={`mailto:${email}`}>
-      <MailIcon class="size-4" />
-      Contáctame
-    </SocialPill>
-    <SocialPill href={social.linkedin}>
-      <LinkedInIcon class="size-4" />
-      LinkedIn
-    </SocialPill>
-  </nav>
 </div>
+
+<nav class="flex flex-wrap gap-4 mt-8">
+  <SocialPill href={`mailto:${email}`}>
+    <MailIcon class="size-4" />
+    Contáctame
+  </SocialPill>
+  <SocialPill href={social.linkedin}>
+    <LinkedInIcon class="size-4" />
+    LinkedIn
+  </SocialPill>
+</nav>
