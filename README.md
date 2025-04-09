@@ -22,7 +22,6 @@ Este es mi portafolio personal, donde muestro algunos de mis proyectos, tecnolog
 - TypeScript
 - React
 - Node.js
-- Playwright
 
 ---
 
