@@ -1,4 +1,4 @@
-# 🧑‍💻 Portafolio de proyectos de alandev
+# 🧑‍💻 Portafolio de proyectos de alanortizdev
 
 ![Astro Badge](https://img.shields.io/badge/Astro-FF3E00?logo=astro&logoColor=fff&style=flat)
 ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
@@ -41,3 +41,15 @@ El objetivo es mantenerlo actualizado con nuevos proyectos y aprendizajes a lo l
 ## 🤝 Créditos
 
 Gracias a la comunidad de desarrollo que comparte recursos increíbles. Este portafolio fue desarrollado a medida, adaptando un template de código abierto y personalizándolo a mi estilo y perfil profesional.
+
+## 🔗 Vista previa en línea
+Para ver la versión deplegada haz clic aquí:  
+👉 [Portafolio alandev](https://portfolio-alandev.vercel.app)
+
+---
+
+Si te gustó este proyecto, no dudes en conectar conmigo:  
+📧 alan.omar.ortz@gmail.com  
+🌐 [LinkedIn](https://www.linkedin.com/in/alanortizdev/)
+
+Hecho con cariño por Alan Ortiz (alanortizdev) ✨
