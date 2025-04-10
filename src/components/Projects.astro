@@ -2,38 +2,60 @@
 import GitHub from "./icons/GitHub.astro"
 import NextJS from "./icons/NextJS.astro"
 import Tailwind from "./icons/Tailwind.astro"
+import React from "./icons/React.astro"
+import TypeScript from "./icons/TypeScript.astro"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
 
 const TAGS = {
   NEXT: {
     name: "Next.js",
-    class: "bg-black text-white",
+    class: "bg-[#1f2937] text-white",
     icon: NextJS,
   },
   TAILWIND: {
     name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
+    class: "bg-[#09a6c1] text-white",
     icon: Tailwind,
   },
+  REACT: {
+    name: "REACT",
+    class: "bg-[#1e2127] text-white",
+    icon: React,
+  },
+  TS: {
+    name: "TypeScript",
+    class: "bg-[#003159] text-white",
+    icon: TypeScript,
+  },
+  
 }
 const PROJECTS = [
+  // {
+  //   title: "SVGL - A beautiful library with SVG logos",
+  //   description:
+  //     "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
+  //   link: "https://svgl.vercel.app/",
+  //   github: "https://github.com/pheralb/svgl",
+  //   image: "/projects/svgl.webp",
+  //   tags: [TAGS.NEXT, TAGS.TAILWIND],
+  // },
+  // {
+  //   title: "AdventJS - Retos de programación con JavaScript y TypeScript",
+  //   description:
+  //     "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
+  //   link: "https://adventjs.dev",
+  //   image: "/projects/adventjs.webp",
+  //   tags: [TAGS.NEXT, TAGS.TAILWIND],
+  // },
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "WeatherApp - Consulta el clima de tu ciudad.",
     description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
-  },
-  {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-    description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Aplicación web minimalista que permite consultar el clima actual y el pronóstico de los próximos días usando la API de OpenWeatherMap. Desarrollada con Next.js, Tailwind y Recharts.",
+    link: "https://weather-app-five-iota-91.vercel.app/",
+    github: "https://github.com/alanortiz-dev/weather-app",
+    image: "/projects/weather_app.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT, TAGS.TS],
   },
 ]
 ---
