@@ -1,0 +1,111 @@
+---
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+import CheckIcon from "@/components/icons/CheckIcon.astro"; 
+
+const LANGUAGES = [
+  { label: "🇪🇸 Español", value: "es" },
+  { label: "🇬🇧 English", value: "en" }
+];
+
+const currentLang = Astro.url.pathname.split("/")[1] || "es";
+const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
+---
+
+<div class="relative ml-1 mr-1">
+  <button
+    id="language-toggle-btn"
+    class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+  >
+    <span class="sr-only">{translatedLabels("language.choose")}</span>
+    {translatedLabels("language.title")}
+  </button>
+
+  <div
+    id="languages-menu"
+    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+  >
+    <ul>
+      {LANGUAGES.map((lang) => (
+        <li
+          class={`flex justify-between items-center languages-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm ${currentLang === lang.value ? 'font-bold text-blue-500 dark:text-blue-400' : ''}`}
+          data-lang={lang.value}
+        >
+          {lang.label}
+          {currentLang === lang.value && (
+            <CheckIcon class="size-4 text-blue-500 dark:text-blue-400 animate-fade-in ml-2" />
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  /* Animación de apertura del menú */
+  #languages-menu.open {
+    display: inline;
+    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes scale-up-center {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Animación para el CheckIcon */
+  @keyframes fade-in-scale {
+    from {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in-scale 0.2s ease-out forwards;
+  }
+</style>
+
+<script is:inline>
+  const languagesMenu = document.getElementById("languages-menu");
+
+  document.addEventListener("click", () => languagesMenu.classList.remove("open"));
+
+  document.getElementById("language-toggle-btn").addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isClosed = !languagesMenu.classList.contains("open");
+    languagesMenu.classList[isClosed ? "add" : "remove"]("open");
+  });
+
+  document.querySelectorAll(".languages-menu-option").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      const lang = e.target.getAttribute("data-lang");
+      if (lang) {
+        localStorage.setItem("language", lang);
+
+        // Cambiar la URL dinámicamente
+        let newPath = window.location.pathname;
+
+        if (newPath.startsWith("/es") || newPath.startsWith("/en")) {
+          newPath = newPath.substring(3); // quitamos /es o /en
+        }
+
+        window.location.href = `/${lang}${newPath || '/'}`;
+      }
+    });
+  });
+
+  document.addEventListener('astro:after-swap', () => {
+    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+  });
+</script>

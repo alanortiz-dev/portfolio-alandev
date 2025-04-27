@@ -4,6 +4,12 @@ import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import DocumentIcon from "@/components/icons/DocumentIcon.astro";
 import SocialPill from "@/components/SocialPill.astro";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+const currentLang = Astro.currentLocale;
+const translatedLabels = useTranslations(
+  currentLang as keyof typeof languageList,
+);
 
 export interface Props {
   name: string;
@@ -32,39 +38,55 @@ const { name, profession, avatar, email, social } = Astro.props;
       rel="noopener"
       class="flex items-center transition md:justify-center md:hover:scale-105"
     >
-      <Badge>Disponible para trabajar</Badge>
+      <Badge>{translatedLabels("hero.badge.available")}</Badge>
     </a>
   </div>
   <h1
     class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
-    Hey, soy {name}
+    {`${translatedLabels("hero.iAm")} ${name}!`}
   </h1>
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-    <strong>Desarrollador Fullstack</strong> con <strong
-      >mas de 6 años de experiencia</strong
-    > en <strong>React, Node.js y TypeScript</strong>. Siempre busco crear
-    aplicaciones web escalables y funcionales. Actualmente, resido en <strong
-      >Valencia (España 🇪🇸).</strong
-    > Estoy siempre dispuesto a asumir nuevos retos y a aportar <strong
-      >soluciones prácticas e innovadoras</strong
-    >.
+    <strong>{translatedLabels("hero.overview.title")}</strong>
+    {translatedLabels("hero.overview.with")}
+    <strong>
+      {translatedLabels("hero.overview.experience")}
+    </strong>
+    {translatedLabels("hero.overview.in")}
+    <strong>
+      {translatedLabels("hero.overview.technologies")}
+    </strong>
+    {translatedLabels("hero.overview.context")}
+    <strong>
+      {translatedLabels("hero.overview.location")}
+    </strong>
+    {translatedLabels("hero.overview.closing")}
+    <strong>
+      {translatedLabels("hero.overview.skills")}
+    </strong>.
   </p>
 </div>
 
 <nav class="flex flex-wrap gap-4 mt-8">
   <SocialPill href={`mailto:${email}`}>
     <MailIcon class="size-4" />
-    Contáctame
+    {translatedLabels("hero.socialPills.contact")}
   </SocialPill>
-  <SocialPill href={social.linkedin}>
+  <SocialPill href={`${social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}>
     <LinkedInIcon class="size-4" />
-    LinkedIn
+    {translatedLabels("hero.socialPills.linkedin")}
   </SocialPill>
-  <SocialPill href="/docs/Alan_Ortiz_ES.pdf" download="Alan_Ortiz_CV.pdf">
+  <SocialPill
+    href={currentLang === "en"
+      ? "/docs/Alan_Ortiz_EN.pdf"
+      : "/docs/Alan_Ortiz_ES.pdf"}
+    download={currentLang === "en"
+      ? "Alan_Ortiz_CV_EN.pdf"
+      : "Alan_Ortiz_CV_ES.pdf"}
+  >
     <DocumentIcon class="size-4" />
-    Descargar CV
+    {translatedLabels("hero.socialPills.downloadCV")}
   </SocialPill>
 </nav>

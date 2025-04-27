@@ -1,11 +1,16 @@
 ---
-import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
-import React from "./icons/React.astro"
-import TypeScript from "./icons/TypeScript.astro"
-import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
+import GitHub from "./icons/GitHub.astro";
+import NextJS from "./icons/NextJS.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import React from "./icons/React.astro";
+import TypeScript from "./icons/TypeScript.astro";
+import Link from "./icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+
+const currentLang = Astro.currentLocale;
+const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
 
 const TAGS = {
   NEXT: {
@@ -19,7 +24,7 @@ const TAGS = {
     icon: Tailwind,
   },
   REACT: {
-    name: "REACT",
+    name: "React",
     class: "bg-[#1e2127] text-white",
     icon: React,
   },
@@ -28,80 +33,79 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: TypeScript,
   },
-  
-}
+};
+
 const PROJECTS = [
   {
-    title: "WeatherApp - Consulta el clima de tu ciudad.",
-    description:
-      "Aplicación web minimalista que permite consultar el clima actual y el pronóstico de los próximos días usando la API de OpenWeatherMap. Desarrollada con Next.js, Tailwind y Recharts.",
+    id: "weatherApp",
+    image: "/projects/weather_app.webp",
     link: "https://weather-app-five-iota-91.vercel.app/",
     github: "https://github.com/alanortiz-dev/weather-app",
-    image: "/projects/weather_app.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT, TAGS.TS],
   },
   {
-  title: "Kalanban - Tablero tipo Trello con drag & drop",
-  description:
-    "Aplicación tipo Trello que permite crear, mover y eliminar tareas dentro de columnas. Hecha con React, Tailwind y localStorage, con soporte para drag and drop usando Atlaskit.",
-  link: "https://kalanban.vercel.app",
-  github: "https://github.com/alanortiz-dev/kalanban",
-  image: "/projects/kalanban.webp", 
-  tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.TS],
-},
-]
+    id: "kalanban",
+    image: "/projects/kalanban.webp",
+    link: "https://kalanban.vercel.app",
+    github: "https://github.com/alanortiz-dev/kalanban",
+    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.TS],
+  },
+];
 ---
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
+    PROJECTS.map((project) => (
+      <article class="flex flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0 group">
+        <!-- Imagen -->
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center gap-8 overflow-hidden rounded-xl shadow-xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt={translatedLabels(`projects.${project.id}.title`)}
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              loading="lazy"
+              src={project.image}
+            />
+          </div>
+        </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <!-- Info -->
+        <div class="w-full md:w-1/2 md:max-w-lg">
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            {translatedLabels(`projects.${project.id}.title`)}
+          </h3>
 
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Code
-              
-            </LinkButton>
-          )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButton>
-          )}
-        </footer>
-    </div>
-  </div>
-</article>
+          <ul class="flex flex-row mb-2 gap-x-2 mt-2">
+            {project.tags.map((tag) => (
+              <li>
+                <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="mt-2 text-gray-700 dark:text-gray-400">
+            {translatedLabels(`projects.${project.id}.description`)}
+          </p>
+
+          <footer class="flex items-end justify-start mt-4 gap-x-4">
+            {project.github && (
+              <LinkButton href={project.github}>
+                <GitHub class="size-6" />
+                {translatedLabels("projects.buttons.code")}
+              </LinkButton>
+            )}
+            {project.link && (
+              <LinkButton href={project.link}>
+                <Link class="size-4" />
+                {translatedLabels("projects.buttons.preview")}
+              </LinkButton>
+            )}
+          </footer>
+        </div>
+      </article>
     ))
   }
 </div>
-
-
-

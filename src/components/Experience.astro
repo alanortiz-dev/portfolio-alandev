@@ -1,8 +1,30 @@
 ---
-import experience from "@/data/experience";
-
-
+import experienceEs from "@/data/experience.es";
+import experienceEn from "@/data/experience.en";
 import ExperienceItem from "./ExperienceItem.astro";
+
+// Idiomas válidos
+type Lang = "es" | "en"; 
+
+
+type Experience = {
+  date: string;
+  title: string;
+  company: string;
+  description: string;
+  link: string;
+};
+
+// Detectar idioma desde la URL
+const lang = (Astro.url.pathname.split("/")[1] || "es") as Lang;
+
+// Asignar experiencias por idioma con tipado explícito
+const experiences: Record<Lang, Experience[]> = {
+  es: experienceEs,
+  en: experienceEn,
+};
+
+const experience = experiences[lang];
 ---
 
 <ol class="relative mt-16">
@@ -14,3 +36,9 @@ import ExperienceItem from "./ExperienceItem.astro";
     ))
   }
 </ol>
+
+<style>
+  .experience-list-item {
+    list-style: none;
+  }
+</style>

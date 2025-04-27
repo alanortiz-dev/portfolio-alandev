@@ -1,14 +1,24 @@
 ---
 import profile from "@/data/profile";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
 
-const { name, aboutMe, aboutMeLogo } = profile;
+const currentLang = Astro.currentLocale;
+const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
+
+const { name, aboutMeLogo } = profile;
+
+// Divide el texto por saltos de línea dobles para simular párrafos
+const paragraphs = translatedLabels("aboutMe.text").split("<br><br>");
 ---
 
 <article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
   <div class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1 text-justify">
-    {aboutMe.split('\n\n').map((paragraph) => (
-    <p set:html={paragraph} />
-  ))}  
+    {
+      paragraphs.map((paragraph, index) => (
+        <p set:html={paragraph} key={index} />
+      ))
+    }
   </div>
 
   <img
