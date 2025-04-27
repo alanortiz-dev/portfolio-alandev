@@ -5,12 +5,17 @@ import { useTranslations } from "../i18n/utils";
 import { languageList } from "../i18n/ui";
 import LanguageToggle from "./LanguageToggle.astro";
 
-const currentLang = Astro.currentLocale;
-const translatedLabels = useTranslations(
-  currentLang as keyof typeof languageList,
-);
+// ✅ Tipo para los items del nav
+interface NavItem {
+  title: string;
+  label: string;
+  path: string;
+}
 
-const navItems = [
+const currentLang = Astro.currentLocale;
+const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
+
+const navItems: NavItem[] = [
   {
     title: translatedLabels("nav.experience.title"),
     label: translatedLabels("nav.experience.label"),
@@ -39,17 +44,13 @@ const navLinks = navItems.map((item) => {
   }
   return {
     ...item,
-    url: `${getRelativeLocaleUrl(currentLang, "/")}${item.path.replace("/", "")}`,
+    url: `${getRelativeLocaleUrl(currentLang, "/")}${(item.path || "").replace("/", "")}`,
   };
 });
 ---
 
-<header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
->
-  <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
-  >
+<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+  <nav class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center">
     {
       navLinks.map((link) => (
         <a
@@ -71,7 +72,7 @@ const navLinks = navItems.map((item) => {
     const sections = document.querySelectorAll("section");
     const navItems = document.querySelectorAll("header nav a");
 
-    const callback = (entries: IntersectionObserverEntry[]) => {
+    const callback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
