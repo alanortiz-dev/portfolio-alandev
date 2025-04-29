@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from "../i18n/utils";
 import { languageList } from "../i18n/ui";
-import CheckIcon from "@/components/icons/CheckIcon.astro"; 
+import CheckIcon from "@/components/icons/CheckIcon.astro";
 
 const LANGUAGES = [
   { label: "🇪🇸 Español", value: "es" },
@@ -9,7 +9,9 @@ const LANGUAGES = [
 ];
 
 const currentLang = Astro.url.pathname.split("/")[1] || "es";
-const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
+const translatedLabels = useTranslations(
+  currentLang as keyof typeof languageList,
+);
 ---
 
 <div class="relative ml-1 mr-1">
@@ -26,23 +28,77 @@ const translatedLabels = useTranslations(currentLang as keyof typeof languageLis
     class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
   >
     <ul>
-      {LANGUAGES.map((lang) => (
-        <li
-          class={`flex justify-between items-center languages-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm ${currentLang === lang.value ? 'font-bold text-blue-500 dark:text-blue-400' : ''}`}
-          data-lang={lang.value}
-        >
-          {lang.label}
-          {currentLang === lang.value && (
-            <CheckIcon class="size-4 text-blue-500 dark:text-blue-400 animate-fade-in ml-2" />
-          )}
-        </li>
-      ))}
+      {
+        LANGUAGES.map((lang) => (
+          <li
+            class={`flex justify-between items-center languages-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm ${currentLang === lang.value ? "font-bold text-blue-500 dark:text-blue-400" : ""}`}
+            data-lang={lang.value}
+          >
+            {lang.label}
+            {currentLang === lang.value && (
+              <CheckIcon class="size-4 text-blue-500 dark:text-blue-400 animate-fade-in ml-2" />
+            )}
+          </li>
+        ))
+      }
     </ul>
   </div>
 </div>
 
+<script is:inline>
+  const languageButton = document.getElementById("language-toggle-btn");
+  const languagesMenu = document.getElementById("languages-menu");
+
+  // Función para cerrar todos los menús
+  function closeMenus() {
+    const languagesMenu = document.getElementById("languages-menu");
+    const themesMenu = document.getElementById("themes-menu");
+
+    languagesMenu?.classList.remove("open");
+    themesMenu?.classList.remove("open");
+  }
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener("click", () => closeMenus());
+
+  // Toggle del menú de idioma
+  languageButton?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isClosed = !languagesMenu.classList.contains("open");
+    closeMenus(); // cerrar todo antes
+    if (isClosed) {
+      languagesMenu.classList.add("open");
+    }
+  });
+
+  // Cambiar idioma y redireccionar
+  document.querySelectorAll(".languages-menu-option").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target instanceof HTMLElement) {
+        const lang = target.getAttribute("data-lang");
+        if (lang) {
+          localStorage.setItem("language", lang);
+
+          let newPath = window.location.pathname;
+          if (newPath.startsWith("/es") || newPath.startsWith("/en")) {
+            newPath = newPath.substring(3);
+          }
+
+          window.location.href = `/${lang}${newPath || "/"}`;
+        }
+      }
+    });
+  });
+
+  // Cerrar menú también después de navegación Astro
+  document.addEventListener("astro:after-swap", () => {
+    closeMenus();
+    window.scrollTo({ top: 0, behavior: "instant" });
+  });
+</script>
+
 <style>
-  /* Animación de apertura del menú */
   #languages-menu.open {
     display: inline;
     animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -59,7 +115,6 @@ const translatedLabels = useTranslations(currentLang as keyof typeof languageLis
     }
   }
 
-  /* Animación para el CheckIcon */
   @keyframes fade-in-scale {
     from {
       opacity: 0;
@@ -75,37 +130,3 @@ const translatedLabels = useTranslations(currentLang as keyof typeof languageLis
     animation: fade-in-scale 0.2s ease-out forwards;
   }
 </style>
-
-<script is:inline>
-  const languagesMenu = document.getElementById("languages-menu");
-
-  document.addEventListener("click", () => languagesMenu.classList.remove("open"));
-
-  document.getElementById("language-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isClosed = !languagesMenu.classList.contains("open");
-    languagesMenu.classList[isClosed ? "add" : "remove"]("open");
-  });
-
-  document.querySelectorAll(".languages-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      const lang = e.target.getAttribute("data-lang");
-      if (lang) {
-        localStorage.setItem("language", lang);
-
-        // Cambiar la URL dinámicamente
-        let newPath = window.location.pathname;
-
-        if (newPath.startsWith("/es") || newPath.startsWith("/en")) {
-          newPath = newPath.substring(3); // quitamos /es o /en
-        }
-
-        window.location.href = `/${lang}${newPath || '/'}`;
-      }
-    });
-  });
-
-  document.addEventListener('astro:after-swap', () => {
-    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
-  });
-</script>
