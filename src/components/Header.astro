@@ -9,8 +9,8 @@ const currentLang = Astro.currentLocale || "es";
 const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
-<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
-  <nav class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center">
+<header class="fixed top-0 z-50 w-full border-b border-pink-300/50 dark:border-gray-700 bg-pink-50/60 dark:bg-neutral-900/90 shadow-md backdrop-blur-md transition-colors">
+  <nav class="max-w-5xl mx-auto flex px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 justify-center items-center">
     {
       [
         { label: translatedLabels("nav.experience.title"), url: "#experiencia" },
@@ -19,7 +19,7 @@ const translatedLabels = useTranslations(currentLang as keyof typeof languageLis
         { label: translatedLabels("nav.contact.title"), url: "mailto:alan.omar.ortz@gmail.com" }
       ].map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-400"
           href={link.url}
         >
           {link.label}

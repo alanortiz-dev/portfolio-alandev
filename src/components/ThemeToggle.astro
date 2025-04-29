@@ -5,8 +5,9 @@ import { useTranslations } from "../i18n/utils";
 import { languageList } from "../i18n/ui";
 
 const THEMES = [
-  { value: "light", icon: SunIcon, label: "☀️" },
-  { value: "dark", icon: MoonIcon, label: "🌙" }
+  { value: "dark", icon: MoonIcon, label: "🌙" },
+  { value: "light", icon: SunIcon, label: "☀️" }
+  
 ];
 
 const currentLang = Astro.url.pathname.split("/")[1] || "es";
