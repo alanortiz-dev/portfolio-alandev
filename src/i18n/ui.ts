@@ -87,6 +87,12 @@ export const labels = {
     language: {
       title: "Idiomas",
       choose: "Elige el idioma"
+    },
+    settings: {
+      open: "Abrir configuración",
+      language: "Idioma",
+      theme: "Tema",
+      back: "Volver"
     }        
   },
 //Etiquetas en inglés
@@ -169,6 +175,12 @@ export const labels = {
     language: {
       title: "Languages",
       choose: "Choose language"
+    },
+    settings: {
+      open: "Open settings",
+      language: "Language",
+      theme: "Theme", 
+      back: "Back"
     }        
   }
 };

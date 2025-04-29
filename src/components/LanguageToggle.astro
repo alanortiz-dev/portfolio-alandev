@@ -9,69 +9,60 @@ const LANGUAGES = [
 ];
 
 const currentLang = Astro.url.pathname.split("/")[1] || "es";
-const translatedLabels = useTranslations(
-  currentLang as keyof typeof languageList,
-);
+const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
-<div class="relative ml-1 mr-1">
+<div class="relative">
   <button
     id="language-toggle-btn"
-    class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+    class="block w-full px-2 py-1.5 text-left hover:text-blue-500 dark:hover:text-blue-400"
   >
-    <span class="sr-only">{translatedLabels("language.choose")}</span>
     {translatedLabels("language.title")}
   </button>
 
   <div
     id="languages-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    class="absolute hidden left-0 top-0 translate-y-8 w-44 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg text-sm backdrop-blur-md p-1 z-50"
   >
     <ul>
-      {
-        LANGUAGES.map((lang) => (
-          <li
-            class={`flex justify-between items-center languages-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm ${currentLang === lang.value ? "font-bold text-blue-500 dark:text-blue-400" : ""}`}
-            data-lang={lang.value}
-          >
-            {lang.label}
-            {currentLang === lang.value && (
-              <CheckIcon class="size-4 text-blue-500 dark:text-blue-400 animate-fade-in ml-2" />
-            )}
-          </li>
-        ))
-      }
+      {LANGUAGES.map((lang) => (
+        <li
+          class={`flex justify-between items-center languages-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm ${currentLang === lang.value ? "font-bold text-blue-500 dark:text-blue-400" : ""}`}
+          data-lang={lang.value}
+        >
+          {lang.label}
+          {currentLang === lang.value && (
+            <CheckIcon class="size-4 text-blue-500 dark:text-blue-400 animate-fade-in ml-2" />
+          )}
+        </li>
+      ))}
     </ul>
+    <hr class="my-1 border-gray-300 dark:border-gray-700" />
+    <button
+      id="back-to-settings-from-lang"
+      class="block w-full px-2 py-1.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-500"
+    >
+      {translatedLabels("settings.back") || "Volver"}
+    </button>
   </div>
 </div>
 
 <script is:inline>
-  const languageButton = document.getElementById("language-toggle-btn");
-  const languagesMenu = document.getElementById("languages-menu");
+  const langBtn = document.getElementById("language-toggle-btn");
+  const langMenu = document.getElementById("languages-menu");
+  const backBtn = document.getElementById("back-to-settings-from-lang");
+  const settingsMenu = document.getElementById("settings-menu");
 
-  // Función para cerrar todos los menús
-  function closeMenus() {
-    const languagesMenu = document.getElementById("languages-menu");
-    const themesMenu = document.getElementById("themes-menu");
-
-    languagesMenu?.classList.remove("open");
-    themesMenu?.classList.remove("open");
-  }
-
-  // Cerrar menú al hacer clic fuera
-  document.addEventListener("click", () => closeMenus());
-
-  // Toggle del menú de idioma
-  languageButton?.addEventListener("click", (e) => {
+  langBtn?.addEventListener("click", (e) => {
     e.stopPropagation();
-    const isClosed = !languagesMenu.classList.contains("open");
-    closeMenus(); // cerrar todo antes
-    if (isClosed) {
-      languagesMenu.classList.add("open");
-    }
+    langMenu?.classList.add("open");
   });
 
-  // Cambiar idioma y redireccionar
+  backBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    langMenu?.classList.remove("open");
+  });
+
   document.querySelectorAll(".languages-menu-option").forEach((element) => {
     element.addEventListener("click", (e) => {
       const target = e.target;
@@ -79,54 +70,41 @@ const translatedLabels = useTranslations(
         const lang = target.getAttribute("data-lang");
         if (lang) {
           localStorage.setItem("language", lang);
-
           let newPath = window.location.pathname;
           if (newPath.startsWith("/es") || newPath.startsWith("/en")) {
             newPath = newPath.substring(3);
           }
-
           window.location.href = `/${lang}${newPath || "/"}`;
         }
       }
     });
   });
 
-  // Cerrar menú también después de navegación Astro
   document.addEventListener("astro:after-swap", () => {
-    closeMenus();
+    langMenu?.classList.remove("open");
     window.scrollTo({ top: 0, behavior: "instant" });
   });
+
+  document.addEventListener("click", () => langMenu?.classList.remove("open"));
 </script>
 
 <style>
   #languages-menu.open {
-    display: inline;
-    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    display: block;
+    animation: scale-up-center 0.15s ease-out both;
   }
 
   @keyframes scale-up-center {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-in-scale {
-    from {
-      opacity: 0;
-      transform: scale(0.7);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
   }
 
   .animate-fade-in {
     animation: fade-in-scale 0.2s ease-out forwards;
+  }
+
+  @keyframes fade-in-scale {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
   }
 </style>

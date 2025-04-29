@@ -1,0 +1,63 @@
+---
+import SettingsIcon from "./icons/SettingsIcon.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+
+const currentLang = Astro.currentLocale || "es";
+const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
+---
+
+<div class="relative ml-2">
+  <button id="settings-btn" class="p-2 hover:text-blue-500 dark:hover:text-blue-400">
+    <SettingsIcon class="w-5 h-5" />
+  </button>
+
+  <div
+    id="settings-menu"
+    class="absolute hidden right-0 top-8 z-50 w-44 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg p-2 text-sm backdrop-blur-md"
+  >
+    <!-- Idioma y tema como componentes autónomos -->
+    <LanguageToggle />
+    <ThemeToggle />
+  </div>
+</div>
+
+<style>
+  #settings-menu.open {
+    display: block;
+    animation: scale-up-center 0.15s ease-out both;
+  }
+
+  @keyframes scale-up-center {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script is:inline>
+  const btn = document.getElementById("settings-btn");
+  const menu = document.getElementById("settings-menu");
+
+  btn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = menu.classList.contains("open");
+    document.querySelectorAll("#settings-menu").forEach((m) => m.classList.remove("open"));
+    if (!isOpen) {
+      menu.classList.add("open");
+    }
+  });
+
+  document.addEventListener("click", () => menu?.classList.remove("open"));
+
+  document.addEventListener("astro:after-swap", () => {
+    menu?.classList.remove("open");
+  });
+</script>
