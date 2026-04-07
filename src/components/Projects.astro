@@ -10,7 +10,9 @@ import { useTranslations } from "../i18n/utils";
 import { languageList } from "../i18n/ui";
 
 const currentLang = Astro.currentLocale;
-const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
+const translatedLabels = useTranslations(
+  currentLang as keyof typeof languageList,
+);
 
 const TAGS = {
   NEXT: {
@@ -33,9 +35,24 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: TypeScript,
   },
+  VUE: {
+    name: "Vue 3",
+    class: "bg-[#42b883] text-white",
+  },
+  VITE: {
+    name: "Vite",
+    class: "bg-[#646CFF] text-white",
+  },
 };
 
 const PROJECTS = [
+  {
+    id: "dashboardAssistant",
+    image: "/projects/dashboard_assistant.webp",
+    link: "https://dashboard-assistant-chi.vercel.app/",
+    github: "https://github.com/alanortiz-dev/dashboard-assistant",
+    tags: [TAGS.VUE, TAGS.TS, TAGS.VITE],
+  },
   {
     id: "kalanban",
     image: "/projects/kalanban.webp",
@@ -57,7 +74,6 @@ const PROJECTS = [
   {
     PROJECTS.map((project) => (
       <article class="flex flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0 group">
-        <!-- Imagen -->
         <div class="w-full md:w-1/2">
           <div class="relative flex flex-col items-center gap-8 overflow-hidden rounded-xl shadow-xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
             <img
@@ -69,17 +85,18 @@ const PROJECTS = [
           </div>
         </div>
 
-        <!-- Info -->
         <div class="w-full md:w-1/2 md:max-w-lg">
           <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {translatedLabels(`projects.${project.id}.title`)}
           </h3>
 
-          <ul class="flex flex-row mb-2 gap-x-2 mt-2">
+          <ul class="flex flex-row mb-2 gap-x-2 mt-2 flex-wrap">
             {project.tags.map((tag) => (
               <li>
-                <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
-                  <tag.icon class="size-4" />
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+                >
+                  {tag.icon && <tag.icon class="size-4" />}
                   {tag.name}
                 </span>
               </li>

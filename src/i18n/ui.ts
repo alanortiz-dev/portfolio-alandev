@@ -54,6 +54,11 @@ export const labels = {
       }
     },
     projects: {
+      dashboardAssistant: {
+        title: "Dashboard Assistant - Reto técnico con arquitectura de UI escalable",
+        description:
+          "Widget de asistente embebido para dashboard construido con Vue 3, TypeScript y Vite. Incluye estado centralizado con composables, historial simulado, typing state, auto-scroll y renderizado polimórfico para mensajes y widgets interactivos."
+      },
       weatherApp: {
         title: "WeatherApp - Consulta el clima de tu ciudad",
         description:
@@ -93,9 +98,9 @@ export const labels = {
       language: "Idioma",
       theme: "Tema",
       back: "Volver"
-    }        
+    }
   },
-//Etiquetas en inglés
+  //Etiquetas en inglés
   en: {
     nav: {
       experience: {
@@ -142,6 +147,11 @@ export const labels = {
       }
     },
     projects: {
+      dashboardAssistant: {
+        title: "Dashboard Assistant - Technical challenge with scalable UI architecture",
+        description:
+          "An embedded dashboard assistant built with Vue 3, TypeScript, and Vite. It includes centralized state with composables, mocked history loading, typing states, auto-scroll, and polymorphic rendering for both text messages and interactive widgets."
+      },
       weatherApp: {
         title: "WeatherApp - Check the weather in your city",
         description:
@@ -179,8 +189,8 @@ export const labels = {
     settings: {
       open: "Open settings",
       language: "Language",
-      theme: "Theme", 
+      theme: "Theme",
       back: "Back"
-    }        
+    }
   }
 };
