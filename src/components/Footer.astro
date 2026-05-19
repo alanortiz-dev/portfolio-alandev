@@ -1,24 +1,18 @@
 ---
 import profile from '@/data/profile';
-import { homeContent } from '@/data/homeContent';
 
 const currentYear = new Date().getFullYear();
 const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
-const content = homeContent[currentLang];
 ---
 
-<footer class="mx-auto mt-20 w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
-  <div class="flex flex-col gap-4 rounded-[2rem] border border-slate-200/80 bg-white/90 px-6 py-6 text-sm text-slate-600 shadow-sm shadow-slate-200/30 md:flex-row md:items-center md:justify-between dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300 dark:shadow-none">
-    <div>
-      <p class="font-medium text-slate-950 dark:text-white">Alan Ortiz</p>
-      <p>{content.hero.eyebrow}</p>
-    </div>
+<footer class="mt-16 border-t border-slate-200/80 dark:border-white/10">
+  <div class="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-slate-600 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8 dark:text-slate-300">
+    <p>© {currentYear} Alan Ortiz</p>
 
-    <div class="flex flex-wrap items-center gap-4">
-      <a href={profile.social.github} target="_blank" rel="noopener noreferrer" class="hover:text-slate-950 dark:hover:text-white">GitHub</a>
-      <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-slate-950 dark:hover:text-white">LinkedIn</a>
-      <a href="mailto:alan.omar.ortz@gmail.com" class="hover:text-slate-950 dark:hover:text-white">{content.nav.contact}</a>
-      <span>© {currentYear}</span>
-    </div>
+    <nav class="flex flex-wrap items-center gap-4">
+      <a href={profile.social.github} target="_blank" rel="noopener noreferrer" class="transition hover:text-slate-950 dark:hover:text-white">GitHub</a>
+      <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" class="transition hover:text-slate-950 dark:hover:text-white">LinkedIn</a>
+      <a href="mailto:alan.omar.ortz@gmail.com" class="transition hover:text-slate-950 dark:hover:text-white">{currentLang === 'en' ? 'Contact' : 'Contacto'}</a>
+    </nav>
   </div>
 </footer>

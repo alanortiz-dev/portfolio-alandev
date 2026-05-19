@@ -109,8 +109,8 @@ export const homeContent: Record<Locale, HomeContent> = {
         'Portfolio de Alan Ortiz: Product Engineer con foco en frontend systems, arquitectura UI, e-commerce, fintech y flujos de producto en producción.',
     },
     proofStrip: {
-      label: 'Áreas de experiencia',
-      items: ['E-commerce, fintech y productos digitales', 'React, Vue.js y TypeScript en interfaces reales', 'Testing, performance y accesibilidad como parte del delivery', 'Automatización e integraciones para procesos operativos'],
+      label: 'Enfoque técnico',
+      items: ['Frontend systems con React, Vue.js y TypeScript', 'UX, performance y accesibilidad en interfaces de producto', 'Automatización e integraciones para flujos operativos'],
     },
     nav: {
       featured: 'Proyectos',
@@ -126,7 +126,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         'Trabajo con React, Vue.js y TypeScript en e-commerce, fintech, automatización y productos digitales donde la UX, la estabilidad y el negocio importan.',
       location: 'Ciudad de México, México',
       status: 'Disponible para roles frontend remotos e internacionales',
-      primaryCta: 'Ver trabajo en producción',
+      primaryCta: 'Ver proyectos',
       secondaryCta: 'Descargar CV',
       metrics: [
         { value: 'React · Vue.js · TypeScript', label: 'stack principal' },
@@ -134,40 +134,40 @@ export const homeContent: Record<Locale, HomeContent> = {
       ],
     },
     sectionTitles: {
-      featured: 'Ingeniería de producto destacada',
+      featured: 'Proyectos seleccionados',
       featuredIntro:
-        'Proyectos que muestran cómo trabajo frontend, arquitectura UI, producto y experiencia de uso con foco real en mantenibilidad.',
-      production: 'Clientes',
+        'Una selección de proyectos que muestran cómo trabajo frontend, componentes reutilizables e integraciones en producto digital.',
+      production: 'Sitios en producción',
       productionIntro:
-        'Sitios y experiencias publicadas donde participé desde frontend, estructura visual y entrega usable para negocio.',
-      deployments: 'Despliegues para clientes y producción',
+        'Sitios publicados y trabajo con clientes donde participé desde frontend, estructura visual e integraciones.',
+      deployments: 'Sitios en producción',
       deploymentsIntro:
-        'Sitios y experiencias publicadas con foco en claridad comercial, ejecución frontend y entregables utilizables en negocio.',
-      principles: 'Principios de ingeniería',
+        'Trabajo con clientes y sitios publicados que ayudan a entender mejor el tipo de producto y entrega en el que he participado.',
+      principles: 'Principios',
       principlesIntro:
-        'Así tomo decisiones cuando el objetivo no es solo sacar pantallas, sino sostener producto en producción.',
+        'Así suelo tomar decisiones cuando trabajo interfaces, producto e integraciones en proyectos reales.',
       timeline: 'Experiencia profesional',
       timelineIntro:
-        'Recorrido profesional construyendo interfaces, integraciones y producto en equipos, clientes y sistemas reales.',
+        'Experiencia trabajando interfaces, integraciones y producto en equipos y sistemas reales.',
       about: 'Sobre mí',
     },
     featuredProjects: [
       {
         name: 'FitLog',
         summary:
-          'App mobile-first de nutrición actualmente en desarrollo, enfocada en logging diario, estructura de producto clara y una UX pensada para hábito.',
+          'App mobile-first de nutrición en desarrollo, enfocada en logging diario, estructura clara y una UX pensada para hábito.',
         problem:
-          'Diseñar un MVP donde el centro fuera el flujo de logging diario y no una feature aislada como el escaneo.',
-        role: 'Product engineering end-to-end: UX, arquitectura frontend, flujos de entrada, estado local y sistema visual.',
+          'Diseñar un MVP centrado en el registro diario, sin depender de una sola feature como el escaneo.',
+        role: 'Diseño y desarrollo frontend del producto: UX, arquitectura UI, estado local y sistema visual.',
         architecture:
-          'Arquitectura modular con Today screen como núcleo del producto, flujos separados para búsqueda, barcode y custom food, y capa local-first preparada para evolucionar a backend.',
+          'Arquitectura modular con flujos separados para búsqueda, barcode y custom food, pensada para evolucionar sin rehacer la base.',
         decisions: [
           'Priorizar la pantalla Today como centro del sistema para reforzar hábito y claridad de producto.',
           'Separar persistencia y UI para poder migrar luego a Supabase sin reescribir la app.',
           'Mantener un lenguaje visual sobrio y creíble, más wellness product que template de frontend.',
         ],
         impact:
-          'Muestra cómo diseño un producto real desde frontend, arquitectura y experiencia de uso, con una base lista para iterar y crecer.',
+          'Muestra cómo abordo un producto desde frontend, estructura y experiencia de uso con una base lista para seguir iterando.',
         stack: ['React', 'TypeScript', 'Vite', 'Local-first state', 'Design system thinking'],
         links: {
           preview: '#',
@@ -178,19 +178,19 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Dashboard Assistant',
         summary:
-          'Interfaz de asistente embebido para dashboards con arquitectura modular, widgets reutilizables y patrones de UX conversacional.',
+          'Interfaz de asistente embebido para dashboards con widgets reutilizables y una UI pensada para escalar.',
         problem:
-          'Crear una experiencia de asistente que pudiera convivir con un dashboard real sin sentirse como overlay improvisado.',
-        role: 'Diseño e implementación del sistema de UI, composición de widgets, estado y estructura reusable.',
+          'Diseñar un asistente que encajara de forma natural dentro de un dashboard.',
+        role: 'Diseño e implementación del sistema UI, composición de widgets y estructura reutilizable.',
         architecture:
-          'Vue 3 + TypeScript con composables, separación de rendering y lógica conversacional, historial simulado y UI preparada para escalar tipos de respuesta.',
+          'Vue 3 + TypeScript con composables, separación entre UI y lógica, y estructura lista para crecer.',
         decisions: [
           'Separar mensajes y widgets para evitar acoplar el flujo conversacional al rendering.',
           'Diseñar una estructura reutilizable que permita crecer el sistema sin rehacer el shell.',
           'Mantener la interfaz clara y product-oriented, sin caer en una demo visual ruidosa.',
         ],
         impact:
-          'Refuerza narrativa de systems thinking, frontend architecture y AI-oriented UX sin vender humo.',
+          'Refuerza mi experiencia en arquitectura frontend, componentes reutilizables y UX conversacional.',
         stack: ['Vue 3', 'TypeScript', 'Vite', 'Composable architecture'],
         links: {
           preview: 'https://dashboard-assistant-chi.vercel.app/',
@@ -201,19 +201,19 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Kalanban',
         summary:
-          'Sistema de interacción para gestión tipo kanban con foco en estados de UI, acciones rápidas y una experiencia ágil.',
+          'Interfaz tipo kanban enfocada en estados de UI, acciones rápidas y uso cotidiano.',
         problem:
-          'Resolver una interfaz con múltiples estados, edición rápida y control de interacción sin volverla torpe ni frágil.',
-        role: 'Diseño e implementación frontend con foco en ergonomía de uso, estructura reusable y manejo de estado local.',
+          'Resolver una interfaz con muchos estados y edición rápida sin volverla frágil.',
+        role: 'Diseño e implementación frontend con foco en usabilidad, componentes reutilizables y estado local.',
         architecture:
-          'React + TypeScript con componentes reutilizables, modales consistentes y flujos preparados para interacción frecuente.',
+          'React + TypeScript con componentes reutilizables y flujos pensados para interacción frecuente.',
         decisions: [
           'Enfatizar claridad de interacción antes que decoraciones visuales.',
           'Mantener la UI flexible para futuras mejoras como keyboard UX y más capas de productividad.',
           'Resolver el estado local de forma simple y mantenible para no sobrediseñar el MVP.',
         ],
         impact:
-          'Ayuda a posicionar criterio de UX engineering y capacidad para diseñar interfaces donde el comportamiento importa tanto como el look.',
+          'Muestra mi enfoque para construir interfaces donde el comportamiento importa tanto como lo visual.',
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'Local state'],
         links: {
           preview: 'https://kalanban.vercel.app/',
@@ -365,8 +365,8 @@ export const homeContent: Record<Locale, HomeContent> = {
         'Portfolio of Alan Ortiz: Product Engineer focused on frontend systems, UI architecture, e-commerce, fintech, and production product delivery.',
     },
     proofStrip: {
-      label: 'Areas of experience',
-      items: ['E-commerce, fintech, and digital products', 'React, Vue.js, and TypeScript in real interfaces', 'Testing, performance, and accessibility as part of delivery', 'Automation and integrations for operational processes'],
+      label: 'Technical focus',
+      items: ['Frontend systems with React, Vue.js, and TypeScript', 'UX, performance, and accessibility in product interfaces', 'Automation and integrations for operational workflows'],
     },
     nav: {
       featured: 'Work',
@@ -382,7 +382,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         'I work with React, Vue.js, and TypeScript across e-commerce, fintech, automation, and digital products where UX, stability, and business needs all matter.',
       location: 'Mexico City, Mexico',
       status: 'Available for remote and international frontend roles',
-      primaryCta: 'View production work',
+      primaryCta: 'View projects',
       secondaryCta: 'Download resume',
       metrics: [
         { value: 'React · Vue.js · TypeScript', label: 'core stack' },
@@ -390,40 +390,40 @@ export const homeContent: Record<Locale, HomeContent> = {
       ],
     },
     sectionTitles: {
-      featured: 'Featured product engineering',
+      featured: 'Selected projects',
       featuredIntro:
-        'Projects that show how I approach frontend, UI architecture, product thinking, and maintainability in real work.',
-      production: 'Clients',
+        'A selection of projects that show how I approach frontend, reusable components, and integrations in digital products.',
+      production: 'Production websites',
       productionIntro:
-        'Published websites and launches where I contributed through frontend execution, visual structure, and usable delivery for business.',
-      deployments: 'Client / production deployments',
+        'Published websites and client work where I contributed through frontend execution, visual structure, and integrations.',
+      deployments: 'Production websites',
       deploymentsIntro:
-        'Published websites and launches focused on commercial clarity, frontend execution, and usable delivery for real business needs.',
-      principles: 'Engineering principles',
+        'Client work and published websites that show the kind of product and delivery work I have been involved in.',
+      principles: 'Principles',
       principlesIntro:
-        'How I make decisions when the goal is not only to ship screens, but to sustain product quality in production.',
+        'How I usually make decisions when working on interfaces, product, and integrations in real projects.',
       timeline: 'Professional experience',
       timelineIntro:
-        'Professional background building interfaces, integrations, and product experiences across real teams and systems.',
+        'Experience building interfaces, integrations, and product work across real teams and systems.',
       about: 'About',
     },
     featuredProjects: [
       {
         name: 'FitLog',
         summary:
-          'A mobile-first nutrition product currently in development, built around daily logging, strong product structure, and habit-friendly UX.',
+          'A mobile-first nutrition product in development, built around daily logging, clear structure, and habit-friendly UX.',
         problem:
-          'Design an MVP where the center of the experience was consistent daily food logging rather than an isolated feature like barcode scanning.',
-        role: 'End-to-end product engineering across UX, frontend architecture, input flows, local state, and visual system direction.',
+          'Design an MVP centered on daily logging instead of depending on one isolated feature like barcode scanning.',
+        role: 'Frontend product work across UX, UI architecture, local state, and visual direction.',
         architecture:
-          'Modular frontend architecture with the Today screen as the core product surface, separate flows for search, barcode, and custom foods, plus a local-first persistence layer prepared for backend evolution.',
+          'Modular frontend structure with separate flows for search, barcode, and custom foods, designed to evolve without rebuilding the base.',
         decisions: [
           'Make the Today screen the center of the system to reinforce habit and product clarity.',
           'Separate persistence from UI so the app can later migrate to Supabase without rewriting the experience.',
           'Keep the visual language credible and restrained, closer to a wellness product than a generic frontend template.',
         ],
         impact:
-          'Shows how I shape a real product from frontend architecture, UX, and iterative product thinking with room to keep growing it.',
+          'Shows how I approach a product from frontend structure and UX with room to keep iterating.',
         stack: ['React', 'TypeScript', 'Vite', 'Local-first state', 'Design system thinking'],
         links: {
           preview: '#',
@@ -434,19 +434,19 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Dashboard Assistant',
         summary:
-          'An embedded assistant experience for dashboards built around modular widget architecture and reusable conversational UI patterns.',
+          'An embedded dashboard assistant built with reusable widgets and a UI designed to scale.',
         problem:
-          'Create an assistant experience that could live inside a real dashboard without feeling bolted on or visually noisy.',
-        role: 'Designed and implemented the UI system, widget composition model, state structure, and reusable shell.',
+          'Design an assistant that could fit naturally inside a dashboard.',
+        role: 'Designed and implemented the UI system, widget composition, and reusable structure.',
         architecture:
-          'Vue 3 + TypeScript using composables, clear separation between conversational logic and rendering, mocked history loading, and scalable response patterns.',
+          'Vue 3 + TypeScript with composables, clear separation between UI and logic, and a structure ready to grow.',
         decisions: [
           'Separate messages from widgets so interaction logic is not tightly coupled to rendering.',
           'Build a reusable structure that can scale without rewriting the shell.',
           'Keep the experience product-oriented rather than over-designed as a showcase demo.',
         ],
         impact:
-          'Strengthens the story around systems thinking, frontend architecture, and AI-oriented UX without inflated claims.',
+          'Shows experience in frontend architecture, reusable components, and conversational UX.',
         stack: ['Vue 3', 'TypeScript', 'Vite', 'Composable architecture'],
         links: {
           preview: 'https://dashboard-assistant-chi.vercel.app/',
@@ -457,19 +457,19 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Kalanban',
         summary:
-          'An interaction-heavy task management interface focused on UI state handling, fast actions, and ergonomic UX.',
+          'A kanban-style interface focused on UI states, fast actions, and everyday usability.',
         problem:
-          'Solve a UI with multiple states, quick editing, and frequent interaction without making it fragile or visually overwhelming.',
-        role: 'Frontend design and implementation focused on usability, reusable structure, and maintainable local state.',
+          'Build an interface with multiple states and quick editing without making it fragile.',
+        role: 'Frontend design and implementation focused on usability, reusable structure, and local state.',
         architecture:
-          'React + TypeScript with reusable components, consistent modal patterns, and a structure ready for frequent interaction.',
+          'React + TypeScript with reusable components and flows designed for frequent interaction.',
         decisions: [
           'Prioritize interaction clarity over visual decoration.',
           'Keep the interface flexible for future enhancements such as stronger keyboard UX.',
           'Solve state management in a simple and maintainable way instead of overengineering the MVP.',
         ],
         impact:
-          'Supports a stronger UX engineering narrative where behavior matters as much as visuals.',
+          'Shows how I build interfaces where behavior matters as much as visuals.',
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'Local state'],
         links: {
           preview: 'https://kalanban.vercel.app/',
