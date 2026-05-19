@@ -69,25 +69,22 @@ const cvLink = {
   </div>
 
   <aside>
-    <article class="rounded-[2rem] border border-slate-200/80 bg-white/90 p-6 shadow-sm shadow-slate-200/30 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none lg:p-7">
-      <div class="space-y-6">
+    <article class="rounded-[2rem] border border-slate-200/80 bg-white/90 p-6 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none lg:p-7">
+      <div class="space-y-5">
         <div class="space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
             {currentLang === 'en' ? 'Quick overview' : 'Resumen rápido'}
           </p>
           <div>
             <h2 class="text-2xl font-semibold text-slate-950 dark:text-white">{profile.name}</h2>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">{profile.profession}</p>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Frontend / Product Engineer</p>
             <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">{profile.address}</p>
           </div>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2">
+        <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
           {content.hero.metrics.map((metric) => (
-            <div class="rounded-2xl bg-slate-50 p-4 dark:bg-white/[0.04]">
-              <div class="text-lg font-semibold text-slate-950 dark:text-white">{metric.value}</div>
-              <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">{metric.label}</p>
-            </div>
+            <p>{metric.value}</p>
           ))}
         </div>
 

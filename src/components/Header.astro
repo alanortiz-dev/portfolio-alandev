@@ -18,9 +18,9 @@ const settingsMenuId = 'site-settings-menu';
     <div class="hidden items-center gap-6 md:flex">
       {[
         { label: content.nav.featured, url: '#featured-engineering' },
-        { label: content.nav.experience, url: '#production-experience' },
+        { label: content.nav.experience, url: '#production-deployments' },
         { label: content.nav.principles, url: '#engineering-principles' },
-        { label: content.nav.timeline, url: '#about' },
+        { label: content.nav.timeline, url: '#experience-timeline' },
       ].map((link) => (
         <a class="transition hover:text-slate-950 dark:hover:text-white" href={link.url}>{link.label}</a>
       ))}

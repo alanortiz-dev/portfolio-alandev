@@ -1,26 +1,15 @@
 ---
 import type { HomeContent } from '@/data/homeContent';
-import profile from '@/data/profile';
 
 export interface Props {
   content: HomeContent;
 }
 
 const { content } = Astro.props;
-const { name, aboutMeLogo } = profile;
 ---
 
-<article class="grid gap-8 rounded-[2rem] border border-slate-200/80 bg-white/90 p-6 shadow-sm shadow-slate-200/30 md:grid-cols-[1fr_220px] md:items-center lg:p-8 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none">
-  <div class="space-y-4 text-pretty text-sm leading-8 text-slate-600 dark:text-slate-300">
+<article class="space-y-6 rounded-[2rem] bg-white/70 p-6 shadow-sm shadow-slate-200/10 ring-1 ring-slate-200/60 dark:bg-white/[0.02] dark:ring-white/10 dark:shadow-none lg:p-8">
+  <div class="max-w-3xl space-y-5 text-pretty text-base leading-8 text-slate-600 dark:text-slate-300">
     {content.about.map((paragraph) => <p>{paragraph}</p>)}
   </div>
-
-  <img
-    width="220"
-    height="220"
-    src={aboutMeLogo}
-    alt={`Photo of ${name}`}
-    class="aspect-square w-full max-w-[220px] rounded-3xl object-cover shadow-sm shadow-slate-300/30 dark:shadow-none"
-    style="object-position: 50% 50%"
-  />
 </article>

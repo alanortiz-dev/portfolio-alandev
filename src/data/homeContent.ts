@@ -109,48 +109,46 @@ export const homeContent: Record<Locale, HomeContent> = {
         'Portfolio de Alan Ortiz: Product Engineer con foco en frontend systems, arquitectura UI, e-commerce, fintech y flujos de producto en producción.',
     },
     proofStrip: {
-      label: 'Prueba de trabajo real',
-      items: ['6+ años construyendo software para producción', 'Experiencia en e-commerce, fintech y automatización', 'Sistemas frontend con React, Vue.js y TypeScript', 'Enfoque en testing, performance y accesibilidad'],
+      label: 'Áreas de experiencia',
+      items: ['E-commerce, fintech y productos digitales', 'React, Vue.js y TypeScript en interfaces reales', 'Testing, performance y accesibilidad como parte del delivery', 'Automatización e integraciones para procesos operativos'],
     },
     nav: {
       featured: 'Proyectos',
-      experience: 'Experiencia',
+      experience: 'Clientes',
       principles: 'Principios',
-      timeline: 'Sobre mí',
+      timeline: 'Experiencia',
       contact: 'Contacto',
     },
     hero: {
       eyebrow: 'Frontend Engineer · React, Vue.js y TypeScript · Producto digital',
-      title: 'Construyo interfaces de producción que escalan y resuelven flujos críticos de negocio.',
+      title: 'Construyo interfaces de producto claras, mantenibles y listas para producción.',
       description:
-        'Trabajo entre frontend, producto y operaciones, creando experiencias con React, Vue.js y TypeScript para e-commerce, fintech, automatización y productos de alto tráfico.',
+        'Trabajo con React, Vue.js y TypeScript en e-commerce, fintech, automatización y productos digitales donde la UX, la estabilidad y el negocio importan.',
       location: 'Ciudad de México, México',
       status: 'Disponible para roles frontend remotos e internacionales',
       primaryCta: 'Ver trabajo en producción',
       secondaryCta: 'Descargar CV',
       metrics: [
-        { value: '6+ años', label: 'construyendo software para producción' },
-        { value: 'E-commerce · Fintech', label: 'dominios principales' },
-        { value: 'React · Vue · TS', label: 'sistemas frontend de producto' },
-        { value: 'Testing · Performance', label: 'calidad y estabilidad de release' },
+        { value: 'React · Vue.js · TypeScript', label: 'stack principal' },
+        { value: 'E-commerce · Fintech · Automation', label: 'áreas de trabajo' },
       ],
     },
     sectionTitles: {
       featured: 'Ingeniería de producto destacada',
       featuredIntro:
-        'No son solo demos. Son ejemplos de cómo pienso arquitectura frontend, UX de producto, modularidad y flujos mantenibles.',
-      production: 'Experiencia profesional',
+        'Proyectos que muestran cómo trabajo frontend, arquitectura UI, producto y experiencia de uso con foco real en mantenibilidad.',
+      production: 'Clientes',
       productionIntro:
-        'Recorrido profesional construyendo interfaces, integraciones y flujos de negocio en equipos y productos reales.',
+        'Sitios y experiencias publicadas donde participé desde frontend, estructura visual y entrega usable para negocio.',
       deployments: 'Despliegues para clientes y producción',
       deploymentsIntro:
         'Sitios y experiencias publicadas con foco en claridad comercial, ejecución frontend y entregables utilizables en negocio.',
       principles: 'Principios de ingeniería',
       principlesIntro:
         'Así tomo decisiones cuando el objetivo no es solo sacar pantallas, sino sostener producto en producción.',
-      timeline: 'Trayectoria',
+      timeline: 'Experiencia profesional',
       timelineIntro:
-        'Trayectoria enfocada en producto, frontend systems, integraciones y estabilidad operativa.',
+        'Recorrido profesional construyendo interfaces, integraciones y producto en equipos, clientes y sistemas reales.',
       about: 'Sobre mí',
     },
     featuredProjects: [
@@ -344,8 +342,8 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
     ],
     about: [
-      'Soy un frontend/product engineer que disfruta convertir flujos complejos en interfaces claras, confiables y mantenibles.',
-      'Me muevo bien entre producto, diseño, frontend, integraciones y automatización. Me importa que lo que construyo funcione bien hoy, pero también que se pueda sostener mañana.',
+      'Soy frontend/product engineer con experiencia construyendo interfaces para e-commerce, fintech y operaciones digitales. Me interesa especialmente la parte donde producto, UX e ingeniería se cruzan: flujos claros, sistemas mantenibles y software que realmente ayuda a operar mejor.',
+      'Actualmente estoy enfocando mi perfil hacia frontend systems, automatización e interfaces con IA aplicada.',
     ],
     labels: {
       problem: 'Problema',
@@ -367,48 +365,46 @@ export const homeContent: Record<Locale, HomeContent> = {
         'Portfolio of Alan Ortiz: Product Engineer focused on frontend systems, UI architecture, e-commerce, fintech, and production product delivery.',
     },
     proofStrip: {
-      label: 'Proof of real work',
-      items: ['6+ years building production software', 'Experience across e-commerce, fintech, and automation', 'Frontend systems with React, Vue.js, and TypeScript', 'Strong focus on testing, performance, and accessibility'],
+      label: 'Areas of experience',
+      items: ['E-commerce, fintech, and digital products', 'React, Vue.js, and TypeScript in real interfaces', 'Testing, performance, and accessibility as part of delivery', 'Automation and integrations for operational processes'],
     },
     nav: {
       featured: 'Work',
-      experience: 'Experience',
+      experience: 'Clients',
       principles: 'Principles',
-      timeline: 'About',
+      timeline: 'Experience',
       contact: 'Contact',
     },
     hero: {
       eyebrow: 'Frontend Engineer · React, Vue.js and TypeScript · Digital product',
-      title: 'I build production interfaces that scale and solve critical business flows.',
+      title: 'I build product interfaces that are clear, maintainable, and ready for production.',
       description:
-        'I work across frontend, product, and operations, building React, Vue.js, and TypeScript experiences for e-commerce, fintech, automation, and high-traffic products.',
+        'I work with React, Vue.js, and TypeScript across e-commerce, fintech, automation, and digital products where UX, stability, and business needs all matter.',
       location: 'Mexico City, Mexico',
       status: 'Available for remote and international frontend roles',
       primaryCta: 'View production work',
       secondaryCta: 'Download resume',
       metrics: [
-        { value: '6+ years', label: 'building production software' },
-        { value: 'E-commerce · Fintech', label: 'core domains' },
-        { value: 'React · Vue · TS', label: 'frontend product systems' },
-        { value: 'Testing · Performance', label: 'quality and release reliability' },
+        { value: 'React · Vue.js · TypeScript', label: 'core stack' },
+        { value: 'E-commerce · Fintech · Automation', label: 'work areas' },
       ],
     },
     sectionTitles: {
       featured: 'Featured product engineering',
       featuredIntro:
-        'Not just polished demos. These projects show how I think about frontend architecture, reusable UI systems, product UX, and maintainability.',
-      production: 'Professional experience',
+        'Projects that show how I approach frontend, UI architecture, product thinking, and maintainability in real work.',
+      production: 'Clients',
       productionIntro:
-        'Professional experience building interfaces, integrations, and business flows across real teams and production products.',
+        'Published websites and launches where I contributed through frontend execution, visual structure, and usable delivery for business.',
       deployments: 'Client / production deployments',
       deploymentsIntro:
         'Published websites and launches focused on commercial clarity, frontend execution, and usable delivery for real business needs.',
       principles: 'Engineering principles',
       principlesIntro:
         'How I make decisions when the goal is not only to ship screens, but to sustain product quality in production.',
-      timeline: 'Experience timeline',
+      timeline: 'Professional experience',
       timelineIntro:
-        'A track record shaped by product delivery, frontend systems, integrations, and operational reliability.',
+        'Professional background building interfaces, integrations, and product experiences across real teams and systems.',
       about: 'About',
     },
     featuredProjects: [
@@ -602,8 +598,8 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
     ],
     about: [
-      'I enjoy turning complex workflows into interfaces that feel clear, reliable, and maintainable.',
-      'I work comfortably across product, design, frontend, integrations, and automation. I care about shipping useful systems that work well today and remain adaptable tomorrow.',
+      'I am a frontend/product engineer with experience building interfaces for e-commerce, fintech, and digital operations. I am especially interested in the space where product, UX, and engineering meet: clear flows, maintainable systems, and software that genuinely helps teams operate better.',
+      'Right now I am focusing my profile toward frontend systems, automation, and applied AI interfaces.',
     ],
     labels: {
       problem: 'Problem',
