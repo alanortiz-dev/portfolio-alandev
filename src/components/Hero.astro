@@ -1,6 +1,7 @@
 ---
 import Badge from '@/components/Badge.astro';
 import DocumentIcon from '@/components/icons/DocumentIcon.astro';
+import GitHub from '@/components/icons/GitHub.astro';
 import LinkedInIcon from '@/components/icons/LinkedIn.astro';
 import MailIcon from '@/components/icons/Mail.astro';
 import SocialPill from '@/components/SocialPill.astro';
@@ -55,6 +56,10 @@ const currentLang = Astro.currentLocale || 'es';
       <SocialPill href={`${profile.social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}>
         <LinkedInIcon class="size-4" />
         LinkedIn
+      </SocialPill>
+      <SocialPill href={profile.social.github}>
+        <GitHub class="size-4" />
+        GitHub
       </SocialPill>
     </nav>
   </div>

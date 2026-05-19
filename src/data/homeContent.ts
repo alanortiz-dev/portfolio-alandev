@@ -48,6 +48,10 @@ export interface HomeContent {
     title: string;
     description: string;
   };
+  proofStrip: {
+    label: string;
+    items: string[];
+  };
   nav: {
     featured: string;
     experience: string;
@@ -105,6 +109,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       description:
         'Portfolio de Alan Ortiz: frontend systems, producto, e-commerce, UX engineering, automatización y aplicaciones listas para producción.',
     },
+    proofStrip: {
+      label: 'Experiencia en contextos reales',
+      items: ['VTEX IO e-commerce', 'fintech dashboards', 'high-traffic retail', 'automation workflows', 'remote international teams'],
+    },
     nav: {
       featured: 'Product engineering',
       experience: 'Experiencia',
@@ -117,7 +125,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       eyebrow: 'Product Engineer · Frontend Systems · UX Engineering',
       title: 'Construyo interfaces de producción que escalan, se mantienen y resuelven flujos críticos de negocio.',
       description:
-        'Trabajo en la intersección entre frontend, producto y operaciones. He construido experiencias con React, Vue.js y TypeScript para e-commerce, fintech, automatización y productos de alto tráfico, cuidando performance, accesibilidad, estabilidad y claridad de sistema.',
+        'Trabajo en la intersección entre frontend, producto y operaciones. He construido experiencias con React, Vue.js y TypeScript para e-commerce, fintech, automatización y productos de alto tráfico, cuidando performance, accesibilidad, testing, estabilidad y claridad de sistema.',
       location: 'Ciudad de México, México',
       status: 'Disponible para roles frontend/product engineer remotos e internacionales',
       primaryCta: 'Ver experiencia de producción',
@@ -126,6 +134,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         { value: '6+ años', label: 'entregando software real' },
         { value: '400M+', label: 'llamadas/mes soportadas en Layer 7' },
         { value: 'React · Vue · TS', label: 'stack principal de producto' },
+        { value: 'REST · GraphQL · Playwright', label: 'integraciones y estabilidad de release' },
       ],
     },
     sectionTitles: {
@@ -356,6 +365,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       description:
         'Portfolio of Alan Ortiz: product-focused frontend engineering, UX systems, e-commerce, automation, and production-ready digital experiences.',
     },
+    proofStrip: {
+      label: 'Production contexts',
+      items: ['VTEX IO e-commerce', 'fintech dashboards', 'high-traffic retail', 'automation workflows', 'remote international teams'],
+    },
     nav: {
       featured: 'Product engineering',
       experience: 'Experience',
@@ -368,7 +381,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       eyebrow: 'Product Engineer · Frontend Systems · UX Engineering',
       title: 'I build production interfaces that scale, stay maintainable, and support critical business flows.',
       description:
-        'My work sits between frontend engineering, product thinking, and operational execution. I have built experiences with React, Vue.js, and TypeScript for e-commerce, fintech, automation, and high-traffic products, with a strong focus on performance, accessibility, release stability, and maintainable systems.',
+        'My work sits between frontend engineering, product thinking, and operational execution. I have built experiences with React, Vue.js, and TypeScript for e-commerce, fintech, automation, and high-traffic products, with a strong focus on performance, accessibility, testing, release stability, and maintainable systems.',
       location: 'Mexico City, Mexico',
       status: 'Available for remote and international frontend / product engineering roles',
       primaryCta: 'Explore production experience',
@@ -377,6 +390,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         { value: '6+ years', label: 'shipping real software' },
         { value: '400M+', label: 'calls/month supported at Layer 7' },
         { value: 'React · Vue · TS', label: 'core product stack' },
+        { value: 'REST · GraphQL · Playwright', label: 'integrations and release reliability' },
       ],
     },
     sectionTitles: {

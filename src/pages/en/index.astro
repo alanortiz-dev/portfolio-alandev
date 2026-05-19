@@ -6,6 +6,7 @@ import FeaturedProjects from '@/components/FeaturedProjects.astro';
 import Hero from '@/components/Hero.astro';
 import ProductionDeployments from '@/components/ProductionDeployments.astro';
 import ProductionExperience from '@/components/ProductionExperience.astro';
+import ProofStrip from '@/components/ProofStrip.astro';
 import SectionContainer from '@/components/SectionContainer.astro';
 import TitleSection from '@/components/TitleSection.astro';
 import { homeContent } from '@/data/homeContent';
@@ -17,7 +18,10 @@ const content = homeContent.en;
 <Layout title={content.meta.title} description={content.meta.description}>
   <main class="px-4 pb-6 pt-10 md:pt-16">
     <SectionContainer class="py-10 md:py-20">
-      <Hero content={content} />
+      <div class="space-y-8">
+        <Hero content={content} />
+        <ProofStrip content={content} />
+      </div>
     </SectionContainer>
 
     <div class="space-y-24 md:space-y-28">

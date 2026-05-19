@@ -1,7 +1,7 @@
 const profile = {
   name: "Alan Ortiz",
-  profession: "Desarrollador Fullstack",
-  address: "Valencia, España",
+  profession: "Product Engineer",
+  address: "Mexico City, México",
   email: "alan.omar.ortz@gmail.com",
   avatar: "/images/alan-profile.webp",
   aboutMeLogo: "/images/alan-about.webp",
