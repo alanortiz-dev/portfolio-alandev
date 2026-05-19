@@ -111,12 +111,12 @@ export const homeContent: Record<Locale, HomeContent> = {
     },
     proofStrip: {
       label: 'Experiencia en contextos reales',
-      items: ['VTEX IO e-commerce', 'fintech dashboards', 'high-traffic retail', 'automation workflows', 'remote international teams'],
+      items: ['e-commerce con VTEX IO', 'dashboards fintech', 'retail de alto tráfico', 'flujos automatizados', 'equipos remotos internacionales'],
     },
     nav: {
-      featured: 'Product engineering',
+      featured: 'Ingeniería de producto',
       experience: 'Experiencia',
-      deployments: 'Deployments',
+      deployments: 'Despliegues',
       principles: 'Principios',
       timeline: 'Trayectoria',
       contact: 'Contacto',
@@ -138,13 +138,13 @@ export const homeContent: Record<Locale, HomeContent> = {
       ],
     },
     sectionTitles: {
-      featured: 'Featured product engineering',
+      featured: 'Ingeniería de producto destacada',
       featuredIntro:
         'No son solo demos. Son ejemplos de cómo pienso arquitectura frontend, UX de producto, modularidad y flujos mantenibles.',
-      production: 'Production experience',
+      production: 'Experiencia en producción',
       productionIntro:
         'Experiencia construyendo y manteniendo interfaces, integraciones y flujos de negocio en entornos reales de alta exigencia.',
-      deployments: 'Client / production deployments',
+      deployments: 'Despliegues para clientes y producción',
       deploymentsIntro:
         'Implementaciones reales con foco en claridad, conversión, responsive execution y entrega usable para negocio.',
       principles: 'Engineering principles',
@@ -228,25 +228,25 @@ export const homeContent: Record<Locale, HomeContent> = {
         name: 'Tatuajes en Valencia',
         url: 'https://tatuajesenvalencia.com/',
         summary: 'Sitio orientado a conversión y visibilidad local para servicio real.',
-        focus: ['Responsive execution', 'claridad comercial', 'SEO base', 'delivery usable'],
+        focus: ['Ejecución responsive', 'claridad comercial', 'SEO base', 'entrega usable'],
       },
       {
         name: 'Hivora Clothes',
         url: 'https://hivoraclothes.com/',
         summary: 'Implementación visual y de producto para una marca con foco en presentación y navegación limpia.',
-        focus: ['Brand presentation', 'responsive UI', 'flujo claro', 'client delivery'],
+        focus: ['Presentación de marca', 'UI responsive', 'flujo claro', 'entrega al cliente'],
       },
       {
         name: 'Spark Creative House',
         url: 'https://www.sparkcreativehouse.com/',
         summary: 'Presencia web para estudio creativo con foco en comunicación clara y estructura profesional.',
-        focus: ['Information hierarchy', 'responsive build', 'business positioning', 'launch quality'],
+        focus: ['Jerarquía de información', 'implementación responsive', 'posicionamiento de negocio', 'calidad de lanzamiento'],
       },
       {
         name: 'Pia Maria Coaching',
         url: 'https://www.pia-maria-coaching.com/',
         summary: 'Sitio orientado a captación y claridad de oferta para servicio profesional.',
-        focus: ['Lead capture', 'trust-building UX', 'clean responsive delivery', 'content clarity'],
+        focus: ['Captación de leads', 'UX que genera confianza', 'entrega responsive limpia', 'claridad de contenido'],
       },
     ],
     principles: [
