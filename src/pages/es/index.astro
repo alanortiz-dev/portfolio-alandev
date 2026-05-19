@@ -16,46 +16,46 @@ const content = homeContent.es;
 ---
 
 <Layout title={content.meta.title} description={content.meta.description}>
-  <main class="px-4 pb-6 pt-10 md:pt-16">
-    <SectionContainer class="py-10 md:py-20">
+  <main class="pb-8 pt-12 md:pt-20">
+    <SectionContainer class="pb-12">
       <div class="space-y-8">
         <Hero content={content} />
         <ProofStrip content={content} />
       </div>
     </SectionContainer>
 
-    <div class="space-y-24 md:space-y-28">
-      <SectionContainer id="featured-engineering">
+    <div>
+      <SectionContainer id="featured-engineering" class="py-20 md:py-28">
         <TitleSection>{content.sectionTitles.featured}</TitleSection>
         <p class="mb-8 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300">{content.sectionTitles.featuredIntro}</p>
         <FeaturedProjects content={content} />
       </SectionContainer>
 
-      <SectionContainer id="production-experience">
+      <SectionContainer id="production-experience" class="py-20 md:py-28">
         <TitleSection>{content.sectionTitles.production}</TitleSection>
         <p class="mb-8 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300">{content.sectionTitles.productionIntro}</p>
         <ProductionExperience content={content} />
       </SectionContainer>
 
-      <SectionContainer id="production-deployments">
+      <SectionContainer id="production-deployments" class="py-20 md:py-28">
         <TitleSection>{content.sectionTitles.deployments}</TitleSection>
         <p class="mb-8 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300">{content.sectionTitles.deploymentsIntro}</p>
         <ProductionDeployments content={content} />
       </SectionContainer>
 
-      <SectionContainer id="engineering-principles">
+      <SectionContainer id="engineering-principles" class="py-20 md:py-28">
         <TitleSection>{content.sectionTitles.principles}</TitleSection>
         <p class="mb-8 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300">{content.sectionTitles.principlesIntro}</p>
         <EngineeringPrinciples content={content} />
       </SectionContainer>
 
-      <SectionContainer id="experience-timeline">
+      <SectionContainer id="experience-timeline" class="py-20 md:py-28">
         <TitleSection>{content.sectionTitles.timeline}</TitleSection>
         <p class="mb-8 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300">{content.sectionTitles.timelineIntro}</p>
         <Experience content={content} />
       </SectionContainer>
 
-      <SectionContainer id="about">
+      <SectionContainer id="about" class="py-20 md:py-28" narrow={true}>
         <TitleSection>{content.sectionTitles.about}</TitleSection>
         <AboutMe content={content} />
       </SectionContainer>

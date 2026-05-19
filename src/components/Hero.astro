@@ -28,15 +28,15 @@ const cvLinks = [
 ];
 ---
 
-<section class="grid gap-10 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
-  <div class="space-y-6">
+<section class="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(360px,.85fr)] lg:items-center lg:gap-14 xl:gap-20">
+  <div class="space-y-7">
     <Badge>{content.hero.eyebrow}</Badge>
 
-    <div class="space-y-4">
-      <h1 class="max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl dark:text-white">
+    <div class="space-y-5">
+      <h1 class="max-w-[13ch] text-4xl font-semibold leading-[0.95] tracking-tight text-slate-950 sm:text-5xl xl:text-6xl dark:text-white">
         {content.hero.title}
       </h1>
-      <p class="max-w-3xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
+      <p class="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
         {content.hero.description}
       </p>
     </div>
@@ -50,54 +50,58 @@ const cvLinks = [
       </span>
     </div>
 
-    <nav class="flex flex-wrap gap-3">
-      <a href="#production-experience" class="inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
+    <nav class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      <a href="#production-experience" class="inline-flex min-h-11 items-center justify-center rounded-full bg-slate-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
         {content.hero.primaryCta}
       </a>
+      <SocialPill href={currentLang === 'en' ? '/docs/Alan_Ortiz_EN.pdf' : '/docs/Alan_Ortiz_ES.pdf'} download={currentLang === 'en' ? 'Alan_Ortiz_CV_EN.pdf' : 'Alan_Ortiz_CV_ES.pdf'}>
+        <DocumentIcon class="size-4" aria-hidden="true" />
+        {content.hero.secondaryCta}
+      </SocialPill>
       <SocialPill href={`mailto:${profile.email}`}>
         <MailIcon class="size-4" />
-        Email
-      </SocialPill>
-      <SocialPill href={`${profile.social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}>
-        <LinkedInIcon class="size-4" />
-        LinkedIn
-      </SocialPill>
-      <SocialPill href={profile.social.github}>
-        <GitHub class="size-4" />
-        GitHub
+        {currentLang === 'en' ? 'Contact' : 'Contacto'}
       </SocialPill>
     </nav>
   </div>
 
-  <aside class="grid gap-4 lg:grid-cols-[minmax(0,1fr)]">
+  <aside>
     <article class="overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white/90 shadow-sm shadow-slate-200/30 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none">
-      <div class="grid gap-0 md:grid-cols-[220px_1fr] lg:grid-cols-1 xl:grid-cols-[220px_1fr]">
-        <img
-          src={profile.avatar}
-          alt={`Photo of ${profile.name}`}
-          width="320"
-          height="320"
-          class="h-full min-h-[220px] w-full object-cover object-center"
-        />
+      <div class="grid gap-0">
+        <div class="relative overflow-hidden border-b border-slate-200/80 dark:border-white/10">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/25 via-slate-950/5 to-transparent"></div>
+          <img
+            src={profile.avatar}
+            alt={`Portrait of ${profile.name}`}
+            width="640"
+            height="560"
+            loading="eager"
+            fetchpriority="high"
+            class="aspect-[4/3] w-full object-cover object-center"
+          />
+        </div>
 
-        <div class="space-y-5 p-6">
-          <div>
-            <p class="text-sm font-medium uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-              {currentLang === 'en' ? 'Resume downloads' : 'Descarga de CVs'}
+        <div class="space-y-6 p-6 lg:p-7">
+          <div class="space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+              {currentLang === 'en' ? 'Resume' : 'Currículum'}
             </p>
-            <h2 class="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{profile.name}</h2>
-            <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">{profile.profession}</p>
+            <div>
+              <h2 class="text-2xl font-semibold text-slate-950 dark:text-white">{profile.name}</h2>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">{profile.profession}</p>
+              <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">{profile.address}</p>
+            </div>
           </div>
 
-          <div class="grid gap-3">
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             {cvLinks.map((cv) => (
               <a
                 href={cv.href}
                 download={cv.download}
-                class="inline-flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
+                class="inline-flex min-h-12 items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
               >
                 <span class="inline-flex items-center gap-2">
-                  <DocumentIcon class="size-4" />
+                  <DocumentIcon class="size-4" aria-hidden="true" />
                   {cv.label}
                 </span>
                 <span aria-hidden="true">↘</span>
@@ -105,15 +109,21 @@ const cvLinks = [
             ))}
           </div>
 
-          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
-            {
-              content.hero.metrics.map((metric) => (
-                <div class="rounded-3xl border border-slate-200/80 bg-white/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
-                  <div class="text-2xl font-semibold text-slate-950 dark:text-white">{metric.value}</div>
-                  <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{metric.label}</p>
-                </div>
-              ))
-            }
+          <div class="flex flex-wrap gap-3 pt-1 text-sm text-slate-600 dark:text-slate-300">
+            <a
+              href={`${profile.social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}
+              class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 transition hover:bg-slate-200 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:bg-white/[0.06] dark:hover:bg-white/[0.1]"
+            >
+              <LinkedInIcon class="size-4" aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a
+              href={profile.social.github}
+              class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 transition hover:bg-slate-200 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:bg-white/[0.06] dark:hover:bg-white/[0.1]"
+            >
+              <GitHub class="size-4" aria-hidden="true" />
+              GitHub
+            </a>
           </div>
         </div>
       </div>

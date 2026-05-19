@@ -2,11 +2,6 @@
 import SettingsIcon from "./icons/SettingsIcon.astro";
 import LanguageToggle from "./LanguageToggle.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-import { useTranslations } from "../i18n/utils";
-import { languageList } from "../i18n/ui";
-
-const currentLang = Astro.currentLocale || "es";
-const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <div class="relative ml-2">

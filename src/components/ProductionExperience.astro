@@ -9,11 +9,11 @@ const { content } = Astro.props;
 const items = content.experiences.slice(0, 3);
 ---
 
-<div class="grid gap-4 lg:grid-cols-3">
+<div class="grid gap-5 lg:grid-cols-3">
   {
     items.map((item) => (
-      <article class="rounded-3xl border border-slate-200/80 bg-white/90 p-6 shadow-sm shadow-slate-200/30 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none">
-        <div class="space-y-3">
+      <article class="rounded-[2rem] bg-white/90 p-6 shadow-sm shadow-slate-200/20 ring-1 ring-slate-200/70 dark:bg-white/[0.03] dark:ring-white/10 dark:shadow-none lg:p-7">
+        <div class="space-y-4">
           <div>
             <p class="text-xs font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{item.period}</p>
             <h3 class="mt-2 text-xl font-semibold text-slate-950 dark:text-white">{item.role}</h3>

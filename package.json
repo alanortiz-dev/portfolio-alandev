@@ -2,7 +2,7 @@
   "name": "portfolio-alandev",
   "type": "module",
   "version": "1.0.0",
-  "description": "Portafolio personal de Alan Ortiz como desarrollador fullstack.",
+  "description": "Portfolio personal de Alan Ortiz como Product Engineer y Frontend Systems Developer.",
   "author": "Alan Ortiz",
   "scripts": {
     "dev": "astro dev",

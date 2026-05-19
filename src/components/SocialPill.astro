@@ -1,7 +1,13 @@
+---
+const { href = '', ...rest } = Astro.props;
+const isExternal = typeof href === 'string' && (href.startsWith('http') || href.startsWith('mailto:'));
+---
+
 <a
-  {...Astro.props}
-  target="_blank"
-  rel="noopener noreferrer"
+  href={href}
+  {...rest}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
   role="link"
   class="inline-flex max-w-fit items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:border-white/20 dark:hover:bg-white/[0.06] dark:hover:text-white"
 >
