@@ -63,9 +63,9 @@ const translatedLabels = useTranslations(currentLang as keyof typeof languageLis
 
   document.querySelectorAll(".languages-menu-option").forEach((element) => {
     element.addEventListener("click", (e) => {
-      const target = e.target;
-      if (target instanceof HTMLElement) {
-        const lang = target.getAttribute("data-lang");
+      const option = e.currentTarget;
+      if (option instanceof HTMLElement) {
+        const lang = option.getAttribute("data-lang");
         if (lang) {
           localStorage.setItem("language", lang);
           let newPath = window.location.pathname;

@@ -1,4 +1,10 @@
 ---
+import GitHub from '@/components/icons/GitHub.astro';
+import Link from '@/components/icons/Link.astro';
+import NextJS from '@/components/icons/NextJS.astro';
+import React from '@/components/icons/React.astro';
+import Tailwind from '@/components/icons/Tailwind.astro';
+import TypeScript from '@/components/icons/TypeScript.astro';
 import LinkButton from '@/components/LinkButton.astro';
 import type { HomeContent } from '@/data/homeContent';
 
@@ -13,73 +19,133 @@ const accentStyles = {
   slate: 'bg-white/90 ring-1 ring-slate-200/80 dark:bg-white/[0.03] dark:ring-white/10',
   blue: 'bg-white/90 ring-1 ring-blue-200/70 dark:bg-white/[0.03] dark:ring-blue-500/20',
 };
+
+const tagStyles = {
+  'Next.js': { class: 'bg-[#1f2937] text-white', icon: NextJS },
+  'Tailwind CSS': { class: 'bg-[#09a6c1] text-white', icon: Tailwind },
+  React: { class: 'bg-[#1e2127] text-white', icon: React },
+  TypeScript: { class: 'bg-[#003159] text-white', icon: TypeScript },
+  'Vue 3': { class: 'bg-[#42b883] text-white', icon: null },
+  Vite: { class: 'bg-[#646CFF] text-white', icon: null },
+  'Local state': { class: 'bg-slate-700 text-white', icon: null },
+  'Local-first state': { class: 'bg-emerald-700 text-white', icon: null },
+  'Design system thinking': { class: 'bg-amber-600 text-white', icon: null },
+  'Composable architecture': { class: 'bg-violet-600 text-white', icon: null },
+};
+
+const projectVisuals: Record<string, { image: string; imageAlt: string }> = {
+  Fitloger: {
+    image: '/porfolio.webp',
+    imageAlt: 'Preview general del trabajo de producto de Alan Ortiz',
+  },
+  'Dashboard Assistant': {
+    image: '/projects/dashboard_assistant.webp',
+    imageAlt: 'Vista previa del proyecto Dashboard Assistant',
+  },
+  Kalanban: {
+    image: '/projects/kalanban.webp',
+    imageAlt: 'Vista previa del proyecto Kalanban',
+  },
+};
 ---
 
 <div class="space-y-8">
   {
-    content.featuredProjects.map((project) => (
-      <article class={`rounded-[2rem] p-6 shadow-sm shadow-slate-200/20 lg:p-8 dark:shadow-none ${accentStyles[project.accent || 'slate']}`}>
-        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,.95fr)] lg:gap-12">
-          <div class="space-y-4">
-            <div class="space-y-2">
-              <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                {content.sectionTitles.featured}
-              </p>
-              <h3 class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white lg:text-3xl">
-                {project.name}
-              </h3>
-              <p class="text-base leading-7 text-slate-600 dark:text-slate-300">{project.summary}</p>
-            </div>
+    content.featuredProjects.map((project) => {
+      const visual = projectVisuals[project.name];
+      return (
+        <article class={`rounded-[2rem] p-6 shadow-sm shadow-slate-200/20 lg:p-8 dark:shadow-none ${accentStyles[project.accent || 'slate']}`}>
+          <div class="grid gap-8 lg:grid-cols-[minmax(320px,.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-12">
+            <div class="space-y-4">
+              {visual && (
+                <div class="overflow-hidden rounded-[1.5rem] bg-slate-950/5 ring-1 ring-slate-200/70 dark:ring-white/10">
+                  <img
+                    src={visual.image}
+                    alt={visual.imageAlt}
+                    width="1200"
+                    height="760"
+                    loading="lazy"
+                    class="aspect-[16/10] w-full object-cover object-top transition duration-500 hover:scale-[1.02]"
+                  />
+                </div>
+              )}
 
-            <dl class="grid gap-4 text-sm leading-7 text-slate-600 dark:text-slate-300 md:grid-cols-2">
-              <div class="space-y-1">
-                <dt class="font-medium text-slate-950 dark:text-white">{content.labels.problem}</dt>
-                <dd>{project.problem}</dd>
-              </div>
-              <div class="space-y-1">
-                <dt class="font-medium text-slate-950 dark:text-white">{content.labels.role}</dt>
-                <dd>{project.role}</dd>
-              </div>
-              <div class="space-y-1 md:col-span-2">
-                <dt class="font-medium text-slate-950 dark:text-white">{content.labels.architecture}</dt>
-                <dd>{project.architecture}</dd>
-              </div>
-            </dl>
-          </div>
-
-          <div class="space-y-5">
-            <div>
-              <h4 class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                {content.labels.decisions}
-              </h4>
-              <ul class="mt-3 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                {project.decisions.map((decision) => <li class="flex gap-3"><span class="mt-2 size-1.5 rounded-full bg-slate-400 dark:bg-slate-500"></span><span>{decision}</span></li>)}
+              <ul class="flex flex-row gap-2 flex-wrap">
+                {project.stack.map((item) => {
+                  const tag = tagStyles[item as keyof typeof tagStyles] || { class: 'bg-slate-700 text-white', icon: null };
+                  const Icon = tag.icon;
+                  return (
+                    <li>
+                      <span class={`flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${tag.class}`}>
+                        {Icon && <Icon class="size-4" />}
+                        {item}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
+
+              <div class="flex flex-wrap gap-3">
+                {project.links.code && (
+                  <LinkButton href={project.links.code}>
+                    <GitHub class="size-5" />
+                    {content.labels.code}
+                  </LinkButton>
+                )}
+                {project.links.preview && (
+                  <LinkButton href={project.links.preview}>
+                    <Link class="size-4" />
+                    {content.labels.preview}
+                  </LinkButton>
+                )}
+              </div>
             </div>
 
-            <div class="rounded-2xl bg-slate-50 p-4 dark:bg-black/20">
-              <h4 class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                {content.labels.impact}
-              </h4>
-              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.impact}</p>
-            </div>
+            <div class="space-y-5">
+              <div class="space-y-2">
+                <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                  {content.sectionTitles.featured}
+                </p>
+                <h3 class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white lg:text-3xl">
+                  {project.name}
+                </h3>
+                <p class="text-base leading-7 text-slate-600 dark:text-slate-300">{project.summary}</p>
+              </div>
 
-            <div>
-              <h4 class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                {content.labels.stack}
-              </h4>
-              <ul class="mt-3 flex flex-wrap gap-2">
-                {project.stack.map((item) => <li class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-white/[0.06] dark:text-slate-200">{item}</li>)}
-              </ul>
-            </div>
+              <dl class="grid gap-4 text-sm leading-7 text-slate-600 dark:text-slate-300 md:grid-cols-2">
+                <div class="space-y-1">
+                  <dt class="font-medium text-slate-950 dark:text-white">{content.labels.problem}</dt>
+                  <dd>{project.problem}</dd>
+                </div>
+                <div class="space-y-1">
+                  <dt class="font-medium text-slate-950 dark:text-white">{content.labels.role}</dt>
+                  <dd>{project.role}</dd>
+                </div>
+                <div class="space-y-1 md:col-span-2">
+                  <dt class="font-medium text-slate-950 dark:text-white">{content.labels.architecture}</dt>
+                  <dd>{project.architecture}</dd>
+                </div>
+              </dl>
 
-            <div class="flex flex-wrap gap-3">
-              {project.links.code && <LinkButton href={project.links.code}>{content.labels.code}</LinkButton>}
-              {project.links.preview && <LinkButton href={project.links.preview}>{content.labels.preview}</LinkButton>}
+              <div>
+                <h4 class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                  {content.labels.decisions}
+                </h4>
+                <ul class="mt-3 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  {project.decisions.map((decision) => <li class="flex gap-3"><span class="mt-2 size-1.5 rounded-full bg-slate-400 dark:bg-slate-500"></span><span>{decision}</span></li>)}
+                </ul>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 p-4 dark:bg-black/20">
+                <h4 class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                  {content.labels.impact}
+                </h4>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.impact}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
-    ))
+        </article>
+      );
+    })
   }
 </div>
