@@ -1,37 +1,27 @@
 ---
-import experienceEs from "@/data/experience.es";
-import experienceEn from "@/data/experience.en";
-import ExperienceItem from "./ExperienceItem.astro";
+import type { HomeContent } from '@/data/homeContent';
+import ExperienceItem from './ExperienceItem.astro';
 
-// Idiomas válidos
-type Lang = "es" | "en"; 
+export interface Props {
+  content: HomeContent;
+}
 
-
-type Experience = {
-  date: string;
-  title: string;
-  company: string;
-  description: string;
-  link: string;
-};
-
-// Detectar idioma desde la URL
-const lang = (Astro.url.pathname.split("/")[1] || "es") as Lang;
-
-// Asignar experiencias por idioma con tipado explícito
-const experiences: Record<Lang, Experience[]> = {
-  es: experienceEs,
-  en: experienceEn,
-};
-
-const experience = experiences[lang];
+const { content } = Astro.props;
 ---
 
-<ol class="relative mt-16">
+<ol class="relative mt-10">
   {
-    experience.map((exp) => (
+    content.experiences.map((exp) => (
       <li class="experience-list-item">
-        <ExperienceItem {...exp} />
+        <ExperienceItem
+          title={exp.role}
+          company={exp.company}
+          description={exp.summary}
+          link={exp.link}
+          date={exp.period}
+          location={exp.location}
+          highlights={exp.highlights}
+        />
       </li>
     ))
   }

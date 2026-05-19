@@ -1,37 +1,24 @@
 ---
-import { useTranslations } from "../i18n/utils";
-import { languageList } from "../i18n/ui";
+import profile from '@/data/profile';
+import { homeContent } from '@/data/homeContent';
 
 const currentYear = new Date().getFullYear();
-
-const currentLang = Astro.currentLocale;
-const t = useTranslations(currentLang as keyof typeof languageList);
+const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
+const content = homeContent[currentLang];
 ---
 
-<footer
-  class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
->
-  <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
-  >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90">
-      © {currentYear}{" "}
-      <a href="https://github.com/alanortiz-dev" class="hover:underline">
-        Alan Ortiz
-      </a>. {t("footer.rights")}
-    </span>
+<footer class="mx-auto mt-20 w-full max-w-6xl px-4 pb-10">
+  <div class="flex flex-col gap-4 rounded-[2rem] border border-slate-200/80 bg-white/90 px-6 py-6 text-sm text-slate-600 shadow-sm shadow-slate-200/30 md:flex-row md:items-center md:justify-between dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300 dark:shadow-none">
+    <div>
+      <p class="font-medium text-slate-950 dark:text-white">Alan Ortiz</p>
+      <p>{content.hero.eyebrow}</p>
+    </div>
 
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0">
-      <li>
-        <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">
-          {t("footer.aboutMe")}
-        </a>
-      </li>
-      <li>
-        <a id="contacto" href="mailto:alan.omar.ortz@gmail.com" class="hover:underline">
-          {t("footer.contact")}
-        </a>
-      </li>
-    </ul>
+    <div class="flex flex-wrap items-center gap-4">
+      <a href={profile.social.github} target="_blank" rel="noopener noreferrer" class="hover:text-slate-950 dark:hover:text-white">GitHub</a>
+      <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-slate-950 dark:hover:text-white">LinkedIn</a>
+      <a href="mailto:alan.omar.ortz@gmail.com" class="hover:text-slate-950 dark:hover:text-white">{content.nav.contact}</a>
+      <span>© {currentYear}</span>
+    </div>
   </div>
 </footer>
