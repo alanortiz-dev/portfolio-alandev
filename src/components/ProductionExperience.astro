@@ -1,0 +1,32 @@
+---
+import type { HomeContent } from '@/data/homeContent';
+
+export interface Props {
+  content: HomeContent;
+}
+
+const { content } = Astro.props;
+const items = content.experiences.slice(0, 3);
+---
+
+<div class="grid gap-4 lg:grid-cols-3">
+  {
+    items.map((item) => (
+      <article class="rounded-3xl border border-slate-200/80 bg-white/90 p-6 shadow-sm shadow-slate-200/30 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none">
+        <div class="space-y-3">
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{item.period}</p>
+            <h3 class="mt-2 text-xl font-semibold text-slate-950 dark:text-white">{item.role}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">{item.company} · {item.location}</p>
+          </div>
+
+          <p class="text-sm leading-7 text-slate-600 dark:text-slate-300">{item.summary}</p>
+
+          <ul class="space-y-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
+            {item.highlights.slice(0, 3).map((highlight) => <li class="flex gap-3"><span class="mt-2 size-1.5 rounded-full bg-slate-400 dark:bg-slate-500"></span><span>{highlight}</span></li>)}
+          </ul>
+        </div>
+      </article>
+    ))
+  }
+</div>

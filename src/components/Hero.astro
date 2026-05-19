@@ -1,92 +1,72 @@
 ---
-import Badge from "@/components/Badge.astro";
-import LinkedInIcon from "@/components/icons/LinkedIn.astro";
-import MailIcon from "@/components/icons/Mail.astro";
-import DocumentIcon from "@/components/icons/DocumentIcon.astro";
-import SocialPill from "@/components/SocialPill.astro";
-import { useTranslations } from "../i18n/utils";
-import { languageList } from "../i18n/ui";
-const currentLang = Astro.currentLocale;
-const translatedLabels = useTranslations(
-  currentLang as keyof typeof languageList,
-);
+import Badge from '@/components/Badge.astro';
+import DocumentIcon from '@/components/icons/DocumentIcon.astro';
+import LinkedInIcon from '@/components/icons/LinkedIn.astro';
+import MailIcon from '@/components/icons/Mail.astro';
+import SocialPill from '@/components/SocialPill.astro';
+import type { HomeContent } from '@/data/homeContent';
+import profile from '@/data/profile';
 
 export interface Props {
-  name: string;
-  profession: string;
-  avatar: string;
-  email: string;
-  social: {
-    linkedin: string;
-    github: string;
-  };
+  content: HomeContent;
 }
 
-const { name, profession, avatar, email, social } = Astro.props;
+const { content } = Astro.props;
+const currentLang = Astro.currentLocale || 'es';
 ---
 
-<div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src={avatar}
-      alt={`Foto de ${name}`}
-    />
-    <a
-      href={social.linkedin}
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge>{translatedLabels("hero.badge.available")}</Badge>
-    </a>
-  </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
-    {`${translatedLabels("hero.iAm")} ${name}!`}
-  </h1>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
-    <strong>{translatedLabels("hero.overview.title")}</strong>
-    {translatedLabels("hero.overview.with")}
-    <strong>
-      {translatedLabels("hero.overview.experience")}
-    </strong>
-    {translatedLabels("hero.overview.in")}
-    <strong>
-      {translatedLabels("hero.overview.technologies")}
-    </strong>
-    {translatedLabels("hero.overview.context")}
-    <strong>
-      {translatedLabels("hero.overview.location")}
-    </strong>
-    {translatedLabels("hero.overview.closing")}
-    <strong>
-      {translatedLabels("hero.overview.skills")}
-    </strong>
-  </p>
-</div>
+<section class="grid gap-10 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+  <div class="space-y-6">
+    <Badge>{content.hero.eyebrow}</Badge>
 
-<nav class="flex flex-wrap gap-4 mt-8">
-  <SocialPill href={`mailto:${email}`}>
-    <MailIcon class="size-4" />
-    {translatedLabels("hero.socialPills.contact")}
-  </SocialPill>
-  <SocialPill href={`${social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}>
-    <LinkedInIcon class="size-4" />
-    {translatedLabels("hero.socialPills.linkedin")}
-  </SocialPill>
-  <SocialPill
-    href={currentLang === "en"
-      ? "/docs/Alan_Ortiz_EN.pdf"
-      : "/docs/Alan_Ortiz_ES.pdf"}
-    download={currentLang === "en"
-      ? "Alan_Ortiz_CV_EN.pdf"
-      : "Alan_Ortiz_CV_ES.pdf"}
-  >
-    <DocumentIcon class="size-4" />
-    {translatedLabels("hero.socialPills.downloadCV")}
-  </SocialPill>
-</nav>
+    <div class="space-y-4">
+      <h1 class="max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl dark:text-white">
+        {content.hero.title}
+      </h1>
+      <p class="max-w-3xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
+        {content.hero.description}
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+      <span class="rounded-full border border-slate-200 bg-white px-3 py-1.5 dark:border-white/10 dark:bg-white/5">
+        {content.labels.basedIn}: {content.hero.location}
+      </span>
+      <span class="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
+        {content.hero.status}
+      </span>
+    </div>
+
+    <nav class="flex flex-wrap gap-3">
+      <a href="#production-experience" class="inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
+        {content.hero.primaryCta}
+      </a>
+      <SocialPill
+        href={currentLang === 'en' ? '/docs/Alan_Ortiz_EN.pdf' : '/docs/Alan_Ortiz_ES.pdf'}
+        download={currentLang === 'en' ? 'Alan_Ortiz_CV_EN.pdf' : 'Alan_Ortiz_CV_ES.pdf'}
+      >
+        <DocumentIcon class="size-4" />
+        {content.hero.secondaryCta}
+      </SocialPill>
+      <SocialPill href={`mailto:${profile.email}`}>
+        <MailIcon class="size-4" />
+        {currentLang === 'en' ? 'Email' : 'Email'}
+      </SocialPill>
+      <SocialPill href={`${profile.social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}>
+        <LinkedInIcon class="size-4" />
+        LinkedIn
+      </SocialPill>
+    </nav>
+  </div>
+
+  <aside class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+    {
+      content.hero.metrics.map((metric) => (
+        <div class="rounded-3xl border border-slate-200/80 bg-white/90 p-5 shadow-sm shadow-slate-200/40 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none">
+          <div class="text-2xl font-semibold text-slate-950 dark:text-white">{metric.value}</div>
+          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{metric.label}</p>
+        </div>
+      ))
+    }
+  </aside>
+</section>
