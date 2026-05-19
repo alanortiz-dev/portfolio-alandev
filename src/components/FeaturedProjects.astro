@@ -34,9 +34,9 @@ const tagStyles = {
 };
 
 const projectVisuals: Record<string, { image: string; imageAlt: string }> = {
-  Fitloger: {
-    image: '/porfolio.webp',
-    imageAlt: 'Preview general del trabajo de producto de Alan Ortiz',
+  FitLog: {
+    image: '/projects/fitlog.jpg',
+    imageAlt: 'Vista previa del proyecto FitLog en desarrollo',
   },
   'Dashboard Assistant': {
     image: '/projects/dashboard_assistant.webp',
@@ -87,16 +87,30 @@ const projectVisuals: Record<string, { image: string; imageAlt: string }> = {
 
               <div class="flex flex-wrap gap-3">
                 {project.links.code && (
-                  <LinkButton href={project.links.code}>
-                    <GitHub class="size-5" />
-                    {content.labels.code}
-                  </LinkButton>
+                  project.links.code === '#' ? (
+                    <span class="inline-flex max-w-fit items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300">
+                      <GitHub class="size-5" />
+                      {content.labels.code}
+                    </span>
+                  ) : (
+                    <LinkButton href={project.links.code}>
+                      <GitHub class="size-5" />
+                      {content.labels.code}
+                    </LinkButton>
+                  )
                 )}
                 {project.links.preview && (
-                  <LinkButton href={project.links.preview}>
-                    <Link class="size-4" />
-                    {content.labels.preview}
-                  </LinkButton>
+                  project.links.preview === '#' ? (
+                    <span class="inline-flex max-w-fit items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300">
+                      <Link class="size-4" />
+                      {content.labels.preview}
+                    </span>
+                  ) : (
+                    <LinkButton href={project.links.preview}>
+                      <Link class="size-4" />
+                      {content.labels.preview}
+                    </LinkButton>
+                  )
                 )}
               </div>
             </div>
@@ -110,6 +124,11 @@ const projectVisuals: Record<string, { image: string; imageAlt: string }> = {
                   {project.name}
                 </h3>
                 <p class="text-base leading-7 text-slate-600 dark:text-slate-300">{project.summary}</p>
+                {project.name === 'FitLog' && (
+                  <p class="inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800 dark:bg-amber-500/10 dark:text-amber-300">
+                    {Astro.currentLocale === 'en' ? 'Currently in development' : 'Actualmente en desarrollo'}
+                  </p>
+                )}
               </div>
 
               <dl class="grid gap-4 text-sm leading-7 text-slate-600 dark:text-slate-300 md:grid-cols-2">

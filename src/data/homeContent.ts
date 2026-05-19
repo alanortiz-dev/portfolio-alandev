@@ -120,12 +120,12 @@ export const homeContent: Record<Locale, HomeContent> = {
       contact: 'Contacto',
     },
     hero: {
-      eyebrow: 'Product Engineer · Frontend Systems · UX Engineering',
+      eyebrow: 'Frontend Engineer · React, Vue.js y TypeScript · Producto digital',
       title: 'Construyo interfaces de producción que escalan y resuelven flujos críticos de negocio.',
       description:
         'Trabajo entre frontend, producto y operaciones, creando experiencias con React, Vue.js y TypeScript para e-commerce, fintech, automatización y productos de alto tráfico.',
       location: 'Ciudad de México, México',
-      status: 'Disponible para roles frontend/product engineer remotos e internacionales',
+      status: 'Disponible para roles frontend remotos e internacionales',
       primaryCta: 'Ver trabajo en producción',
       secondaryCta: 'Descargar CV',
       metrics: [
@@ -139,9 +139,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       featured: 'Ingeniería de producto destacada',
       featuredIntro:
         'No son solo demos. Son ejemplos de cómo pienso arquitectura frontend, UX de producto, modularidad y flujos mantenibles.',
-      production: 'Experiencia en producción',
+      production: 'Experiencia profesional',
       productionIntro:
-        'Experiencia construyendo y manteniendo interfaces, integraciones y flujos de negocio en entornos reales de alta exigencia.',
+        'Recorrido profesional construyendo interfaces, integraciones y flujos de negocio en equipos y productos reales.',
       deployments: 'Despliegues para clientes y producción',
       deploymentsIntro:
         'Sitios y experiencias publicadas con foco en claridad comercial, ejecución frontend y entregables utilizables en negocio.',
@@ -155,9 +155,9 @@ export const homeContent: Record<Locale, HomeContent> = {
     },
     featuredProjects: [
       {
-        name: 'Fitloger',
+        name: 'FitLog',
         summary:
-          'App mobile-first de nutrición enfocada en logging diario, estructura de producto clara y UX pensada para hábito, no para demo.',
+          'App mobile-first de nutrición actualmente en desarrollo, enfocada en logging diario, estructura de producto clara y una UX pensada para hábito.',
         problem:
           'Diseñar un MVP donde el centro fuera el flujo de logging diario y no una feature aislada como el escaneo.',
         role: 'Product engineering end-to-end: UX, arquitectura frontend, flujos de entrada, estado local y sistema visual.',
@@ -169,9 +169,12 @@ export const homeContent: Record<Locale, HomeContent> = {
           'Mantener un lenguaje visual sobrio y creíble, más wellness product que template de frontend.',
         ],
         impact:
-          'Comunica capacidad de construir un producto usable, escalable a siguientes fases y con criterio de UX + arquitectura.',
+          'Muestra cómo diseño un producto real desde frontend, arquitectura y experiencia de uso, con una base lista para iterar y crecer.',
         stack: ['React', 'TypeScript', 'Vite', 'Local-first state', 'Design system thinking'],
-        links: {},
+        links: {
+          preview: '#',
+          code: '#',
+        },
         accent: 'emerald',
       },
       {
@@ -375,12 +378,12 @@ export const homeContent: Record<Locale, HomeContent> = {
       contact: 'Contact',
     },
     hero: {
-      eyebrow: 'Product Engineer · Frontend Systems · UX Engineering',
+      eyebrow: 'Frontend Engineer · React, Vue.js and TypeScript · Digital product',
       title: 'I build production interfaces that scale and solve critical business flows.',
       description:
         'I work across frontend, product, and operations, building React, Vue.js, and TypeScript experiences for e-commerce, fintech, automation, and high-traffic products.',
       location: 'Mexico City, Mexico',
-      status: 'Available for remote and international frontend / product engineering roles',
+      status: 'Available for remote and international frontend roles',
       primaryCta: 'View production work',
       secondaryCta: 'Download resume',
       metrics: [
@@ -394,9 +397,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       featured: 'Featured product engineering',
       featuredIntro:
         'Not just polished demos. These projects show how I think about frontend architecture, reusable UI systems, product UX, and maintainability.',
-      production: 'Production experience',
+      production: 'Professional experience',
       productionIntro:
-        'Experience building and maintaining interfaces, integrations, and business-critical user flows in real production environments.',
+        'Professional experience building interfaces, integrations, and business flows across real teams and production products.',
       deployments: 'Client / production deployments',
       deploymentsIntro:
         'Published websites and launches focused on commercial clarity, frontend execution, and usable delivery for real business needs.',
@@ -410,9 +413,9 @@ export const homeContent: Record<Locale, HomeContent> = {
     },
     featuredProjects: [
       {
-        name: 'Fitloger',
+        name: 'FitLog',
         summary:
-          'A mobile-first nutrition product built around daily logging, strong product structure, and habit-friendly UX instead of feature gimmicks.',
+          'A mobile-first nutrition product currently in development, built around daily logging, strong product structure, and habit-friendly UX.',
         problem:
           'Design an MVP where the center of the experience was consistent daily food logging rather than an isolated feature like barcode scanning.',
         role: 'End-to-end product engineering across UX, frontend architecture, input flows, local state, and visual system direction.',
@@ -424,9 +427,12 @@ export const homeContent: Record<Locale, HomeContent> = {
           'Keep the visual language credible and restrained, closer to a wellness product than a generic frontend template.',
         ],
         impact:
-          'Shows the ability to build a usable product, not just a feature set, with clear room for future growth.',
+          'Shows how I shape a real product from frontend architecture, UX, and iterative product thinking with room to keep growing it.',
         stack: ['React', 'TypeScript', 'Vite', 'Local-first state', 'Design system thinking'],
-        links: {},
+        links: {
+          preview: '#',
+          code: '#',
+        },
         accent: 'emerald',
       },
       {
