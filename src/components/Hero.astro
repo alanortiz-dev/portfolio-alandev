@@ -95,7 +95,7 @@ const profileMeta = [
 
 <section class="space-y-6 lg:space-y-7">
   <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-5 py-6 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-6 sm:py-7 lg:px-8 lg:py-8 xl:px-9 xl:py-9">
-    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.54fr)_320px] lg:items-start xl:grid-cols-[minmax(0,1.58fr)_332px] xl:gap-10">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_350px] lg:items-start xl:grid-cols-[minmax(0,1.4fr)_360px] xl:gap-10">
       <div class="space-y-8">
         <div class="inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3 py-1 text-[12px] font-medium text-emerald-700 dark:text-emerald-300">
           Frontend Engineer
@@ -133,13 +133,13 @@ const profileMeta = [
             const Icon = item.icon;
             return (
               <article class="space-y-2.5">
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2">
                   <span class="inline-flex size-7 items-center justify-center rounded-full border border-emerald-400/10 bg-emerald-400/8 text-emerald-500 dark:text-emerald-300">
                     <Icon class="size-3.5" />
                   </span>
                   <h2 class="text-sm font-semibold text-slate-950 dark:text-white">{item.title}</h2>
                 </div>
-                <p class="max-w-[17ch] pl-10 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
+                <p class="max-w-[24ch] pl-5 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
               </article>
             );
           })}
@@ -155,7 +155,7 @@ const profileMeta = [
           </a>
           <a
             href={`mailto:${profile.email}`}
-            class="inline-flex min-h-10 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4.5 py-2.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+            class="inline-flex min-h-10 min-w-[8.5rem] items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4.5 py-2.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
           >
             <MailIcon class="size-4" aria-hidden="true" />
             {currentLang === 'en' ? 'Contact' : 'Contactar'}
@@ -163,7 +163,7 @@ const profileMeta = [
         </nav>
       </div>
 
-      <aside class="w-full max-w-[320px] justify-self-end rounded-[1.7rem] border border-slate-200/70 bg-white/92 px-5 py-6 dark:border-white/10 dark:bg-[#121a2d] sm:px-6 lg:mt-6 lg:px-6 lg:py-7 xl:mt-8">
+      <aside class="w-full max-w-[350px] justify-self-end rounded-[1.7rem] border border-slate-200/70 bg-white/92 px-5 py-6 dark:border-white/10 dark:bg-[#121a2d] sm:px-6 lg:mt-1 lg:px-6 lg:py-7 xl:mt-1">
         <div class="flex h-full flex-col justify-between gap-6 text-center">
           <div class="space-y-5">
             <div class="mx-auto inline-flex rounded-full bg-[radial-gradient(circle_at_30%_30%,#7090ff_0%,#5879ff_45%,#4164ff_100%)] p-2 shadow-[0_16px_36px_rgba(65,100,255,0.18)]">

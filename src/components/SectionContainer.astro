@@ -1,12 +1,12 @@
 ---
 const { class: className = '', id, narrow = false } = Astro.props;
-const widthClass = narrow ? 'max-w-4xl' : 'max-w-7xl';
+const widthClass = narrow ? 'max-w-4xl' : 'max-w-[1440px]';
 ---
 
 <section
   id={id}
   data-section={id}
-  class={`section ${className} scroll-m-24 mx-auto w-full ${widthClass} px-4 sm:px-6 lg:px-8`}
+  class={`section ${className} scroll-m-24 mx-auto w-full ${widthClass} px-1.5 sm:px-2 lg:px-2.5`}
 >
   <slot />
 </section>
