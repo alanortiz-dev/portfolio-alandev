@@ -5,7 +5,6 @@ import NextJS from '@/components/icons/NextJS.astro';
 import React from '@/components/icons/React.astro';
 import Tailwind from '@/components/icons/Tailwind.astro';
 import TypeScript from '@/components/icons/TypeScript.astro';
-import LinkButton from '@/components/LinkButton.astro';
 import type { HomeContent } from '@/data/homeContent';
 
 export interface Props {
@@ -13,12 +12,6 @@ export interface Props {
 }
 
 const { content } = Astro.props;
-
-const accentStyles = {
-  emerald: 'bg-white/90 ring-1 ring-emerald-200/70 dark:bg-white/[0.03] dark:ring-emerald-500/20',
-  slate: 'bg-white/90 ring-1 ring-slate-200/80 dark:bg-white/[0.03] dark:ring-white/10',
-  blue: 'bg-white/90 ring-1 ring-blue-200/70 dark:bg-white/[0.03] dark:ring-blue-500/20',
-};
 
 const tagStyles = {
   'Next.js': { class: 'bg-[#1f2937] text-white', icon: NextJS },
@@ -49,89 +42,100 @@ const projectVisuals: Record<string, { image: string; imageAlt: string }> = {
 };
 ---
 
-<div class="space-y-8">
-  {
-    content.featuredProjects.map((project) => {
-      const visual = projectVisuals[project.name];
-      const highlights = [project.role, ...project.decisions].slice(0, 3);
-      return (
-        <article class={`rounded-[2rem] p-6 shadow-sm shadow-slate-200/20 lg:p-8 dark:shadow-none ${accentStyles[project.accent || 'slate']}`}>
-          <div class="grid gap-8 lg:grid-cols-[minmax(320px,.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-12">
+<div class="rounded-[1.75rem] border border-slate-200/70 bg-white/95 p-4 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0b1120]/95 dark:shadow-none sm:p-5">
+  <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <h3 class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white">
+      {Astro.currentLocale === 'en' ? 'Featured projects' : 'Proyectos destacados'}
+    </h3>
+    <a href="#experience-timeline" class="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 transition hover:text-emerald-600 dark:text-emerald-300">
+      {Astro.currentLocale === 'en' ? 'See more experience' : 'Ver más experiencia'}
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <div class="grid gap-4 xl:grid-cols-3">
+    {
+      content.featuredProjects.map((project) => {
+        const visual = projectVisuals[project.name];
+        const shortSummary = project.summary;
+        return (
+          <article class="rounded-[1.4rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/8 dark:bg-white/[0.03] dark:hover:shadow-none">
             <div class="space-y-4">
               {visual && (
-                <div class="overflow-hidden rounded-[1.5rem] bg-slate-950/5 ring-1 ring-slate-200/70 dark:ring-white/10">
+                <div class="overflow-hidden rounded-[1rem] border border-slate-200/70 bg-slate-950/5 dark:border-white/8">
                   <img
                     src={visual.image}
                     alt={visual.imageAlt}
                     width="1200"
                     height="760"
                     loading="lazy"
-                    class="aspect-[16/10] w-full object-cover object-top transition duration-500 hover:scale-[1.02]"
+                    class="aspect-[16/10] w-full object-cover object-top"
                   />
                 </div>
               )}
 
-              <ul class="flex flex-row gap-2 flex-wrap">
-                {project.stack.map((item) => {
-                  const tag = tagStyles[item as keyof typeof tagStyles] || { class: 'bg-slate-700 text-white', icon: null };
-                  const Icon = tag.icon;
-                  return (
-                    <li>
-                      <span class={`flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${tag.class}`}>
-                        {Icon && <Icon class="size-4" />}
-                        {item}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
+              <div class="space-y-3 px-1 pb-1">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <h4 class="text-lg font-semibold tracking-tight text-slate-950 dark:text-white">{project.name}</h4>
+                    <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{shortSummary}</p>
+                  </div>
+                  {project.links.preview && project.links.preview !== '#' && (
+                    <a
+                      href={project.links.preview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:text-white"
+                    >
+                      <Link class="size-4" />
+                    </a>
+                  )}
+                </div>
 
-              <div class="flex flex-wrap gap-3">
-                {project.links.code && project.links.code !== '#' && (
-                  <LinkButton href={project.links.code}>
-                    <GitHub class="size-5" />
-                    {content.labels.code}
-                  </LinkButton>
-                )}
-                {project.links.preview && project.links.preview !== '#' && (
-                  <LinkButton href={project.links.preview}>
-                    <Link class="size-4" />
-                    {content.labels.preview}
-                  </LinkButton>
-                )}
+                <ul class="flex flex-wrap gap-2">
+                  {project.stack.slice(0, 3).map((item) => {
+                    const tag = tagStyles[item as keyof typeof tagStyles] || { class: 'bg-slate-700 text-white', icon: null };
+                    const Icon = tag.icon;
+                    return (
+                      <li>
+                        <span class={`flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${tag.class}`}>
+                          {Icon && <Icon class="size-4" />}
+                          {item}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  {project.links.code && project.links.code !== '#' && (
+                    <a
+                      href={project.links.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+                    >
+                      <GitHub class="size-4" />
+                      {content.labels.code}
+                    </a>
+                  )}
+                  {project.links.preview && project.links.preview !== '#' && (
+                    <a
+                      href={project.links.preview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+                    >
+                      <Link class="size-4" />
+                      {content.labels.preview}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-
-            <div class="space-y-5">
-              <div class="space-y-2">
-                <h3 class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white lg:text-3xl">
-                  {project.name}
-                </h3>
-                <p class="text-base leading-7 text-slate-600 dark:text-slate-300">{project.summary}</p>
-                {project.name === 'FitLog' && (
-                  <p class="inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800 dark:bg-amber-500/10 dark:text-amber-300">
-                    {Astro.currentLocale === 'en' ? 'Currently in development' : 'Actualmente en desarrollo'}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <p class="text-sm font-medium text-slate-950 dark:text-white">{content.labels.role}</p>
-                <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.role}</p>
-              </div>
-
-              <div>
-                <p class="text-sm font-medium text-slate-950 dark:text-white">{content.labels.stack}</p>
-                <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.stack.join(' · ')}</p>
-              </div>
-
-              <ul class="space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                {highlights.map((item) => <li class="flex gap-3"><span class="mt-2 size-1.5 rounded-full bg-slate-400 dark:bg-slate-500"></span><span>{item}</span></li>)}
-              </ul>
-            </div>
-          </div>
-        </article>
-      );
-    })
-  }
+          </article>
+        );
+      })
+    }
+  </div>
 </div>
