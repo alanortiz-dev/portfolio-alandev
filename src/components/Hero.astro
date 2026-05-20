@@ -95,9 +95,12 @@ const profileMeta = [
   <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-5 py-6 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-6 sm:py-7 lg:px-8 lg:py-8 xl:px-9 xl:py-9">
     <div class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_350px] lg:items-start xl:grid-cols-[minmax(0,1.4fr)_360px] xl:gap-10">
       <div class="space-y-8">
-        <div class="inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3 py-1 text-[12px] font-medium text-emerald-700 dark:text-emerald-300">
-          {content.hero.eyebrow}
-        </div>
+        <span class="relative inline-flex w-fit overflow-hidden rounded-full p-[1px]">
+          <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(52,211,153,0)_0%,rgba(52,211,153,0.75)_18%,rgba(16,185,129,0.2)_38%,rgba(52,211,153,0)_62%,rgba(52,211,153,0.75)_82%,rgba(52,211,153,0)_100%)] opacity-70 motion-reduce:animate-none"></span>
+          <span class="relative inline-flex items-center rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700 dark:bg-[#0a1020] dark:text-emerald-300">
+            {content.hero.eyebrow}
+          </span>
+        </span>
 
         <div class="space-y-5">
           <h1 class="max-w-[15ch] text-[1.75rem] font-semibold leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-[2.3rem] lg:max-w-[17ch] lg:text-[2.85rem] dark:text-white">
@@ -136,7 +139,7 @@ const profileMeta = [
                   </span>
                   <h2 class="text-sm font-semibold text-slate-950 dark:text-white">{item.title}</h2>
                 </div>
-                <p class="max-w-[24ch] pl-5 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
+                <p class="max-w-[30ch] pl-9 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
               </article>
             );
           })}
