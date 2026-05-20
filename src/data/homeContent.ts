@@ -40,6 +40,9 @@ export interface ExperienceItem {
   location: string;
   summary: string;
   highlights: string[];
+  stack?: string[];
+  technicalDetails?: string[];
+  defaultOpen?: boolean;
   link?: string;
 }
 
@@ -274,15 +277,21 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         period: '06/2025 – Actualidad',
         role: 'Independent Product / Frontend Engineer',
-        company: 'Independent Professional',
+        company: 'Profesional independiente',
         location: 'España · Austria',
+        link: 'https://alanortizconsulting.com/',
+        defaultOpen: true,
+        stack: ['JavaScript', 'TypeScript', 'Vue.js', 'Formularios', 'CMS', 'Make', 'n8n'],
         summary:
-          'Trabajo independiente orientado a mejoras frontend en producción, interfaces conversacionales, automatización y optimización de flujos digitales de cara al usuario.',
+          'Trabajo independiente enfocado en mejoras frontend, formularios, sitios para clientes e integraciones con automatización.',
         highlights: [
-          'Mejoras en interfaces reales, formularios y user flows con JavaScript y TypeScript en entornos vivos.',
-          'Interfaz conversacional modular en Vue.js + TypeScript separando UI, lógica y tipos para crecimiento futuro.',
-          'Integraciones con CMS, forms y automatizaciones para streamlining de leads y handoffs operativos.',
-          'Automatizaciones con Make y n8n para reducir pasos manuales en procesos customer-facing.',
+          'Implementé mejoras en interfaces de producción, formularios y flujos de usuario con JavaScript y TypeScript.',
+          'Construí una interfaz conversacional modular en Vue.js y TypeScript con separación clara entre UI, lógica y tipos.',
+          'Conecté formularios, CMS y automatizaciones para mejorar captura de leads y traspasos.',
+        ],
+        technicalDetails: [
+          'Trabajo con responsive UI, comportamiento de formularios e integraciones con CMS.',
+          'Uso Make y n8n para reducir pasos manuales en procesos de cara al cliente.',
         ],
       },
       {
@@ -290,13 +299,18 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'IT Globers',
         location: 'Valencia, España',
+        defaultOpen: true,
+        stack: ['React', 'TypeScript', 'VTEX IO', 'REST APIs', 'GraphQL', 'Playwright'],
         summary:
-          'Construcción y mantenimiento de features customer-facing en VTEX IO para e-commerce de alto tráfico, con foco en estabilidad, accesibilidad e integraciones mantenibles.',
+          'Desarrollo de storefronts en VTEX IO para e-commerce de alto tráfico con React, TypeScript e integraciones con APIs.',
         highlights: [
-          'Features en VTEX IO con React y TypeScript para storefronts de producción.',
-          'Integraciones REST y GraphQL en flujos críticos manteniendo consistencia entre releases.',
-          'Playwright E2E para login, checkout y order management.',
-          'Triage de issues en producción y fixes puntuales para mejorar release stability.',
+          'Desarrollé funcionalidades customer-facing en storefronts de producción con React y TypeScript.',
+          'Integré servicios REST y GraphQL en login, checkout y gestión de pedidos.',
+          'Mantuve cobertura E2E con Playwright para recorridos de compra y gestión de pedidos.',
+        ],
+        technicalDetails: [
+          'Trabajé en responsive UI, accesibilidad y estabilidad de releases dentro de VTEX IO.',
+          'Corregí issues de producción y ajustes de interfaz para mejorar consistencia y rendimiento.',
         ],
         link: 'https://www.itglobers.com/',
       },
@@ -305,13 +319,18 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Frontend Developer',
         company: 'Grupo Salinas',
         location: 'Ciudad de México, México',
+        defaultOpen: true,
+        stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'UI responsive', 'Accesibilidad'],
         summary:
-          'Frontend para Elektra en flujos customer-facing de alto tráfico, conectando diseño, APIs y rendimiento de experiencia.',
+          'Desarrollo frontend para Elektra con React, JavaScript y Tailwind CSS en interfaces de alto tráfico.',
         highlights: [
-          'Interfaces de alto tráfico con React, JavaScript y Tailwind CSS.',
-          'Traducción de Figma a pantallas accesibles, responsive y listas para producción.',
-          'Módulos reutilizables y patrones compartidos para acelerar delivery.',
-          'Mejoras en accesibilidad, mobile responsiveness y tiempos de carga.',
+          'Construí interfaces de alto tráfico conectadas a APIs para flujos de compra y navegación.',
+          'Convertí diseños de Figma en pantallas accesibles y responsive listas para producción.',
+          'Creé componentes reutilizables y patrones compartidos para acelerar cambios de interfaz.',
+        ],
+        technicalDetails: [
+          'Trabajé en performance, experiencia móvil y accesibilidad.',
+          'Colaboré sobre módulos frontend orientados a consistencia visual y mantenimiento.',
         ],
         link: 'https://www.gruposalinas.com/',
       },
@@ -320,13 +339,18 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'Layer 7',
         location: 'Ciudad de México, México',
+        defaultOpen: false,
+        stack: ['PHP', 'Laravel', 'Symfony', 'SQL', 'REST APIs', 'PHPUnit'],
         summary:
-          'Trabajo en sistemas operativos de gran escala con microservicios, procesamiento de datos, seguridad e interfaces de soporte al negocio.',
+          'Desarrollo fullstack para microservicios, dashboards internos y procesamiento operativo con PHP, Laravel, Symfony y SQL.',
         highlights: [
           'Microservicios con PHP, Laravel y Symfony para campañas que enrutan más de 400M llamadas al mes.',
-          'Optimización de SQL y dashboards operativos para procesamiento a gran escala.',
-          'REST, autenticación y encriptación en flujos sensibles.',
-          'Automated testing con PHPUnit para entornos críticos.',
+          'Optimicé consultas SQL y dashboards internos para monitoreo y procesamiento.',
+          'Integré servicios REST con autenticación y cifrado.',
+        ],
+        technicalDetails: [
+          'Trabajé con Laravel, Symfony, SQL y pruebas automatizadas con PHPUnit.',
+          'Participé en herramientas internas enfocadas en monitoreo, seguridad y operación.',
         ],
         link: 'https://www.layer7.mx/',
       },
@@ -335,13 +359,19 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'Blumonpay',
         location: 'Ciudad de México, México',
+        link: 'https://www.blumonpay.com/',
+        defaultOpen: false,
+        stack: ['Vue.js', 'JavaScript', 'REST APIs', 'Dashboards', 'Selenium', 'POS'],
         summary:
-          'Dashboards internos y aplicaciones operativas para procesos POS y bancarios con foco en claridad, monitoreo y confiabilidad.',
+          'Construcción de dashboards internos y aplicaciones web para procesos POS y bancarios.',
         highlights: [
-          'Dashboards y web apps operativas para monitoreo y procesos internos.',
-          'Interfaces en Vue.js y JavaScript conectadas a REST services.',
-          'Vistas en tiempo real y KPIs para mejorar visibilidad operativa.',
-          'Automatización de pruebas funcionales con Selenium.',
+          'Construí dashboards internos y aplicaciones web para monitoreo y soporte operativo.',
+          'Desarrollé interfaces en Vue.js y JavaScript conectadas a servicios REST.',
+          'Implementé vistas en tiempo real y paneles de KPIs para seguimiento de procesos.',
+        ],
+        technicalDetails: [
+          'Trabajé con dashboards, formularios y procesos internos relacionados con POS y banca.',
+          'Automaticé pruebas funcionales con Selenium.',
         ],
       },
     ],
@@ -536,13 +566,19 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Independent Product / Frontend Engineer',
         company: 'Independent Professional',
         location: 'Spain · Austria',
+        link: 'https://alanortizconsulting.com/',
+        defaultOpen: true,
+        stack: ['JavaScript', 'TypeScript', 'Vue.js', 'Forms', 'CMS', 'Make', 'n8n'],
         summary:
-          'Independent work focused on production frontend improvements, conversational interfaces, automation, and digital workflow optimization.',
+          'Independent work focused on frontend improvements, forms, client websites, and automation integrations.',
         highlights: [
-          'Production improvements across live interfaces, forms, and customer-facing flows using JavaScript and TypeScript.',
-          'Built a modular conversational interface in Vue.js + TypeScript with clear separation between UI, logic, and types.',
-          'Connected frontend journeys with CMS, forms, and automations to streamline leads and operational handoffs.',
-          'Implemented Make and n8n workflows to reduce manual steps tied to customer-facing processes.',
+          'Delivered improvements to production interfaces, forms, and user flows using JavaScript and TypeScript.',
+          'Built a modular conversational interface in Vue.js and TypeScript with clear separation between UI, logic, and types.',
+          'Connected forms, CMS content, and automations to improve lead capture and handoffs.',
+        ],
+        technicalDetails: [
+          'Worked with responsive UI, form behavior, and CMS integrations.',
+          'Used Make and n8n to reduce manual steps in customer-facing processes.',
         ],
       },
       {
@@ -550,13 +586,18 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'IT Globers',
         location: 'Valencia, Spain',
+        defaultOpen: true,
+        stack: ['React', 'TypeScript', 'VTEX IO', 'REST APIs', 'GraphQL', 'Playwright'],
         summary:
-          'Built and maintained high-traffic VTEX IO storefront features with a strong focus on release stability, accessibility, and maintainable integrations.',
+          'Built VTEX IO storefronts for high-traffic e-commerce using React, TypeScript, and API integrations.',
         highlights: [
-          'Customer-facing VTEX IO features using React and TypeScript.',
-          'REST and GraphQL integrations across critical user flows.',
-          'Playwright E2E coverage for login, checkout, and order management.',
-          'Production issue triage and targeted frontend fixes to improve release stability.',
+          'Developed customer-facing storefront features in production with React and TypeScript.',
+          'Integrated REST and GraphQL services into login, checkout, and order management flows.',
+          'Maintained Playwright E2E coverage for purchasing and order-management journeys.',
+        ],
+        technicalDetails: [
+          'Worked on responsive UI, accessibility, and release stability inside VTEX IO.',
+          'Handled production issues and interface fixes to improve consistency and performance.',
         ],
         link: 'https://www.itglobers.com/',
       },
@@ -565,13 +606,18 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Frontend Developer',
         company: 'Grupo Salinas',
         location: 'Mexico City, Mexico',
+        defaultOpen: true,
+        stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'Responsive UI', 'Accessibility'],
         summary:
-          'High-traffic customer-facing frontend work for Elektra, connecting design execution, APIs, and performance-sensitive UX.',
+          'Frontend development for Elektra using React, JavaScript, and Tailwind CSS across high-traffic interfaces.',
         highlights: [
-          'Built high-traffic interfaces with React, JavaScript, and Tailwind CSS.',
+          'Built high-traffic interfaces connected to APIs for shopping and navigation flows.',
           'Turned Figma designs into accessible, responsive, production-ready screens.',
-          'Created reusable modules and shared patterns to keep delivery faster and more consistent.',
-          'Improved accessibility, mobile responsiveness, and load performance.',
+          'Created reusable components and shared patterns to speed up interface changes.',
+        ],
+        technicalDetails: [
+          'Worked on performance, mobile responsiveness, and accessibility.',
+          'Contributed to frontend modules focused on visual consistency and maintainability.',
         ],
         link: 'https://www.gruposalinas.com/',
       },
@@ -580,13 +626,18 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'Layer 7',
         location: 'Mexico City, Mexico',
+        defaultOpen: false,
+        stack: ['PHP', 'Laravel', 'Symfony', 'SQL', 'REST APIs', 'PHPUnit'],
         summary:
-          'Worked on large-scale operational systems involving microservices, data processing, security, and business-supporting dashboards.',
+          'Fullstack development for microservices, internal dashboards, and operational processing with PHP, Laravel, Symfony, and SQL.',
         highlights: [
           'Built PHP, Laravel, and Symfony microservices routing 400M+ calls per month.',
-          'Optimized SQL and operational dashboards for large-scale processing.',
-          'Integrated REST services with authentication and encryption in sensitive workflows.',
-          'Implemented automated testing with PHPUnit in critical environments.',
+          'Optimized SQL queries and internal dashboards for monitoring and processing.',
+          'Integrated REST services with authentication and encryption.',
+        ],
+        technicalDetails: [
+          'Worked with Laravel, Symfony, SQL, and automated testing with PHPUnit.',
+          'Contributed to internal tools focused on monitoring, security, and operations.',
         ],
         link: 'https://www.layer7.mx/',
       },
@@ -595,13 +646,19 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'Blumonpay',
         location: 'Mexico City, Mexico',
+        link: 'https://www.blumonpay.com/',
+        defaultOpen: false,
+        stack: ['Vue.js', 'JavaScript', 'REST APIs', 'Dashboards', 'Selenium', 'POS'],
         summary:
-          'Built internal dashboards and operational web applications for POS and banking-related workflows, with a focus on clarity, monitoring, and reliability.',
+          'Built internal dashboards and web applications for POS and banking-related processes.',
         highlights: [
-          'Internal dashboards and operational web apps for monitoring and process support.',
-          'Vue.js and JavaScript interfaces connected to REST services.',
-          'Real-time monitoring views and KPI dashboards for stronger visibility.',
-          'Selenium-based functional test automation for sensitive forms and workflows.',
+          'Built internal dashboards and web apps for monitoring and operational support.',
+          'Developed Vue.js and JavaScript interfaces connected to REST services.',
+          'Implemented real-time monitoring views and KPI dashboards for process tracking.',
+        ],
+        technicalDetails: [
+          'Worked with dashboards, forms, and internal processes related to POS and banking.',
+          'Automated functional testing with Selenium.',
         ],
       },
     ],

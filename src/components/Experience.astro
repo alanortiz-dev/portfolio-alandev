@@ -9,26 +9,47 @@ export interface Props {
 const { content } = Astro.props;
 ---
 
-<ol class="relative mt-10">
+<div class="mt-10 space-y-5">
   {
-    content.experiences.map((exp) => (
-      <li class="experience-list-item">
-        <ExperienceItem
-          title={exp.role}
-          company={exp.company}
-          description={exp.summary}
-          link={exp.link}
-          date={exp.period}
-          location={exp.location}
-          highlights={exp.highlights}
-        />
-      </li>
+    content.experiences.map((exp, index) => (
+      <ExperienceItem
+        index={index}
+        role={exp.role}
+        company={exp.company}
+        summary={exp.summary}
+        link={exp.link}
+        period={exp.period}
+        location={exp.location}
+        highlights={exp.highlights}
+        stack={exp.stack}
+        technicalDetails={exp.technicalDetails}
+        defaultOpen={exp.defaultOpen}
+      />
     ))
   }
-</ol>
+</div>
 
-<style>
-  .experience-list-item {
-    list-style: none;
-  }
-</style>
+<script is:inline>
+  const initExperienceToggles = () => {
+    document.querySelectorAll('[data-experience-toggle]').forEach((button) => {
+      if (button.dataset.bound === 'true') return;
+      button.dataset.bound = 'true';
+
+      button.addEventListener('click', () => {
+        const panelId = button.getAttribute('aria-controls');
+        if (!panelId) return;
+
+        const panel = document.getElementById(panelId);
+        if (!panel) return;
+
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        panel.hidden = expanded;
+      });
+    });
+  };
+
+  if (document.readyState !== 'loading') initExperienceToggles();
+  document.addEventListener('DOMContentLoaded', initExperienceToggles, { once: true });
+  document.addEventListener('astro:page-load', initExperienceToggles);
+</script>
