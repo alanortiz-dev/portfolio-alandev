@@ -7,6 +7,7 @@ export interface HeroMetric {
 
 export interface FeaturedProject {
   name: string;
+  type: string;
   summary: string;
   problem: string;
   role: string;
@@ -158,46 +159,47 @@ export const homeContent: Record<Locale, HomeContent> = {
     featuredProjects: [
       {
         name: 'FitLog',
+        type: 'MVP funcional',
         summary:
-          'App mobile-first de nutrición enfocada en registro diario de alimentos, estado local y una experiencia simple para uso frecuente.',
+          'Tracker de nutrición mobile-first centrado en registro diario, objetivos de macros y flujos de producto de baja fricción.',
         problem:
-          'Registro diario de alimentos con búsqueda, escaneo y entrada manual en una interfaz pensada para uso frecuente.',
-        role: 'Demuestra trabajo frontend con React, TypeScript, estado local y una UI mobile-first para uso real.',
+          'Registrar comida es una acción repetida todos los días, así que la UI debe ser rápida, clara y fácil de usar en móvil.',
+        role: 'Demuestra UI de producto con React + TypeScript, estado global con AppContext, onboarding, registro diario, alimentos personalizados y resúmenes de macros.',
         architecture:
-          'React + TypeScript con componentes de UI, estado local y flujos separados para cada tipo de entrada.',
+          'App con rutas para landing, login, signup, onboarding, Today, agregar comida, escaneo de código de barras, búsqueda, creación de alimento personalizado, confirmación, historial y perfil.',
         decisions: [
-          'React + TypeScript para UI de producto',
-          'Interfaz mobile-first y responsive',
-          'Estado local para registro diario',
-          'Flujos para búsqueda, escaneo y entrada manual',
+          'Estado global con AppContext para sesión, registro diario, alimentos personalizados y objetivos de macros.',
+          'Flujos separados para agregar comida, escanear, buscar, crear alimentos personalizados y confirmar entradas.',
+          'Pantalla Today con resumen diario, metas de macros y navegación pensada para uso frecuente.',
+          'Modo demo, onboarding y rutas de historial y perfil para que la experiencia funcione como app, no como demo estática.',
         ],
         impact:
-          'Muestra una app de frontend centrada en estado local, responsive UI y flujos de uso frecuente.',
-        stack: ['React', 'TypeScript', 'Vite', 'Local state'],
+          'Importa porque muestra una experiencia funcional de producto, no solo pantallas sueltas: entrada, onboarding, logging, resumen diario y rutas conectadas.',
+        stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
         links: {
-          preview: '#',
-          code: '#',
+          code: 'https://github.com/alanortiz-dev/fitlog-nutrition-tracker',
         },
         accent: 'emerald',
       },
       {
         name: 'Dashboard Assistant',
+        type: 'Arquitectura frontend',
         summary:
-          'Asistente embebido para dashboard construido con Vue 3 y TypeScript, con mensajes, widgets reutilizables y separación entre UI y lógica.',
+          'Asistente embebido para dashboard, sin backend a propósito, enfocado en mensajes tipados y widgets reutilizables.',
         problem:
-          'Integrar un asistente dentro de un dashboard sin romper la lectura ni la estructura de la interfaz.',
-        role: 'Demuestra trabajo con Vue 3, TypeScript, UI conversacional y composición de componentes reutilizables.',
+          'Integrar un asistente dentro de un dashboard exige límites claros entre componentes, estado predecible y tipos de mensaje extensibles.',
+        role: 'Demuestra Vue 3 Composition API, uniones discriminadas en TypeScript, estado en un composable y renderizado polimórfico de mensajes.',
         architecture:
-          'Vue 3 + TypeScript con mensajes tipados, widgets reutilizables y separación entre UI y lógica.',
+          'useChat centraliza carga, typing, historial simulado, envío de mensajes y canje de recompensas; MessageItem decide qué renderizar según message.type.',
         decisions: [
-          'Vue 3 Composition API',
-          'Modelos de mensajes tipados',
-          'Composición de componentes reutilizables',
-          'Patrones de UI conversacional',
+          'Componentes pequeños y enfocados: ChatFabButton, ChatWindow, MessageList, MessageBubble, MessageItem y RewardCard.',
+          'useChat funciona como fuente única de verdad para historial, carga, typing y envío de mensajes.',
+          'TextMessage, RewardMessage y ChatMessage usan uniones discriminadas para renderizado con tipado seguro.',
+          'RewardCard entra como widget interactivo dentro del flujo de mensajes, no como UI aislada.',
         ],
         impact:
-          'Muestra experiencia en interfaces con mensajes, widgets reutilizables y separación clara entre UI y lógica.',
-        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API'],
+          'Importa porque enseña arquitectura de UI y tipado para interfaces conversacionales, no solo un chat bonito.',
+        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API', 'Discriminated unions'],
         links: {
           preview: 'https://dashboard-assistant-chi.vercel.app/',
           code: 'https://github.com/alanortiz-dev/dashboard-assistant',
@@ -206,22 +208,23 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
       {
         name: 'Kalanban',
+        type: 'UX e interacción',
         summary:
-          'Interfaz tipo kanban construida con React y TypeScript, enfocada en estados de UI, acciones rápidas y gestión simple de tareas.',
+          'Interfaz tipo kanban que usa un patrón conocido para demostrar pulido de UX, persistencia local y microinteracciones.',
         problem:
-          'Resolver una UI con varios estados y acciones rápidas para gestión cotidiana de tareas.',
-        role: 'Demuestra manejo de estado local, componentes en React y decisiones prácticas de UX.',
+          'En un tablero kanban el valor no está en la idea, sino en la ejecución: drag and drop, persistencia, modales, onboarding, tooltips y modo claro/oscuro.',
+        role: 'Demuestra estados de UI en React + TypeScript, persistencia con localStorage, drag and drop y patrones reutilizables de interacción.',
         architecture:
-          'React + TypeScript con componentes, modales y estados de interacción para tareas rápidas.',
+          'Board gestiona columnas y tareas; useLocalStorage conserva el estado; el onboarding, los modales y las animaciones refuerzan la experiencia.',
         decisions: [
-          'Estructura de componentes en React',
-          'Estado local',
-          'Modales y estados de interacción',
-          'Decisiones prácticas de UX',
+          'Persistencia con un hook useLocalStorage para conservar columnas y tareas entre recargas.',
+          'Drag and drop con Pragmatic Drag and Drop para mover tareas entre columnas.',
+          'Onboarding inicial, tutorial y modal de confirmación reutilizable para acciones destructivas.',
+          'Animaciones con Framer Motion, tooltips personalizados y soporte para modo claro/oscuro.',
         ],
         impact:
-          'Muestra trabajo frontend centrado en interacción, estado local y una UI simple de tareas.',
-        stack: ['React', 'TypeScript', 'Tailwind CSS', 'Local state'],
+          'Importa porque convierte un patrón familiar en una muestra clara de calidad de ejecución frontend y diseño de interacción.',
+        stack: ['React', 'TypeScript', 'Tailwind CSS', 'Pragmatic DnD', 'localStorage', 'Framer Motion'],
         links: {
           preview: 'https://kalanban.vercel.app/',
           code: 'https://github.com/alanortiz-dev/kalanban',
@@ -445,46 +448,47 @@ export const homeContent: Record<Locale, HomeContent> = {
     featuredProjects: [
       {
         name: 'FitLog',
+        type: 'Functional MVP',
         summary:
-          'A mobile-first nutrition app focused on daily food logging, local state and simple everyday use.',
+          'Functional mobile-first nutrition tracker focused on daily food logging, macro targets, and low-friction product flows.',
         problem:
-          'Daily food logging with search, barcode and manual entry in a UI built for frequent use.',
-        role: 'Shows frontend work with React, TypeScript, local state and a mobile-first UI for real use.',
+          'Food logging is a repeated daily action, so the UI needs to be fast, clear, and easy to use on mobile.',
+        role: 'Shows React + TypeScript product UI, AppContext state, onboarding, diary entries, custom foods, and macro summaries.',
         architecture:
-          'React + TypeScript with product UI, local state and separate flows for each type of input.',
+          'The app includes landing, login, signup, onboarding, Today, add-food, barcode, search, custom-food, confirm-entry, history, and profile routes.',
         decisions: [
-          'React + TypeScript product UI',
-          'Mobile-first responsive interface',
-          'Local state for daily logging',
-          'Search, barcode and manual entry flows',
+          'AppContext handles session state, diary entries, custom foods, and macro targets across the app.',
+          'Separate routes support add-food, barcode scan, search, custom food creation, and confirm-entry flows.',
+          'The Today dashboard keeps daily macro progress and logging actions one tap away.',
+          'Demo mode, onboarding, history, and profile routes make the product flow feel functional rather than static.',
         ],
         impact:
-          'Shows a frontend app centered on local state, responsive UI and frequent-use flows.',
-        stack: ['React', 'TypeScript', 'Vite', 'Local state'],
+          'It matters because it shows a working product flow, not just isolated screens: entry, onboarding, logging, daily summaries, and connected routes.',
+        stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
         links: {
-          preview: '#',
-          code: '#',
+          code: 'https://github.com/alanortiz-dev/fitlog-nutrition-tracker',
         },
         accent: 'emerald',
       },
       {
         name: 'Dashboard Assistant',
+        type: 'Frontend Architecture',
         summary:
-          'An embedded dashboard assistant built with Vue 3 and TypeScript, using messages, reusable widgets and a clear separation between UI and logic.',
+          'Dashboard-embedded assistant built without a backend on purpose, focused on typed messages and reusable widget rendering.',
         problem:
-          'Integrate an assistant into a dashboard without breaking the layout or reading flow.',
-        role: 'Shows work with Vue 3, TypeScript, conversational UI and reusable component composition.',
+          'Embedding an assistant into a dashboard requires clear component boundaries, predictable state, and extensible message types.',
+        role: 'Shows Vue 3 Composition API, TypeScript discriminated unions, composable state management, and polymorphic message rendering.',
         architecture:
-          'Vue 3 + TypeScript with typed messages, reusable widgets and a clear split between UI and logic.',
+          'useChat owns loading, typing, mocked history, send-message flow, and reward redemption; MessageItem renders by message.type.',
         decisions: [
-          'Vue 3 Composition API',
-          'Typed message models',
-          'Reusable component composition',
-          'Conversational UI patterns',
+          'Small focused components: ChatFabButton, ChatWindow, MessageList, MessageBubble, MessageItem, and RewardCard.',
+          'useChat acts as the single source of truth for history loading, typing state, and user actions.',
+          'TextMessage, RewardMessage, and ChatMessage use discriminated unions for type-safe rendering.',
+          'RewardCard works as an interactive widget inside the conversation instead of a separate UI block.',
         ],
         impact:
-          'Shows experience with message-driven interfaces, reusable widgets and clear UI/logic separation.',
-        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API'],
+          'It matters because it shows frontend architecture and typed conversational UI, not just a chat-looking widget.',
+        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API', 'Discriminated unions'],
         links: {
           preview: 'https://dashboard-assistant-chi.vercel.app/',
           code: 'https://github.com/alanortiz-dev/dashboard-assistant',
@@ -493,22 +497,23 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
       {
         name: 'Kalanban',
+        type: 'UX Showcase',
         summary:
-          'A kanban-style interface built with React and TypeScript, focused on UI states, quick actions and simple task management.',
+          'A familiar Kanban interface rebuilt to show UX polish, local persistence, and frontend microinteractions.',
         problem:
-          'Handle multiple UI states and quick interactions for everyday task management.',
-        role: 'Shows local state handling, React component structure and practical UX decisions.',
+          'Kanban boards are common, so the value is not originality. The value is execution quality: drag and drop, persistence, modals, onboarding, tooltips, and theme support.',
+        role: 'Shows React + TypeScript UI states, localStorage persistence, drag and drop, and reusable interaction patterns.',
         architecture:
-          'React + TypeScript with components, modals and interaction states for fast task handling.',
+          'Board manages columns and tasks, useLocalStorage keeps state between reloads, and onboarding plus modals support the interaction flow.',
         decisions: [
-          'React component structure',
-          'Local state',
-          'Modals and interaction states',
-          'Practical UX decisions',
+          'A dedicated useLocalStorage hook keeps tasks and columns persisted without a backend.',
+          'Pragmatic Drag and Drop handles task movement between columns.',
+          'Onboarding, guided tour, and a reusable confirmation modal make the UI easier to learn and safer to use.',
+          'Framer Motion animations, custom tooltips, and light/dark mode improve interaction feedback.',
         ],
         impact:
-          'Shows frontend work centered on interaction, local state and a simple task UI.',
-        stack: ['React', 'TypeScript', 'Tailwind CSS', 'Local state'],
+          'It matters because it turns a familiar pattern into a clear example of frontend execution quality and interaction design.',
+        stack: ['React', 'TypeScript', 'Tailwind CSS', 'Pragmatic DnD', 'localStorage', 'Framer Motion'],
         links: {
           preview: 'https://kalanban.vercel.app/',
           code: 'https://github.com/alanortiz-dev/kalanban',
