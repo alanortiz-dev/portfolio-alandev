@@ -1,5 +1,4 @@
 ---
-import Badge from '@/components/Badge.astro';
 import Briefcase from '@/components/icons/Briefcase.astro';
 import CheckIcon from '@/components/icons/CheckIcon.astro';
 import Code from '@/components/icons/Code.astro';
@@ -15,44 +14,39 @@ export interface Props {
 
 const { content } = Astro.props;
 const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
-const cvLink = {
-  href: currentLang === 'en' ? '/docs/Alan_Ortiz_EN.pdf' : '/docs/Alan_Ortiz_ES.pdf',
-  download: currentLang === 'en' ? 'Alan_Ortiz_CV_EN.pdf' : 'Alan_Ortiz_CV_ES.pdf',
-  label: currentLang === 'en' ? 'Download CV' : 'Descargar CV',
-};
 
 const highlights = currentLang === 'en'
   ? [
       {
         title: 'Clear interfaces',
-        body: 'Reusable components and accessible UX patterns that improve clarity.',
+        body: 'Reusable components and accessible patterns that improve product clarity.',
         icon: Code,
       },
       {
         title: 'Maintainable code',
-        body: 'Scalable frontend structure with sound practices, testing, and separation of concerns.',
+        body: 'Scalable architecture with good practices, testing, and solid separation of concerns.',
         icon: CheckIcon,
       },
       {
         title: 'Ready for production',
-        body: 'Built with performance, product quality, and real delivery in mind.',
+        body: 'Built with performance, quality, and real delivery in mind.',
         icon: Briefcase,
       },
     ]
   : [
       {
         title: 'Interfaces claras',
-        body: 'Componentes reutilizables y patrones accesibles que mejoran la UX.',
+        body: 'Componentes reutilizables y accesibles que mejoran la UX.',
         icon: Code,
       },
       {
         title: 'Código mantenible',
-        body: 'Arquitectura frontend escalable con buenas prácticas, testing y separación de responsabilidades.',
+        body: 'Arquitectura escalable con buenas prácticas y pruebas.',
         icon: CheckIcon,
       },
       {
         title: 'Listas para producción',
-        body: 'Pensadas para performance, calidad de producto y entrega real.',
+        body: 'Orientadas a rendimiento, calidad y negocio.',
         icon: Briefcase,
       },
     ];
@@ -89,36 +83,52 @@ const technologies = [
 ] as const;
 
 const profileMeta = [
-  { icon: '⌖', value: content.hero.location },
-  { icon: '⌘', value: content.hero.metrics[0]?.value || '' },
-  { icon: '◫', value: content.hero.metrics[1]?.value || '' },
+  { kind: 'location', value: content.hero.location },
+  { kind: 'stack', value: content.hero.metrics[0]?.value || '' },
+  { kind: 'domain', value: content.hero.metrics[1]?.value || '' },
 ].filter((item) => item.value);
 ---
 
 <section class="space-y-5">
-  <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 p-3 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0b1120]/95 dark:shadow-none sm:p-4">
-    <div class="grid gap-5 rounded-[1.6rem] border border-slate-200/70 bg-white/90 p-5 dark:border-white/5 dark:bg-[#0b1324] sm:p-7 lg:grid-cols-[minmax(0,1.38fr)_360px] lg:gap-8 lg:p-8 xl:p-9">
-      <div class="space-y-7 lg:space-y-8">
+  <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-4 py-4 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-5 sm:py-5 lg:px-6 lg:py-6">
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,1.42fr)_350px] lg:items-center xl:grid-cols-[minmax(0,1.46fr)_360px] xl:gap-8">
+      <div class="space-y-7 lg:pr-4">
+        <div class="inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3 py-1 text-[12px] font-medium text-emerald-700 dark:text-emerald-300">
+          Frontend Engineer
+        </div>
+
         <div class="space-y-5">
-          <Badge>{currentLang === 'en' ? 'Frontend Engineer' : 'Frontend Engineer'}</Badge>
-          <h1 class="max-w-[11.5ch] text-[2.45rem] font-semibold leading-[0.96] tracking-[-0.045em] text-slate-950 sm:text-[3.35rem] lg:text-[4rem] dark:text-white">
-            {content.hero.title}
+          <h1 class="max-w-[11.5ch] text-[2.45rem] font-semibold leading-[0.97] tracking-[-0.045em] text-slate-950 sm:text-[3.3rem] lg:text-[4rem] dark:text-white">
+            {
+              currentLang === 'en' ? (
+                <>
+                  I build product interfaces that are <span class="text-emerald-600 dark:text-emerald-300">clear</span>, <span class="text-emerald-600 dark:text-emerald-300">maintainable</span>, and <span class="text-emerald-600 dark:text-emerald-300">ready for production</span>.
+                </>
+              ) : (
+                <>
+                  Construyo interfaces de producto <span class="text-emerald-600 dark:text-emerald-300">claras</span>, <span class="text-emerald-600 dark:text-emerald-300">mantenibles</span> y <span class="text-emerald-600 dark:text-emerald-300">listas para producción</span>.
+                </>
+              )
+            }
           </h1>
-          <p class="max-w-[38rem] text-[15px] leading-7 text-slate-600 sm:text-[1.05rem] sm:leading-8 dark:text-slate-300">
+
+          <p class="max-w-[39rem] text-[15px] leading-7 text-slate-600 sm:text-[1.04rem] sm:leading-8 dark:text-slate-300">
             {content.hero.description}
           </p>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-3 sm:gap-5">
+        <div class="grid gap-5 sm:grid-cols-3">
           {highlights.map((item) => {
             const Icon = item.icon;
             return (
-              <article class="space-y-2.5 px-1">
-                <span class="inline-flex size-8 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 dark:text-emerald-300">
-                  <Icon class="size-4" />
-                </span>
-                <h2 class="text-sm font-semibold text-slate-950 dark:text-white">{item.title}</h2>
-                <p class="max-w-[18ch] text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
+              <article class="space-y-2">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex size-8 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500 dark:text-emerald-300">
+                    <Icon class="size-4" />
+                  </span>
+                  <h2 class="text-sm font-semibold text-slate-950 dark:text-white">{item.title}</h2>
+                </div>
+                <p class="max-w-[18ch] pl-11 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
               </article>
             );
           })}
@@ -127,14 +137,14 @@ const profileMeta = [
         <nav class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
             href="#featured-engineering"
-            class="inline-flex min-h-11 items-center justify-center rounded-full bg-emerald-400 px-5 py-2.5 text-sm font-medium text-slate-950 transition hover:bg-emerald-300 focus:outline-none focus-visible:ring focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
+            class="inline-flex min-h-11 items-center justify-center rounded-2xl bg-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300 focus:outline-none focus-visible:ring focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
           >
             {content.hero.primaryCta}
             <span aria-hidden="true" class="ml-2">→</span>
           </a>
           <a
             href={`mailto:${profile.email}`}
-            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
           >
             <MailIcon class="size-4" aria-hidden="true" />
             {currentLang === 'en' ? 'Contact' : 'Contactar'}
@@ -142,62 +152,81 @@ const profileMeta = [
         </nav>
       </div>
 
-      <aside class="rounded-[1.7rem] border border-slate-200/70 bg-white/90 px-5 py-6 dark:border-white/8 dark:bg-[#11192d] sm:px-6 lg:px-7 lg:py-7">
+      <aside class="rounded-[1.7rem] border border-slate-200/70 bg-white/92 px-5 py-6 dark:border-white/8 dark:bg-[#11182a] sm:px-6 lg:px-7 lg:py-7">
         <div class="flex h-full flex-col justify-between gap-6 text-center">
           <div class="space-y-5">
-            <img
-              class="mx-auto size-24 rounded-full object-cover ring-4 ring-emerald-500/15 sm:size-28"
-              src={profile.avatar}
-              alt={`Portrait of ${profile.name}`}
-              width="112"
-              height="112"
-              loading="eager"
-              fetchpriority="high"
-            />
+            <div class="mx-auto inline-flex rounded-full bg-[radial-gradient(circle_at_30%_30%,#7090ff_0%,#5879ff_45%,#4164ff_100%)] p-2 shadow-[0_20px_40px_rgba(65,100,255,0.18)]">
+              <img
+                class="size-24 rounded-full object-cover sm:size-28"
+                src={profile.avatar}
+                alt={`Portrait of ${profile.name}`}
+                width="112"
+                height="112"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
 
             <div>
-              <h2 class="text-[1.95rem] font-semibold tracking-tight text-slate-950 dark:text-white">{profile.name}</h2>
+              <h2 class="text-[2rem] font-semibold tracking-tight text-slate-950 dark:text-white">{profile.name}</h2>
               <p class="mt-1 text-sm text-emerald-700 dark:text-emerald-300">Frontend / Product Engineer</p>
             </div>
 
-            <div class="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
+            <div class="mx-auto max-w-[250px] space-y-3.5 text-left text-sm text-slate-600 dark:text-slate-300">
               {profileMeta.map((item) => (
-                <p class="flex items-center justify-center gap-2.5 text-center">
-                  <span class="text-[0.95rem] text-emerald-500 dark:text-emerald-300">{item.icon}</span>
+                <p class="flex items-center gap-3">
+                  <span class="inline-flex size-5 shrink-0 items-center justify-center text-emerald-500 dark:text-emerald-300">
+                    {item.kind === 'location' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+                        <path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z" />
+                        <circle cx="12" cy="11" r="2.2" />
+                      </svg>
+                    )}
+                    {item.kind === 'stack' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+                        <rect x="4" y="5" width="16" height="5" rx="1.5" />
+                        <rect x="4" y="14" width="16" height="5" rx="1.5" />
+                      </svg>
+                    )}
+                    {item.kind === 'domain' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4">
+                        <rect x="5" y="4" width="14" height="16" rx="2" />
+                        <path d="M8 8h8M8 12h8M8 16h5" />
+                      </svg>
+                    )}
+                  </span>
                   <span>{item.value}</span>
                 </p>
               ))}
             </div>
           </div>
 
-          <div class="grid gap-3">
-            <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-3">
-              <a
-                href={profile.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
-              >
-                <GitHub class="size-4" aria-hidden="true" />
-                GitHub
-              </a>
-              <a
-                href={`${profile.social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
-              >
-                <LinkedInIcon class="size-4" aria-hidden="true" />
-                LinkedIn
-              </a>
-              <a
-                href={`mailto:${profile.email}`}
-                class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
-              >
-                <MailIcon class="size-4" aria-hidden="true" />
-                Email
-              </a>
-            </div>
+          <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-3">
+            <a
+              href={profile.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
+            >
+              <GitHub class="size-4" aria-hidden="true" />
+              GitHub
+            </a>
+            <a
+              href={`${profile.social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
+            >
+              <LinkedInIcon class="size-4" aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a
+              href={`mailto:${profile.email}`}
+              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
+            >
+              <MailIcon class="size-4" aria-hidden="true" />
+              Email
+            </a>
           </div>
         </div>
       </aside>
