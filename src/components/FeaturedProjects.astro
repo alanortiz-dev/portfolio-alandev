@@ -49,85 +49,94 @@ const projectVisuals: Record<string, { image: string; imageAlt: string }> = {
 };
 ---
 
-<div class="space-y-8">
+<div class="grid gap-6 xl:grid-cols-3">
   {
     content.featuredProjects.map((project) => {
       const visual = projectVisuals[project.name];
-      const highlights = [project.role, ...project.decisions].slice(0, 3);
+      const highlights = [project.problem, project.architecture].filter(Boolean).slice(0, 2);
       return (
-        <article class={`rounded-[2rem] p-6 shadow-sm shadow-slate-200/20 lg:p-8 dark:shadow-none ${accentStyles[project.accent || 'slate']}`}>
-          <div class="grid gap-8 lg:grid-cols-[minmax(320px,.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-12">
-            <div class="space-y-4">
-              {visual && (
-                <div class="overflow-hidden rounded-[1.5rem] bg-slate-950/5 ring-1 ring-slate-200/70 dark:ring-white/10">
-                  <img
-                    src={visual.image}
-                    alt={visual.imageAlt}
-                    width="1200"
-                    height="760"
-                    loading="lazy"
-                    class="aspect-[16/10] w-full object-cover object-top transition duration-500 hover:scale-[1.02]"
-                  />
+        <article class={`group flex h-full flex-col rounded-[1.75rem] p-5 shadow-sm shadow-slate-200/20 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/30 lg:p-6 dark:shadow-none ${accentStyles[project.accent || 'slate']}`}>
+          <div class="space-y-5">
+            {visual && (
+              <div class="overflow-hidden rounded-[1.25rem] bg-slate-950/5 ring-1 ring-slate-200/70 dark:ring-white/10">
+                <img
+                  src={visual.image}
+                  alt={visual.imageAlt}
+                  width="1200"
+                  height="760"
+                  loading="lazy"
+                  class="aspect-[16/10] w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+            )}
+
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-xl font-semibold tracking-tight text-slate-950 dark:text-white">{project.name}</h3>
+                  {project.name === 'FitLog' && (
+                    <p class="mt-2 inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800 dark:bg-amber-500/10 dark:text-amber-300">
+                      {Astro.currentLocale === 'en' ? 'Currently in development' : 'Actualmente en desarrollo'}
+                    </p>
+                  )}
                 </div>
-              )}
-
-              <ul class="flex flex-row gap-2 flex-wrap">
-                {project.stack.map((item) => {
-                  const tag = tagStyles[item as keyof typeof tagStyles] || { class: 'bg-slate-700 text-white', icon: null };
-                  const Icon = tag.icon;
-                  return (
-                    <li>
-                      <span class={`flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${tag.class}`}>
-                        {Icon && <Icon class="size-4" />}
-                        {item}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-
-              <div class="flex flex-wrap gap-3">
-                {project.links.code && project.links.code !== '#' && (
-                  <LinkButton href={project.links.code}>
-                    <GitHub class="size-5" />
-                    {content.labels.code}
-                  </LinkButton>
-                )}
                 {project.links.preview && project.links.preview !== '#' && (
-                  <LinkButton href={project.links.preview}>
+                  <a
+                    href={project.links.preview}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:text-white"
+                    aria-label={`${content.labels.preview} ${project.name}`}
+                  >
                     <Link class="size-4" />
-                    {content.labels.preview}
-                  </LinkButton>
+                  </a>
                 )}
               </div>
+
+              <p class="text-sm leading-7 text-slate-600 dark:text-slate-300">{project.summary}</p>
             </div>
 
-            <div class="space-y-5">
-              <div class="space-y-2">
-                <h3 class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white lg:text-3xl">
-                  {project.name}
-                </h3>
-                <p class="text-base leading-7 text-slate-600 dark:text-slate-300">{project.summary}</p>
-                {project.name === 'FitLog' && (
-                  <p class="inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800 dark:bg-amber-500/10 dark:text-amber-300">
-                    {Astro.currentLocale === 'en' ? 'Currently in development' : 'Actualmente en desarrollo'}
-                  </p>
-                )}
-              </div>
-
+            <div class="grid gap-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
               <div>
-                <p class="text-sm font-medium text-slate-950 dark:text-white">{content.labels.role}</p>
-                <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.role}</p>
+                <p class="font-medium text-slate-950 dark:text-white">{content.labels.role}</p>
+                <p class="mt-1">{project.role}</p>
               </div>
 
-              <div>
-                <p class="text-sm font-medium text-slate-950 dark:text-white">{content.labels.stack}</p>
-                <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.stack.join(' · ')}</p>
-              </div>
+              {highlights.map((item) => (
+                <p class="rounded-2xl border border-slate-200/70 bg-slate-50/80 px-4 py-3 dark:border-white/10 dark:bg-white/[0.02]">{item}</p>
+              ))}
+            </div>
+          </div>
 
-              <ul class="space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                {highlights.map((item) => <li class="flex gap-3"><span class="mt-2 size-1.5 rounded-full bg-slate-400 dark:bg-slate-500"></span><span>{item}</span></li>)}
-              </ul>
+          <div class="mt-5 space-y-4">
+            <ul class="flex flex-wrap gap-2">
+              {project.stack.map((item) => {
+                const tag = tagStyles[item as keyof typeof tagStyles] || { class: 'bg-slate-700 text-white', icon: null };
+                const Icon = tag.icon;
+                return (
+                  <li>
+                    <span class={`flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${tag.class}`}>
+                      {Icon && <Icon class="size-4" />}
+                      {item}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div class="flex flex-wrap gap-3">
+              {project.links.code && project.links.code !== '#' && (
+                <LinkButton href={project.links.code}>
+                  <GitHub class="size-5" />
+                  {content.labels.code}
+                </LinkButton>
+              )}
+              {project.links.preview && project.links.preview !== '#' && (
+                <LinkButton href={project.links.preview}>
+                  <Link class="size-4" />
+                  {content.labels.preview}
+                </LinkButton>
+              )}
             </div>
           </div>
         </article>
