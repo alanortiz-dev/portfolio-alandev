@@ -1,7 +1,6 @@
 ---
 import Briefcase from '@/components/icons/Briefcase.astro';
 import CheckIcon from '@/components/icons/CheckIcon.astro';
-import Code from '@/components/icons/Code.astro';
 import GitHub from '@/components/icons/GitHub.astro';
 import LinkedInIcon from '@/components/icons/LinkedIn.astro';
 import MailIcon from '@/components/icons/Mail.astro';
@@ -15,41 +14,7 @@ export interface Props {
 const { content } = Astro.props;
 const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
 
-const highlights = currentLang === 'en'
-  ? [
-      {
-        title: 'Clear interfaces',
-        body: 'Reusable components and accessible patterns for everyday frontend work.',
-        icon: Code,
-      },
-      {
-        title: 'Maintainable code',
-        body: 'React, Vue.js and TypeScript with clean structure, testing and clear integrations.',
-        icon: CheckIcon,
-      },
-      {
-        title: 'APIs, performance and testing',
-        body: 'Frontend connected to APIs with attention to performance, accessibility and testing.',
-        icon: Briefcase,
-      },
-    ]
-  : [
-      {
-        title: 'Interfaces claras',
-        body: 'Componentes reutilizables y patrones accesibles para trabajo frontend del día a día.',
-        icon: Code,
-      },
-      {
-        title: 'Código mantenible',
-        body: 'React, Vue.js y TypeScript con estructura ordenada, pruebas e integraciones limpias.',
-        icon: CheckIcon,
-      },
-      {
-        title: 'APIs, rendimiento y pruebas',
-        body: 'Interfaces conectadas a APIs con foco en performance, accesibilidad y testing.',
-        icon: Briefcase,
-      },
-    ];
+const proofCards = content.hero.metrics.slice(0, 3);
 
 const specialties = currentLang === 'en'
   ? [
@@ -86,8 +51,7 @@ const technologies = [
 
 const profileMeta = [
   { kind: 'location', value: content.hero.location },
-  { kind: 'stack', value: content.hero.metrics[0]?.value || '' },
-  { kind: 'domain', value: content.hero.metrics[1]?.value || '' },
+  { kind: 'status', value: content.hero.status },
 ].filter((item) => item.value);
 ---
 
@@ -128,21 +92,13 @@ const profileMeta = [
           </p>
         </div>
 
-        <div class="grid gap-6 sm:grid-cols-3">
-          {highlights.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article class="space-y-2.5">
-                <div class="flex items-center gap-2">
-                  <span class="inline-flex size-7 items-center justify-center rounded-full border border-emerald-400/10 bg-emerald-400/8 text-emerald-500 dark:text-emerald-300">
-                    <Icon class="size-3.5" />
-                  </span>
-                  <h2 class="text-sm font-semibold text-slate-950 dark:text-white">{item.title}</h2>
-                </div>
-                <p class="max-w-[30ch] pl-9 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
-              </article>
-            );
-          })}
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {proofCards.map((item, index) => (
+            <article class={`rounded-[1.35rem] border border-slate-200/70 bg-slate-50/80 p-4 shadow-sm shadow-slate-200/15 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none sm:p-5 ${index === 2 ? 'md:col-span-2 xl:col-span-1' : ''}`}>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-300">{item.label}</p>
+              <p class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{item.value}</p>
+            </article>
+          ))}
         </div>
 
         <nav class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -193,18 +149,7 @@ const profileMeta = [
                         <circle cx="12" cy="11" r="2.2" />
                       </svg>
                     )}
-                    {item.kind === 'stack' && (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4">
-                        <rect x="4" y="5" width="16" height="5" rx="1.5" />
-                        <rect x="4" y="14" width="16" height="5" rx="1.5" />
-                      </svg>
-                    )}
-                    {item.kind === 'domain' && (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4">
-                        <rect x="5" y="4" width="14" height="16" rx="2" />
-                        <path d="M8 8h8M8 12h8M8 16h5" />
-                      </svg>
-                    )}
+                    {item.kind === 'status' && <Briefcase class="size-4" />}
                   </span>
                   <span>{item.value}</span>
                 </p>

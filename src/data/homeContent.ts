@@ -129,8 +129,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       primaryCta: 'Ver proyectos',
       secondaryCta: 'Descargar CV',
       metrics: [
-        { value: 'React · Vue.js · TypeScript', label: 'stack principal' },
-        { value: 'E-commerce · Fintech · Herramientas internas', label: 'áreas de trabajo' },
+        { label: 'Experiencia', value: 'Más de 7 años construyendo productos frontend y fullstack' },
+        { label: 'Stack', value: 'React, Vue.js y TypeScript en interfaces de producción' },
+        { label: 'Sectores', value: 'E-commerce, fintech y herramientas internas con flujos de usuario importantes' },
       ],
     },
     sectionTitles: {
@@ -388,8 +389,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       primaryCta: 'View projects',
       secondaryCta: 'Download resume',
       metrics: [
-        { value: 'React · Vue.js · TypeScript', label: 'core stack' },
-        { value: 'E-commerce · Fintech · Internal tools', label: 'work areas' },
+        { label: 'Experience', value: 'Over 7 years building frontend and fullstack products' },
+        { label: 'Stack', value: 'React, Vue.js & TypeScript across production interfaces' },
+        { label: 'Domains', value: 'E-commerce, fintech & internal tools with important user flows' },
       ],
     },
     sectionTitles: {

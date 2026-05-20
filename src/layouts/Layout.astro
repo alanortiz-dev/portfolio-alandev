@@ -2,7 +2,7 @@
 import '@fontsource-variable/onest';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -22,7 +22,7 @@ const currentLang = Astro.currentLocale || 'es';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
 
   <body class="min-h-screen bg-[#f8fafc] font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-white">
