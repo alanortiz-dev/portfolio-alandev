@@ -1,6 +1,6 @@
 const profile = {
   name: "Alan Ortiz",
-  profession: "Product Engineer",
+  profession: "Frontend Engineer",
   address: "Mexico City, México",
   email: "alan.omar.ortz@gmail.com",
   avatar: "/images/alan-profile.jpg",

@@ -104,9 +104,9 @@ export interface HomeContent {
 export const homeContent: Record<Locale, HomeContent> = {
   es: {
     meta: {
-      title: 'Alan Ortiz · Product Engineer enfocado en frontend y sistemas de producto',
+      title: 'Alan Ortiz · Frontend Developer especializado en React, Vue.js y TypeScript',
       description:
-        'Portfolio de Alan Ortiz: Product Engineer con foco en frontend systems, arquitectura UI, e-commerce, fintech y flujos de producto en producción.',
+        'Portfolio de Alan Ortiz, Frontend Developer con experiencia en React, Vue.js, TypeScript, e-commerce, fintech, integraciones, performance, accesibilidad y testing.',
     },
     proofStrip: {
       label: 'Enfoque técnico',
@@ -120,17 +120,17 @@ export const homeContent: Record<Locale, HomeContent> = {
       contact: 'Contacto',
     },
     hero: {
-      eyebrow: 'Frontend Engineer · React, Vue.js y TypeScript',
-      title: 'Construyo interfaces de producto claras, mantenibles y listas para producción.',
+      eyebrow: 'Frontend Engineer · React · Vue.js · TypeScript',
+      title: 'Construyo interfaces frontend claras, rápidas y fáciles de mantener.',
       description:
-        'Trabajo con React, Vue.js y TypeScript en e-commerce, fintech, automatización y productos digitales donde la UX, la estabilidad y el negocio importan.',
+        'Trabajo con React, Vue.js y TypeScript en e-commerce, fintech y herramientas internas, conectando interfaces con APIs, rendimiento, accesibilidad y pruebas.',
       location: 'Ciudad de México, México',
       status: 'Disponible para roles frontend remotos e internacionales',
       primaryCta: 'Ver proyectos',
       secondaryCta: 'Descargar CV',
       metrics: [
         { value: 'React · Vue.js · TypeScript', label: 'stack principal' },
-        { value: 'E-commerce · Fintech · Automation', label: 'áreas de trabajo' },
+        { value: 'E-commerce · Fintech · Herramientas internas', label: 'áreas de trabajo' },
       ],
     },
     sectionTitles: {
@@ -187,7 +187,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         decisions: [
           'Separar mensajes y widgets para evitar acoplar el flujo conversacional al rendering.',
           'Diseñar una estructura reutilizable que permita crecer el sistema sin rehacer el shell.',
-          'Mantener la interfaz clara y product-oriented, sin caer en una demo visual ruidosa.',
+          'Mantener la interfaz clara y enfocada en uso real, sin convertirla en una demo recargada.',
         ],
         impact:
           'Refuerza mi experiencia en arquitectura frontend, componentes reutilizables y UX conversacional.',
@@ -360,9 +360,9 @@ export const homeContent: Record<Locale, HomeContent> = {
   },
   en: {
     meta: {
-      title: 'Alan Ortiz · Product Engineer focused on frontend systems',
+      title: 'Alan Ortiz · Frontend Developer specialized in React, Vue.js and TypeScript',
       description:
-        'Portfolio of Alan Ortiz: Product Engineer focused on frontend systems, UI architecture, e-commerce, fintech, and production product delivery.',
+        'Portfolio of Alan Ortiz, Frontend Developer with experience in React, Vue.js, TypeScript, e-commerce, fintech, integrations, performance, accessibility and testing.',
     },
     proofStrip: {
       label: 'Technical focus',
@@ -376,17 +376,17 @@ export const homeContent: Record<Locale, HomeContent> = {
       contact: 'Contact',
     },
     hero: {
-      eyebrow: 'Frontend Engineer · React, Vue.js and TypeScript',
-      title: 'I build product interfaces that are clear, maintainable, and ready for production.',
+      eyebrow: 'Frontend Engineer · React · Vue.js · TypeScript',
+      title: 'I build clear, fast and maintainable frontend interfaces.',
       description:
-        'I work with React, Vue.js, and TypeScript across e-commerce, fintech, automation, and digital products where UX, stability, and business needs all matter.',
+        'I work with React, Vue.js and TypeScript across e-commerce, fintech and internal tools, connecting interfaces with APIs, performance, accessibility and testing.',
       location: 'Mexico City, Mexico',
       status: 'Available for remote and international frontend roles',
       primaryCta: 'View projects',
       secondaryCta: 'Download resume',
       metrics: [
         { value: 'React · Vue.js · TypeScript', label: 'core stack' },
-        { value: 'E-commerce · Fintech · Automation', label: 'work areas' },
+        { value: 'E-commerce · Fintech · Internal tools', label: 'work areas' },
       ],
     },
     sectionTitles: {
@@ -443,7 +443,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         decisions: [
           'Separate messages from widgets so interaction logic is not tightly coupled to rendering.',
           'Build a reusable structure that can scale without rewriting the shell.',
-          'Keep the experience product-oriented rather than over-designed as a showcase demo.',
+          'Keep the experience clear and useful instead of turning it into an over-designed showcase demo.',
         ],
         impact:
           'Shows experience in frontend architecture, reusable components, and conversational UX.',

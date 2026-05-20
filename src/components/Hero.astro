@@ -23,34 +23,34 @@ const highlights = currentLang === 'en'
   ? [
       {
         title: 'Clear interfaces',
-        body: 'Reusable components and accessible patterns that improve product clarity.',
+        body: 'Reusable components and accessible patterns for everyday frontend work.',
         icon: Code,
       },
       {
         title: 'Maintainable code',
-        body: 'Scalable architecture with good practices, testing, and solid separation of concerns.',
+        body: 'React, Vue.js and TypeScript with clean structure, testing and clear integrations.',
         icon: CheckIcon,
       },
       {
-        title: 'Ready for production',
-        body: 'Built with performance, quality, and real delivery in mind.',
+        title: 'APIs, performance and testing',
+        body: 'Frontend connected to APIs with attention to performance, accessibility and testing.',
         icon: Briefcase,
       },
     ]
   : [
       {
         title: 'Interfaces claras',
-        body: 'Componentes reutilizables y accesibles que mejoran la UX.',
+        body: 'Componentes reutilizables y patrones accesibles para trabajo frontend del día a día.',
         icon: Code,
       },
       {
         title: 'Código mantenible',
-        body: 'Arquitectura escalable con buenas prácticas y pruebas.',
+        body: 'React, Vue.js y TypeScript con estructura ordenada, pruebas e integraciones limpias.',
         icon: CheckIcon,
       },
       {
-        title: 'Listas para producción',
-        body: 'Orientadas a rendimiento, calidad y negocio.',
+        title: 'APIs, rendimiento y pruebas',
+        body: 'Interfaces conectadas a APIs con foco en performance, accesibilidad y testing.',
         icon: Briefcase,
       },
     ];
@@ -98,7 +98,7 @@ const profileMeta = [
     <div class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_350px] lg:items-start xl:grid-cols-[minmax(0,1.4fr)_360px] xl:gap-10">
       <div class="space-y-8">
         <div class="inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3 py-1 text-[12px] font-medium text-emerald-700 dark:text-emerald-300">
-          Frontend Engineer
+          {content.hero.eyebrow}
         </div>
 
         <div class="space-y-5">
@@ -106,18 +106,17 @@ const profileMeta = [
             {
               currentLang === 'en' ? (
                 <>
-                  <span class="block">I build product</span>
-                  <span class="block">interfaces that are</span>
-                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">clear</span>, <span class="text-emerald-600 dark:text-[#67e4a6]">maintainable</span>,</span>
-                  <span class="block">and <span class="text-emerald-600 dark:text-[#67e4a6]">ready for</span></span>
-                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">production</span>.</span>
+                  <span class="block">I build <span class="text-emerald-600 dark:text-[#67e4a6]">clear</span>,</span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">fast</span> and</span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">maintainable</span></span>
+                  <span class="block">frontend interfaces.</span>
                 </>
               ) : (
                 <>
-                  <span class="block">Construyo interfaces de</span>
-                  <span class="block">producto <span class="text-emerald-600 dark:text-[#67e4a6]">claras,</span></span>
-                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">mantenibles</span> y</span>
-                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">listas para producción</span>.</span>
+                  <span class="block">Construyo interfaces</span>
+                  <span class="block">frontend <span class="text-emerald-600 dark:text-[#67e4a6]">claras,</span></span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">rápidas</span> y</span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">fáciles de mantener</span>.</span>
                 </>
               )
             }
@@ -180,7 +179,7 @@ const profileMeta = [
 
             <div>
               <h2 class="text-[2rem] font-semibold tracking-tight text-slate-950 dark:text-white">{profile.name}</h2>
-              <p class="mt-1 text-sm text-emerald-700 dark:text-emerald-300">Frontend / Product Engineer</p>
+              <p class="mt-1 text-sm text-emerald-700 dark:text-emerald-300">Frontend Engineer</p>
             </div>
 
             <div class="mx-auto max-w-[240px] space-y-3.5 text-left text-sm text-slate-600 dark:text-slate-300">
