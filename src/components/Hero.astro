@@ -5,6 +5,10 @@ import Code from '@/components/icons/Code.astro';
 import GitHub from '@/components/icons/GitHub.astro';
 import LinkedInIcon from '@/components/icons/LinkedIn.astro';
 import MailIcon from '@/components/icons/Mail.astro';
+import NextJS from '@/components/icons/NextJS.astro';
+import ReactIcon from '@/components/icons/React.astro';
+import Tailwind from '@/components/icons/Tailwind.astro';
+import TypeScript from '@/components/icons/TypeScript.astro';
 import type { HomeContent } from '@/data/homeContent';
 import profile from '@/data/profile';
 
@@ -68,18 +72,18 @@ const specialties = currentLang === 'en'
     ];
 
 const technologies = [
-  { name: 'React', kind: 'react' },
-  { name: 'Vue.js', kind: 'vue' },
-  { name: 'TypeScript', kind: 'ts' },
-  { name: 'Next.js', kind: 'next' },
-  { name: 'Tailwind CSS', kind: 'tailwind' },
-  { name: 'Node.js', kind: 'node' },
-  { name: 'HTML5', kind: 'html' },
-  { name: 'CSS3', kind: 'css' },
-  { name: 'SASS', kind: 'sass' },
-  { name: 'Git', kind: 'git' },
-  { name: 'Jest', kind: 'jest' },
-  { name: 'Docker', kind: 'docker' },
+  { name: 'React', kind: 'react', icon: ReactIcon },
+  { name: 'Vue.js', kind: 'vue', icon: null },
+  { name: 'TypeScript', kind: 'ts', icon: TypeScript },
+  { name: 'Next.js', kind: 'next', icon: NextJS },
+  { name: 'Tailwind CSS', kind: 'tailwind', icon: Tailwind },
+  { name: 'Node.js', kind: 'node', icon: null },
+  { name: 'HTML5', kind: 'html', icon: null },
+  { name: 'CSS3', kind: 'css', icon: null },
+  { name: 'SASS', kind: 'sass', icon: null },
+  { name: 'Git', kind: 'git', icon: null },
+  { name: 'Jest', kind: 'jest', icon: null },
+  { name: 'Docker', kind: 'docker', icon: null },
 ] as const;
 
 const profileMeta = [
@@ -89,16 +93,16 @@ const profileMeta = [
 ].filter((item) => item.value);
 ---
 
-<section class="space-y-6">
-  <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-5 py-5 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-6 sm:py-6 lg:px-8 lg:py-8">
-    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.48fr)_320px] lg:items-start xl:grid-cols-[minmax(0,1.54fr)_336px] xl:gap-10">
+<section class="space-y-6 lg:space-y-7">
+  <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-5 py-6 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-6 sm:py-7 lg:px-8 lg:py-8 xl:px-9 xl:py-9">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.54fr)_320px] lg:items-start xl:grid-cols-[minmax(0,1.58fr)_332px] xl:gap-10">
       <div class="space-y-8">
         <div class="inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3 py-1 text-[12px] font-medium text-emerald-700 dark:text-emerald-300">
           Frontend Engineer
         </div>
 
         <div class="space-y-5">
-          <h1 class="max-w-[9ch] text-[2.5rem] font-semibold leading-[0.96] tracking-[-0.05em] text-slate-950 sm:text-[3.35rem] lg:text-[4.2rem] dark:text-white">
+          <h1 class="max-w-[9.6ch] text-[2.65rem] font-semibold leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-[3.5rem] lg:max-w-[11ch] lg:text-[4.45rem] dark:text-white">
             {
               currentLang === 'en' ? (
                 <>
@@ -110,18 +114,16 @@ const profileMeta = [
                 </>
               ) : (
                 <>
-                  <span class="block">Construyo</span>
-                  <span class="block">interfaces de</span>
+                  <span class="block">Construyo interfaces de</span>
                   <span class="block">producto <span class="text-emerald-600 dark:text-[#67e4a6]">claras,</span></span>
                   <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">mantenibles</span> y</span>
-                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">listas para</span></span>
-                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">producción</span>.</span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">listas para producción</span>.</span>
                 </>
               )
             }
           </h1>
 
-          <p class="max-w-[39rem] text-[15px] leading-7 text-slate-600 sm:text-[1.02rem] sm:leading-8 dark:text-slate-300">
+          <p class="max-w-[40rem] text-[15px] leading-7 text-slate-600 sm:text-[1.08rem] sm:leading-8 dark:text-slate-300">
             {content.hero.description}
           </p>
         </div>
@@ -132,12 +134,12 @@ const profileMeta = [
             return (
               <article class="space-y-2.5">
                 <div class="flex items-center gap-3">
-                  <span class="inline-flex size-8 items-center justify-center rounded-full border border-emerald-400/10 bg-emerald-400/8 text-emerald-500 dark:text-emerald-300">
-                    <Icon class="size-4" />
+                  <span class="inline-flex size-7 items-center justify-center rounded-full border border-emerald-400/10 bg-emerald-400/8 text-emerald-500 dark:text-emerald-300">
+                    <Icon class="size-3.5" />
                   </span>
                   <h2 class="text-sm font-semibold text-slate-950 dark:text-white">{item.title}</h2>
                 </div>
-                <p class="max-w-[16ch] pl-11 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
+                <p class="max-w-[17ch] pl-10 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
               </article>
             );
           })}
@@ -166,7 +168,7 @@ const profileMeta = [
           <div class="space-y-5">
             <div class="mx-auto inline-flex rounded-full bg-[radial-gradient(circle_at_30%_30%,#7090ff_0%,#5879ff_45%,#4164ff_100%)] p-2 shadow-[0_16px_36px_rgba(65,100,255,0.18)]">
               <img
-                class="size-20 rounded-full object-cover sm:size-24"
+                class="size-24 rounded-full object-cover"
                 src={profile.avatar}
                 alt={`Portrait of ${profile.name}`}
                 width="96"
@@ -177,7 +179,7 @@ const profileMeta = [
             </div>
 
             <div>
-              <h2 class="text-[1.9rem] font-semibold tracking-tight text-slate-950 dark:text-white">{profile.name}</h2>
+              <h2 class="text-[2rem] font-semibold tracking-tight text-slate-950 dark:text-white">{profile.name}</h2>
               <p class="mt-1 text-sm text-emerald-700 dark:text-emerald-300">Frontend / Product Engineer</p>
             </div>
 
@@ -240,34 +242,39 @@ const profileMeta = [
         </div>
       </aside>
     </div>
+  </div>
 
-    <div class="mt-8 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] xl:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)]">
-      <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/92 p-5 dark:border-white/10 dark:bg-[#121a2d] sm:p-6">
-        <h2 class="text-xl font-semibold text-slate-950 dark:text-white">{currentLang === 'en' ? 'Specialties' : 'Especialidades'}</h2>
-        <ul class="mt-5 grid gap-3">
-          {specialties.map((item) => (
-            <li class="flex items-center gap-3 rounded-[1.05rem] border border-slate-200/70 bg-slate-50/75 px-4 py-3 text-sm text-slate-600 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-300">
-              <span class="inline-flex size-5 shrink-0 items-center justify-center rounded-full border border-emerald-400/10 bg-emerald-400/8 text-emerald-400">
-                <CheckIcon class="size-3.5" />
+  <div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] xl:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)]">
+    <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/92 p-5 shadow-sm shadow-slate-200/12 dark:border-white/10 dark:bg-[#121a2d] dark:shadow-none sm:p-6">
+      <h2 class="text-[1.4rem] font-semibold tracking-tight text-slate-950 dark:text-white">{currentLang === 'en' ? 'Specialties' : 'Especialidades'}</h2>
+      <ul class="mt-5 space-y-0">
+        {specialties.map((item) => (
+          <li class="flex items-center gap-3 border-b border-slate-200/70 py-3.5 text-[0.96rem] text-slate-600 last:border-b-0 dark:border-white/10 dark:text-slate-300">
+            <span class="inline-flex size-5 shrink-0 items-center justify-center text-emerald-400">
+              <CheckIcon class="size-4" />
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/92 p-5 shadow-sm shadow-slate-200/12 dark:border-white/10 dark:bg-[#121a2d] dark:shadow-none sm:p-6">
+      <h2 class="text-[1.4rem] font-semibold tracking-tight text-slate-950 dark:text-white">{currentLang === 'en' ? 'Technologies' : 'Tecnologías'}</h2>
+      <div class="mt-6 grid grid-cols-3 gap-x-5 gap-y-6 sm:grid-cols-4 xl:grid-cols-6">
+        {technologies.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="flex flex-col items-center gap-2 text-center">
+              <span class={`tech-mark tech-${item.kind}`} aria-hidden="true">
+                {Icon ? <Icon class="size-8" /> : item.name}
               </span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/92 p-5 dark:border-white/10 dark:bg-[#121a2d] sm:p-6">
-        <h2 class="text-xl font-semibold text-slate-950 dark:text-white">{currentLang === 'en' ? 'Technologies' : 'Tecnologías'}</h2>
-        <div class="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4 xl:grid-cols-6">
-          {technologies.map((item) => (
-            <div class="flex min-h-[96px] flex-col items-center justify-center gap-2 rounded-[1.1rem] border border-slate-200/70 bg-slate-50/75 px-3 py-4 text-center dark:border-white/10 dark:bg-white/[0.02]">
-              <span class={`tech-mark tech-${item.kind}`} aria-hidden="true">{item.name}</span>
-              <span class="text-xs font-medium text-slate-600 dark:text-slate-300">{item.name}</span>
+              <span class="text-sm font-medium text-slate-600 dark:text-slate-300">{item.name}</span>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+          );
+        })}
+      </div>
+    </section>
   </div>
 </section>
 
@@ -276,36 +283,46 @@ const profileMeta = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.65rem;
-    height: 2.65rem;
+    width: 2.9rem;
+    height: 2.9rem;
     border-radius: 9999px;
+    color: white;
     font-size: 0;
     position: relative;
-    background: rgba(15, 23, 42, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.18);
   }
 
-  .dark .tech-mark {
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  .tech-mark :global(svg) {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .tech-vue,
+  .tech-node,
+  .tech-html,
+  .tech-css,
+  .tech-sass,
+  .tech-git,
+  .tech-jest,
+  .tech-docker {
+    background: transparent;
   }
 
   .tech-mark::before {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: -0.03em;
   }
 
-  .tech-react::before { content: '⚛'; color: #61dafb; }
+  .tech-react { color: #61dafb; }
   .tech-vue::before { content: 'V'; color: #42b883; }
-  .tech-ts::before { content: 'TS'; color: #3178c6; }
-  .tech-next::before { content: 'N'; color: currentColor; }
-  .tech-tailwind::before { content: '~'; color: #38bdf8; font-size: 1.4rem; }
-  .tech-node::before { content: '⬢'; color: #68a063; font-size: 1.15rem; }
+  .tech-ts { color: #3178c6; }
+  .tech-next { color: white; }
+  .tech-tailwind { color: #38bdf8; }
+  .tech-node::before { content: '⬢'; color: #68a063; font-size: 1.2rem; }
   .tech-html::before { content: '5'; color: #e34f26; }
   .tech-css::before { content: '3'; color: #1572b6; }
   .tech-sass::before { content: 'S'; color: #cc6699; }
-  .tech-git::before { content: '◆'; color: #f05032; font-size: 1.1rem; }
+  .tech-git::before { content: '◆'; color: #f05032; font-size: 1.15rem; }
   .tech-jest::before { content: 'J'; color: #99425b; }
-  .tech-docker::before { content: '🐳'; font-size: 1rem; }
+  .tech-docker::before { content: '🐳'; font-size: 1.05rem; }
 </style>
