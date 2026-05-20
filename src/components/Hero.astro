@@ -89,46 +89,55 @@ const profileMeta = [
 ].filter((item) => item.value);
 ---
 
-<section class="space-y-5">
-  <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-4 py-4 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-5 sm:py-5 lg:px-6 lg:py-6">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1.42fr)_350px] lg:items-center xl:grid-cols-[minmax(0,1.46fr)_360px] xl:gap-8">
-      <div class="space-y-7 lg:pr-4">
+<section class="space-y-6">
+  <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-5 py-5 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.48fr)_320px] lg:items-start xl:grid-cols-[minmax(0,1.54fr)_336px] xl:gap-10">
+      <div class="space-y-8">
         <div class="inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3 py-1 text-[12px] font-medium text-emerald-700 dark:text-emerald-300">
           Frontend Engineer
         </div>
 
         <div class="space-y-5">
-          <h1 class="max-w-[11.5ch] text-[2.45rem] font-semibold leading-[0.97] tracking-[-0.045em] text-slate-950 sm:text-[3.3rem] lg:text-[4rem] dark:text-white">
+          <h1 class="max-w-[9ch] text-[2.5rem] font-semibold leading-[0.96] tracking-[-0.05em] text-slate-950 sm:text-[3.35rem] lg:text-[4.2rem] dark:text-white">
             {
               currentLang === 'en' ? (
                 <>
-                  I build product interfaces that are <span class="text-emerald-600 dark:text-emerald-300">clear</span>, <span class="text-emerald-600 dark:text-emerald-300">maintainable</span>, and <span class="text-emerald-600 dark:text-emerald-300">ready for production</span>.
+                  <span class="block">I build product</span>
+                  <span class="block">interfaces that are</span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">clear</span>, <span class="text-emerald-600 dark:text-[#67e4a6]">maintainable</span>,</span>
+                  <span class="block">and <span class="text-emerald-600 dark:text-[#67e4a6]">ready for</span></span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">production</span>.</span>
                 </>
               ) : (
                 <>
-                  Construyo interfaces de producto <span class="text-emerald-600 dark:text-emerald-300">claras</span>, <span class="text-emerald-600 dark:text-emerald-300">mantenibles</span> y <span class="text-emerald-600 dark:text-emerald-300">listas para producción</span>.
+                  <span class="block">Construyo</span>
+                  <span class="block">interfaces de</span>
+                  <span class="block">producto <span class="text-emerald-600 dark:text-[#67e4a6]">claras,</span></span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">mantenibles</span> y</span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">listas para</span></span>
+                  <span class="block"><span class="text-emerald-600 dark:text-[#67e4a6]">producción</span>.</span>
                 </>
               )
             }
           </h1>
 
-          <p class="max-w-[39rem] text-[15px] leading-7 text-slate-600 sm:text-[1.04rem] sm:leading-8 dark:text-slate-300">
+          <p class="max-w-[39rem] text-[15px] leading-7 text-slate-600 sm:text-[1.02rem] sm:leading-8 dark:text-slate-300">
             {content.hero.description}
           </p>
         </div>
 
-        <div class="grid gap-5 sm:grid-cols-3">
+        <div class="grid gap-6 sm:grid-cols-3">
           {highlights.map((item) => {
             const Icon = item.icon;
             return (
-              <article class="space-y-2">
+              <article class="space-y-2.5">
                 <div class="flex items-center gap-3">
-                  <span class="inline-flex size-8 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500 dark:text-emerald-300">
+                  <span class="inline-flex size-8 items-center justify-center rounded-full border border-emerald-400/10 bg-emerald-400/8 text-emerald-500 dark:text-emerald-300">
                     <Icon class="size-4" />
                   </span>
                   <h2 class="text-sm font-semibold text-slate-950 dark:text-white">{item.title}</h2>
                 </div>
-                <p class="max-w-[18ch] pl-11 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
+                <p class="max-w-[16ch] pl-11 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.body}</p>
               </article>
             );
           })}
@@ -137,14 +146,14 @@ const profileMeta = [
         <nav class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
             href="#featured-engineering"
-            class="inline-flex min-h-11 items-center justify-center rounded-2xl bg-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300 focus:outline-none focus-visible:ring focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
+            class="inline-flex min-h-10 items-center justify-center rounded-2xl bg-emerald-400 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300 focus:outline-none focus-visible:ring focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
           >
             {content.hero.primaryCta}
             <span aria-hidden="true" class="ml-2">→</span>
           </a>
           <a
             href={`mailto:${profile.email}`}
-            class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+            class="inline-flex min-h-10 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4.5 py-2.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
           >
             <MailIcon class="size-4" aria-hidden="true" />
             {currentLang === 'en' ? 'Contact' : 'Contactar'}
@@ -152,30 +161,30 @@ const profileMeta = [
         </nav>
       </div>
 
-      <aside class="rounded-[1.7rem] border border-slate-200/70 bg-white/92 px-5 py-6 dark:border-white/8 dark:bg-[#11182a] sm:px-6 lg:px-7 lg:py-7">
+      <aside class="w-full max-w-[320px] justify-self-end rounded-[1.7rem] border border-slate-200/70 bg-white/92 px-5 py-6 dark:border-white/10 dark:bg-[#121a2d] sm:px-6 lg:mt-6 lg:px-6 lg:py-7 xl:mt-8">
         <div class="flex h-full flex-col justify-between gap-6 text-center">
           <div class="space-y-5">
-            <div class="mx-auto inline-flex rounded-full bg-[radial-gradient(circle_at_30%_30%,#7090ff_0%,#5879ff_45%,#4164ff_100%)] p-2 shadow-[0_20px_40px_rgba(65,100,255,0.18)]">
+            <div class="mx-auto inline-flex rounded-full bg-[radial-gradient(circle_at_30%_30%,#7090ff_0%,#5879ff_45%,#4164ff_100%)] p-2 shadow-[0_16px_36px_rgba(65,100,255,0.18)]">
               <img
-                class="size-24 rounded-full object-cover sm:size-28"
+                class="size-20 rounded-full object-cover sm:size-24"
                 src={profile.avatar}
                 alt={`Portrait of ${profile.name}`}
-                width="112"
-                height="112"
+                width="96"
+                height="96"
                 loading="eager"
                 fetchpriority="high"
               />
             </div>
 
             <div>
-              <h2 class="text-[2rem] font-semibold tracking-tight text-slate-950 dark:text-white">{profile.name}</h2>
+              <h2 class="text-[1.9rem] font-semibold tracking-tight text-slate-950 dark:text-white">{profile.name}</h2>
               <p class="mt-1 text-sm text-emerald-700 dark:text-emerald-300">Frontend / Product Engineer</p>
             </div>
 
-            <div class="mx-auto max-w-[250px] space-y-3.5 text-left text-sm text-slate-600 dark:text-slate-300">
+            <div class="mx-auto max-w-[240px] space-y-3.5 text-left text-sm text-slate-600 dark:text-slate-300">
               {profileMeta.map((item) => (
-                <p class="flex items-center gap-3">
-                  <span class="inline-flex size-5 shrink-0 items-center justify-center text-emerald-500 dark:text-emerald-300">
+                <p class="flex items-start gap-3">
+                  <span class="mt-0.5 inline-flex size-4 shrink-0 items-center justify-center text-emerald-500 dark:text-emerald-300">
                     {item.kind === 'location' && (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-4">
                         <path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z" />
@@ -201,12 +210,12 @@ const profileMeta = [
             </div>
           </div>
 
-          <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-3">
+          <div class="grid grid-cols-3 gap-2.5">
             <a
               href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
+              class="inline-flex min-h-10 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
             >
               <GitHub class="size-4" aria-hidden="true" />
               GitHub
@@ -215,14 +224,14 @@ const profileMeta = [
               href={`${profile.social.linkedin}?locale=${currentLang === 'en' ? 'en_US' : 'es_ES'}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
+              class="inline-flex min-h-10 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
             >
               <LinkedInIcon class="size-4" aria-hidden="true" />
               LinkedIn
             </a>
             <a
               href={`mailto:${profile.email}`}
-              class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
+              class="inline-flex min-h-10 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-800 transition hover:border-slate-300 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08]"
             >
               <MailIcon class="size-4" aria-hidden="true" />
               Email
@@ -232,13 +241,13 @@ const profileMeta = [
       </aside>
     </div>
 
-    <div class="mt-4 grid gap-4 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
-      <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/90 p-5 dark:border-white/8 dark:bg-[#0c1426] sm:p-6">
+    <div class="mt-8 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] xl:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)]">
+      <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/92 p-5 dark:border-white/10 dark:bg-[#121a2d] sm:p-6">
         <h2 class="text-xl font-semibold text-slate-950 dark:text-white">{currentLang === 'en' ? 'Specialties' : 'Especialidades'}</h2>
-        <ul class="mt-4 space-y-1.5">
+        <ul class="mt-5 grid gap-3">
           {specialties.map((item) => (
-            <li class="flex items-center gap-3 rounded-xl border-b border-slate-200/70 py-3 text-sm text-slate-600 last:border-b-0 dark:border-white/8 dark:text-slate-300">
-              <span class="inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400">
+            <li class="flex items-center gap-3 rounded-[1.05rem] border border-slate-200/70 bg-slate-50/75 px-4 py-3 text-sm text-slate-600 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-300">
+              <span class="inline-flex size-5 shrink-0 items-center justify-center rounded-full border border-emerald-400/10 bg-emerald-400/8 text-emerald-400">
                 <CheckIcon class="size-3.5" />
               </span>
               <span>{item}</span>
@@ -247,11 +256,11 @@ const profileMeta = [
         </ul>
       </section>
 
-      <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/90 p-5 dark:border-white/8 dark:bg-[#0c1426] sm:p-6">
+      <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/92 p-5 dark:border-white/10 dark:bg-[#121a2d] sm:p-6">
         <h2 class="text-xl font-semibold text-slate-950 dark:text-white">{currentLang === 'en' ? 'Technologies' : 'Tecnologías'}</h2>
-        <div class="mt-5 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+        <div class="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4 xl:grid-cols-6">
           {technologies.map((item) => (
-            <div class="flex flex-col items-center gap-2 rounded-2xl border border-slate-200/60 bg-slate-50/70 px-3 py-4 text-center dark:border-white/8 dark:bg-white/[0.02]">
+            <div class="flex min-h-[96px] flex-col items-center justify-center gap-2 rounded-[1.1rem] border border-slate-200/70 bg-slate-50/75 px-3 py-4 text-center dark:border-white/10 dark:bg-white/[0.02]">
               <span class={`tech-mark tech-${item.kind}`} aria-hidden="true">{item.name}</span>
               <span class="text-xs font-medium text-slate-600 dark:text-slate-300">{item.name}</span>
             </div>
@@ -267,8 +276,8 @@ const profileMeta = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.65rem;
+    height: 2.65rem;
     border-radius: 9999px;
     font-size: 0;
     position: relative;
