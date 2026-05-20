@@ -155,20 +155,21 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'FitLog',
         summary:
-          'Producto mobile-first de nutrición centrado en logging diario, estructura modular y una experiencia pensada para hábito.',
+          'App mobile-first de nutrición enfocada en registro diario de alimentos, estado local y una experiencia simple para uso frecuente.',
         problem:
-          'Diseñar un MVP centrado en el registro diario, sin depender de una sola feature como el escaneo.',
-        role: 'Diseño y desarrollo frontend del producto: UX, arquitectura UI, estado local y sistema visual.',
+          'Registro diario de alimentos con búsqueda, escaneo y entrada manual en una interfaz pensada para uso frecuente.',
+        role: 'Demuestra trabajo frontend con React, TypeScript, estado local y una UI mobile-first para uso real.',
         architecture:
-          'Arquitectura modular con flujos separados para búsqueda, barcode y custom food, pensada para crecer sin rehacer la base del producto.',
+          'React + TypeScript con componentes de UI, estado local y flujos separados para cada tipo de entrada.',
         decisions: [
-          'Priorizar la pantalla Today como centro del sistema para reforzar hábito y claridad de producto.',
-          'Separar persistencia y UI para poder migrar luego a Supabase sin reescribir la app.',
-          'Mantener un lenguaje visual sobrio y creíble, más wellness product que template de frontend.',
+          'React + TypeScript para UI de producto',
+          'Interfaz mobile-first y responsive',
+          'Estado local para registro diario',
+          'Flujos para búsqueda, escaneo y entrada manual',
         ],
         impact:
-          'Muestra cómo abordo un producto desde frontend, estructura y experiencia de uso con una base lista para seguir iterando.',
-        stack: ['React', 'TypeScript', 'Vite', 'Local-first state', 'Design system thinking'],
+          'Muestra una app de frontend centrada en estado local, responsive UI y flujos de uso frecuente.',
+        stack: ['React', 'TypeScript', 'Vite', 'Local state'],
         links: {
           preview: '#',
           code: '#',
@@ -178,20 +179,21 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Dashboard Assistant',
         summary:
-          'Sistema de asistente embebido para dashboards con widgets reutilizables y una estructura lista para crecer.',
+          'Asistente embebido para dashboard construido con Vue 3 y TypeScript, con mensajes, widgets reutilizables y separación entre UI y lógica.',
         problem:
-          'Diseñar un asistente que encajara de forma natural dentro de un dashboard.',
-        role: 'Diseño e implementación del sistema UI, composición de widgets y estructura reutilizable.',
+          'Integrar un asistente dentro de un dashboard sin romper la lectura ni la estructura de la interfaz.',
+        role: 'Demuestra trabajo con Vue 3, TypeScript, UI conversacional y composición de componentes reutilizables.',
         architecture:
-          'Vue 3 + TypeScript con composables, separación entre UI y lógica, y estructura lista para crecer.',
+          'Vue 3 + TypeScript con mensajes tipados, widgets reutilizables y separación entre UI y lógica.',
         decisions: [
-          'Separar mensajes y widgets para evitar acoplar el flujo conversacional al rendering.',
-          'Diseñar una estructura reutilizable que permita crecer el sistema sin rehacer el shell.',
-          'Mantener la interfaz clara y enfocada en uso real, sin convertirla en una demo recargada.',
+          'Vue 3 Composition API',
+          'Modelos de mensajes tipados',
+          'Composición de componentes reutilizables',
+          'Patrones de UI conversacional',
         ],
         impact:
-          'Refuerza mi experiencia en arquitectura frontend, componentes reutilizables y UX conversacional.',
-        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composable architecture'],
+          'Muestra experiencia en interfaces con mensajes, widgets reutilizables y separación clara entre UI y lógica.',
+        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API'],
         links: {
           preview: 'https://dashboard-assistant-chi.vercel.app/',
           code: 'https://github.com/alanortiz-dev/dashboard-assistant',
@@ -201,19 +203,20 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Kalanban',
         summary:
-          'Sistema tipo kanban enfocado en estados de UI, acciones rápidas y uso frecuente sin fricción.',
+          'Interfaz tipo kanban construida con React y TypeScript, enfocada en estados de UI, acciones rápidas y gestión simple de tareas.',
         problem:
-          'Resolver una interfaz con muchos estados y edición rápida sin volverla frágil.',
-        role: 'Diseño e implementación frontend con foco en usabilidad, componentes reutilizables y estado local.',
+          'Resolver una UI con varios estados y acciones rápidas para gestión cotidiana de tareas.',
+        role: 'Demuestra manejo de estado local, componentes en React y decisiones prácticas de UX.',
         architecture:
-          'React + TypeScript con componentes reutilizables y flujos pensados para interacción frecuente.',
+          'React + TypeScript con componentes, modales y estados de interacción para tareas rápidas.',
         decisions: [
-          'Enfatizar claridad de interacción antes que decoraciones visuales.',
-          'Mantener la UI flexible para futuras mejoras como keyboard UX y más capas de productividad.',
-          'Resolver el estado local de forma simple y mantenible para no sobrediseñar el MVP.',
+          'Estructura de componentes en React',
+          'Estado local',
+          'Modales y estados de interacción',
+          'Decisiones prácticas de UX',
         ],
         impact:
-          'Muestra mi enfoque para construir interfaces donde el comportamiento importa tanto como lo visual.',
+          'Muestra trabajo frontend centrado en interacción, estado local y una UI simple de tareas.',
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'Local state'],
         links: {
           preview: 'https://kalanban.vercel.app/',
@@ -411,20 +414,21 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'FitLog',
         summary:
-          'A mobile-first nutrition product built around daily logging, modular structure, and habit-friendly UX.',
+          'A mobile-first nutrition app focused on daily food logging, local state and simple everyday use.',
         problem:
-          'Design an MVP centered on daily logging instead of depending on one isolated feature like barcode scanning.',
-        role: 'Frontend product work across UX, UI architecture, local state, and visual direction.',
+          'Daily food logging with search, barcode and manual entry in a UI built for frequent use.',
+        role: 'Shows frontend work with React, TypeScript, local state and a mobile-first UI for real use.',
         architecture:
-          'Modular frontend structure with separate flows for search, barcode, and custom foods, designed to evolve without rebuilding the product base.',
+          'React + TypeScript with product UI, local state and separate flows for each type of input.',
         decisions: [
-          'Make the Today screen the center of the system to reinforce habit and product clarity.',
-          'Separate persistence from UI so the app can later migrate to Supabase without rewriting the experience.',
-          'Keep the visual language credible and restrained, closer to a wellness product than a generic frontend template.',
+          'React + TypeScript product UI',
+          'Mobile-first responsive interface',
+          'Local state for daily logging',
+          'Search, barcode and manual entry flows',
         ],
         impact:
-          'Shows how I approach a product from frontend structure and UX with room to keep iterating.',
-        stack: ['React', 'TypeScript', 'Vite', 'Local-first state', 'Design system thinking'],
+          'Shows a frontend app centered on local state, responsive UI and frequent-use flows.',
+        stack: ['React', 'TypeScript', 'Vite', 'Local state'],
         links: {
           preview: '#',
           code: '#',
@@ -434,20 +438,21 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Dashboard Assistant',
         summary:
-          'An embedded dashboard assistant with reusable widgets and a UI system designed to scale cleanly.',
+          'An embedded dashboard assistant built with Vue 3 and TypeScript, using messages, reusable widgets and a clear separation between UI and logic.',
         problem:
-          'Design an assistant that could fit naturally inside a dashboard.',
-        role: 'Designed and implemented the UI system, widget composition, and reusable structure.',
+          'Integrate an assistant into a dashboard without breaking the layout or reading flow.',
+        role: 'Shows work with Vue 3, TypeScript, conversational UI and reusable component composition.',
         architecture:
-          'Vue 3 + TypeScript with composables, clear separation between UI and logic, and a structure ready to grow.',
+          'Vue 3 + TypeScript with typed messages, reusable widgets and a clear split between UI and logic.',
         decisions: [
-          'Separate messages from widgets so interaction logic is not tightly coupled to rendering.',
-          'Build a reusable structure that can scale without rewriting the shell.',
-          'Keep the experience clear and useful instead of turning it into an over-designed showcase demo.',
+          'Vue 3 Composition API',
+          'Typed message models',
+          'Reusable component composition',
+          'Conversational UI patterns',
         ],
         impact:
-          'Shows experience in frontend architecture, reusable components, and conversational UX.',
-        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composable architecture'],
+          'Shows experience with message-driven interfaces, reusable widgets and clear UI/logic separation.',
+        stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API'],
         links: {
           preview: 'https://dashboard-assistant-chi.vercel.app/',
           code: 'https://github.com/alanortiz-dev/dashboard-assistant',
@@ -457,19 +462,20 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Kalanban',
         summary:
-          'A kanban-style system focused on UI states, fast actions, and everyday usability without friction.',
+          'A kanban-style interface built with React and TypeScript, focused on UI states, quick actions and simple task management.',
         problem:
-          'Build an interface with multiple states and quick editing without making it fragile.',
-        role: 'Frontend design and implementation focused on usability, reusable structure, and local state.',
+          'Handle multiple UI states and quick interactions for everyday task management.',
+        role: 'Shows local state handling, React component structure and practical UX decisions.',
         architecture:
-          'React + TypeScript with reusable components and flows designed for frequent interaction.',
+          'React + TypeScript with components, modals and interaction states for fast task handling.',
         decisions: [
-          'Prioritize interaction clarity over visual decoration.',
-          'Keep the interface flexible for future enhancements such as stronger keyboard UX.',
-          'Solve state management in a simple and maintainable way instead of overengineering the MVP.',
+          'React component structure',
+          'Local state',
+          'Modals and interaction states',
+          'Practical UX decisions',
         ],
         impact:
-          'Shows how I build interfaces where behavior matters as much as visuals.',
+          'Shows frontend work centered on interaction, local state and a simple task UI.',
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'Local state'],
         links: {
           preview: 'https://kalanban.vercel.app/',
