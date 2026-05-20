@@ -129,9 +129,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       primaryCta: 'Ver proyectos',
       secondaryCta: 'Descargar CV',
       metrics: [
-        { label: 'Experiencia', value: 'Más de 7 años construyendo productos frontend y fullstack' },
-        { label: 'Stack', value: 'React, Vue.js y TypeScript en interfaces de producción' },
-        { label: 'Sectores', value: 'E-commerce, fintech y herramientas internas con flujos de usuario importantes' },
+        { label: 'Interfaces claras', value: 'Componentes reutilizables y patrones accesibles para trabajo frontend de producto.' },
+        { label: 'Código mantenible', value: 'React, Vue.js y TypeScript con estructura ordenada, integraciones limpias y una base fácil de mantener.' },
+        { label: 'APIs, rendimiento y pruebas', value: 'Integraciones con APIs y pruebas que cuidan rendimiento, accesibilidad y flujos de usuario.' },
       ],
     },
     sectionTitles: {
@@ -389,9 +389,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       primaryCta: 'View projects',
       secondaryCta: 'Download resume',
       metrics: [
-        { label: 'Experience', value: 'Over 7 years building frontend and fullstack products' },
-        { label: 'Stack', value: 'React, Vue.js & TypeScript across production interfaces' },
-        { label: 'Domains', value: 'E-commerce, fintech & internal tools with important user flows' },
+        { label: 'Clear interfaces', value: 'Reusable components and accessible patterns for product-focused frontend work.' },
+        { label: 'Maintainable code', value: 'React, Vue.js and TypeScript with clean structure, clear integrations and a codebase that is easy to maintain.' },
+        { label: 'APIs, performance and testing', value: 'API integrations and testing that support performance, accessibility and user flows.' },
       ],
     },
     sectionTitles: {
