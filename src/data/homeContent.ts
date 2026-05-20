@@ -114,16 +114,16 @@ export const homeContent: Record<Locale, HomeContent> = {
     },
     nav: {
       featured: 'Proyectos',
-      experience: 'Lanzamientos',
-      principles: 'Habilidades',
+      experience: 'Clientes',
+      principles: 'Principios',
       timeline: 'Experiencia',
       contact: 'Contacto',
     },
     hero: {
-      eyebrow: 'Frontend Engineer · React, Vue.js y TypeScript',
+      eyebrow: 'Frontend Engineer · React, Vue.js y TypeScript · Producto digital',
       title: 'Construyo interfaces de producto claras, mantenibles y listas para producción.',
       description:
-        'Trabajo en e-commerce, fintech, dashboards y automatización construyendo interfaces donde la UX, la arquitectura frontend y la estabilidad en producción importan de verdad.',
+        'Trabajo con React, Vue.js y TypeScript en e-commerce, fintech, automatización y productos digitales donde la UX, la estabilidad y el negocio importan.',
       location: 'Ciudad de México, México',
       status: 'Disponible para roles frontend remotos e internacionales',
       primaryCta: 'Ver proyectos',
@@ -136,31 +136,31 @@ export const homeContent: Record<Locale, HomeContent> = {
     sectionTitles: {
       featured: 'Proyectos seleccionados',
       featuredIntro:
-        'Productos y sistemas UI que muestran cómo pienso arquitectura frontend, experiencia de uso e implementación lista para iterar.',
+        'Una selección de proyectos que muestran cómo trabajo frontend, componentes reutilizables e integraciones en producto digital.',
       production: 'Sitios en producción',
       productionIntro:
         'Sitios publicados y trabajo con clientes donde participé desde frontend, estructura visual e integraciones.',
       deployments: 'Sitios en producción',
       deploymentsIntro:
-        'Lanzamientos y trabajo con clientes donde participé desde implementación frontend, jerarquía visual y entrega usable.',
+        'Trabajo con clientes y sitios publicados que ayudan a entender mejor el tipo de producto y entrega en el que he participado.',
       principles: 'Principios',
       principlesIntro:
-        'Criterios que uso para diseñar interfaces mantenibles, decisiones de UX y arquitectura que sí aguanta cambios reales.',
+        'Así suelo tomar decisiones cuando trabajo interfaces, producto e integraciones en proyectos reales.',
       timeline: 'Experiencia profesional',
       timelineIntro:
-        'Experiencia construyendo interfaces, integraciones y sistemas frontend para productos y operaciones reales.',
+        'Experiencia trabajando interfaces, integraciones y producto en equipos y sistemas reales.',
       about: 'Sobre mí',
     },
     featuredProjects: [
       {
         name: 'FitLog',
         summary:
-          'Producto mobile-first de nutrición centrado en logging diario, estructura modular y una experiencia pensada para hábito.',
+          'App mobile-first de nutrición en desarrollo, enfocada en logging diario, estructura clara y una UX pensada para hábito.',
         problem:
           'Diseñar un MVP centrado en el registro diario, sin depender de una sola feature como el escaneo.',
         role: 'Diseño y desarrollo frontend del producto: UX, arquitectura UI, estado local y sistema visual.',
         architecture:
-          'Arquitectura modular con flujos separados para búsqueda, barcode y custom food, pensada para crecer sin rehacer la base del producto.',
+          'Arquitectura modular con flujos separados para búsqueda, barcode y custom food, pensada para evolucionar sin rehacer la base.',
         decisions: [
           'Priorizar la pantalla Today como centro del sistema para reforzar hábito y claridad de producto.',
           'Separar persistencia y UI para poder migrar luego a Supabase sin reescribir la app.',
@@ -178,7 +178,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Dashboard Assistant',
         summary:
-          'Sistema de asistente embebido para dashboards con widgets reutilizables y una estructura lista para crecer.',
+          'Interfaz de asistente embebido para dashboards con widgets reutilizables y una UI pensada para escalar.',
         problem:
           'Diseñar un asistente que encajara de forma natural dentro de un dashboard.',
         role: 'Diseño e implementación del sistema UI, composición de widgets y estructura reutilizable.',
@@ -201,7 +201,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Kalanban',
         summary:
-          'Sistema tipo kanban enfocado en estados de UI, acciones rápidas y uso frecuente sin fricción.',
+          'Interfaz tipo kanban enfocada en estados de UI, acciones rápidas y uso cotidiano.',
         problem:
           'Resolver una interfaz con muchos estados y edición rápida sin volverla frágil.',
         role: 'Diseño e implementación frontend con foco en usabilidad, componentes reutilizables y estado local.',
@@ -370,16 +370,16 @@ export const homeContent: Record<Locale, HomeContent> = {
     },
     nav: {
       featured: 'Work',
-      experience: 'Launches',
-      principles: 'Skills',
+      experience: 'Clients',
+      principles: 'Principles',
       timeline: 'Experience',
       contact: 'Contact',
     },
     hero: {
-      eyebrow: 'Frontend Engineer · React, Vue.js and TypeScript',
+      eyebrow: 'Frontend Engineer · React, Vue.js and TypeScript · Digital product',
       title: 'I build product interfaces that are clear, maintainable, and ready for production.',
       description:
-        'I work across e-commerce, fintech, dashboards, and automation building interfaces where UX, frontend architecture, and production stability all matter.',
+        'I work with React, Vue.js, and TypeScript across e-commerce, fintech, automation, and digital products where UX, stability, and business needs all matter.',
       location: 'Mexico City, Mexico',
       status: 'Available for remote and international frontend roles',
       primaryCta: 'View projects',
@@ -392,31 +392,31 @@ export const homeContent: Record<Locale, HomeContent> = {
     sectionTitles: {
       featured: 'Selected projects',
       featuredIntro:
-        'Products and UI systems that show how I approach frontend architecture, usability, and product delivery.',
+        'A selection of projects that show how I approach frontend, reusable components, and integrations in digital products.',
       production: 'Production websites',
       productionIntro:
         'Published websites and client work where I contributed through frontend execution, visual structure, and integrations.',
       deployments: 'Production websites',
       deploymentsIntro:
-        'Client launches and published work where I contributed through frontend implementation, hierarchy, and usable delivery.',
+        'Client work and published websites that show the kind of product and delivery work I have been involved in.',
       principles: 'Principles',
       principlesIntro:
-        'The criteria I use when shaping maintainable interfaces, UX decisions, and frontend systems that need to hold up in real use.',
+        'How I usually make decisions when working on interfaces, product, and integrations in real projects.',
       timeline: 'Professional experience',
       timelineIntro:
-        'Experience building interfaces, integrations, and frontend systems across real products and operational environments.',
+        'Experience building interfaces, integrations, and product work across real teams and systems.',
       about: 'About',
     },
     featuredProjects: [
       {
         name: 'FitLog',
         summary:
-          'A mobile-first nutrition product built around daily logging, modular structure, and habit-friendly UX.',
+          'A mobile-first nutrition product in development, built around daily logging, clear structure, and habit-friendly UX.',
         problem:
           'Design an MVP centered on daily logging instead of depending on one isolated feature like barcode scanning.',
         role: 'Frontend product work across UX, UI architecture, local state, and visual direction.',
         architecture:
-          'Modular frontend structure with separate flows for search, barcode, and custom foods, designed to evolve without rebuilding the product base.',
+          'Modular frontend structure with separate flows for search, barcode, and custom foods, designed to evolve without rebuilding the base.',
         decisions: [
           'Make the Today screen the center of the system to reinforce habit and product clarity.',
           'Separate persistence from UI so the app can later migrate to Supabase without rewriting the experience.',
@@ -434,7 +434,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Dashboard Assistant',
         summary:
-          'An embedded dashboard assistant with reusable widgets and a UI system designed to scale cleanly.',
+          'An embedded dashboard assistant built with reusable widgets and a UI designed to scale.',
         problem:
           'Design an assistant that could fit naturally inside a dashboard.',
         role: 'Designed and implemented the UI system, widget composition, and reusable structure.',
@@ -457,7 +457,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Kalanban',
         summary:
-          'A kanban-style system focused on UI states, fast actions, and everyday usability without friction.',
+          'A kanban-style interface focused on UI states, fast actions, and everyday usability.',
         problem:
           'Build an interface with multiple states and quick editing without making it fragile.',
         role: 'Frontend design and implementation focused on usability, reusable structure, and local state.',
