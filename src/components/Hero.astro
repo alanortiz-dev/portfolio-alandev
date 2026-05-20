@@ -5,9 +5,6 @@ import Code from '@/components/icons/Code.astro';
 import GitHub from '@/components/icons/GitHub.astro';
 import LinkedInIcon from '@/components/icons/LinkedIn.astro';
 import MailIcon from '@/components/icons/Mail.astro';
-import ReactIcon from '@/components/icons/React.astro';
-import Tailwind from '@/components/icons/Tailwind.astro';
-import TypeScript from '@/components/icons/TypeScript.astro';
 import type { HomeContent } from '@/data/homeContent';
 import profile from '@/data/profile';
 
@@ -72,67 +69,20 @@ const specialties = currentLang === 'en'
       'Contexto fullstack con Node.js, PHP, Laravel, Symfony y SQL',
     ];
 
-const technologyGroups = currentLang === 'en'
-  ? [
-      {
-        title: 'Core frontend stack',
-        items: [
-          { name: 'React', icon: ReactIcon, shortLabel: 'R', color: '#61dafb' },
-          { name: 'TypeScript', icon: TypeScript, shortLabel: 'TS', color: '#3178c6' },
-          { name: 'JavaScript', icon: null, shortLabel: 'JS', color: '#f7df1e' },
-          { name: 'Vue.js', icon: null, shortLabel: 'V', color: '#42b883' },
-          { name: 'Tailwind CSS', icon: Tailwind, shortLabel: '~', color: '#38bdf8' },
-          { name: 'Playwright', icon: null, shortLabel: 'PW', color: '#8edc5f' },
-          { name: 'REST APIs', icon: null, shortLabel: 'API', color: '#10b981' },
-          { name: 'GraphQL', icon: null, shortLabel: 'GQL', color: '#ec4899' },
-          { name: 'Node.js', icon: null, shortLabel: 'N', color: '#68a063' },
-          { name: 'Git', icon: null, shortLabel: 'Git', color: '#f05032' },
-        ],
-      },
-      {
-        title: 'Fullstack context',
-        items: [
-          { name: 'PHP', icon: null, shortLabel: 'PHP', color: '#777bb4' },
-          { name: 'Laravel', icon: null, shortLabel: 'L', color: '#ff2d20' },
-          { name: 'Symfony', icon: null, shortLabel: 'S', color: '#ffffff' },
-          { name: 'SQL', icon: null, shortLabel: 'SQL', color: '#38bdf8' },
-          { name: 'PHPUnit', icon: null, shortLabel: 'PU', color: '#a3aed0' },
-          { name: 'Selenium', icon: null, shortLabel: 'Se', color: '#43b02a' },
-          { name: 'VTEX IO', icon: null, shortLabel: 'VX', color: '#f71963' },
-          { name: 'Make / n8n', icon: null, shortLabel: 'M', color: '#8b5cf6' },
-        ],
-      },
-    ]
-  : [
-      {
-        title: 'Stack principal frontend',
-        items: [
-          { name: 'React', icon: ReactIcon, shortLabel: 'R', color: '#61dafb' },
-          { name: 'TypeScript', icon: TypeScript, shortLabel: 'TS', color: '#3178c6' },
-          { name: 'JavaScript', icon: null, shortLabel: 'JS', color: '#f7df1e' },
-          { name: 'Vue.js', icon: null, shortLabel: 'V', color: '#42b883' },
-          { name: 'Tailwind CSS', icon: Tailwind, shortLabel: '~', color: '#38bdf8' },
-          { name: 'Playwright', icon: null, shortLabel: 'PW', color: '#8edc5f' },
-          { name: 'REST APIs', icon: null, shortLabel: 'API', color: '#10b981' },
-          { name: 'GraphQL', icon: null, shortLabel: 'GQL', color: '#ec4899' },
-          { name: 'Node.js', icon: null, shortLabel: 'N', color: '#68a063' },
-          { name: 'Git', icon: null, shortLabel: 'Git', color: '#f05032' },
-        ],
-      },
-      {
-        title: 'Contexto fullstack y complementario',
-        items: [
-          { name: 'PHP', icon: null, shortLabel: 'PHP', color: '#777bb4' },
-          { name: 'Laravel', icon: null, shortLabel: 'L', color: '#ff2d20' },
-          { name: 'Symfony', icon: null, shortLabel: 'S', color: '#ffffff' },
-          { name: 'SQL', icon: null, shortLabel: 'SQL', color: '#38bdf8' },
-          { name: 'PHPUnit', icon: null, shortLabel: 'PU', color: '#a3aed0' },
-          { name: 'Selenium', icon: null, shortLabel: 'Se', color: '#43b02a' },
-          { name: 'VTEX IO', icon: null, shortLabel: 'VX', color: '#f71963' },
-          { name: 'Make / n8n', icon: null, shortLabel: 'M', color: '#8b5cf6' },
-        ],
-      },
-    ];
+const technologies = [
+  { name: 'React', icon: '/icons/tech/react.svg' },
+  { name: 'TypeScript', icon: '/icons/tech/typescript.svg' },
+  { name: 'JavaScript', icon: '/icons/tech/javascript.svg' },
+  { name: 'REST APIs', icon: '/icons/tech/rest-apis.svg' },
+  { name: 'GraphQL', icon: '/icons/tech/graphql.svg' },
+  { name: 'Vue.js', icon: '/icons/tech/vue.svg' },
+  { name: 'Tailwind CSS', icon: '/icons/tech/tailwindcss.svg' },
+  { name: 'Playwright', icon: '/icons/tech/playwright.svg' },
+  { name: 'Node.js', icon: '/icons/tech/nodejs.svg' },
+  { name: 'PHP', icon: '/icons/tech/php.svg' },
+  { name: 'Git', icon: '/icons/tech/git.svg' },
+  { name: currentLang === 'en' ? 'Responsive UI' : 'UI responsive', icon: '/icons/tech/responsive-ui.svg' },
+];
 
 const profileMeta = [
   { kind: 'location', value: content.hero.location },
@@ -308,23 +258,13 @@ const profileMeta = [
 
     <section class="rounded-[1.6rem] border border-slate-200/70 bg-white/92 p-5 shadow-sm shadow-slate-200/12 dark:border-white/10 dark:bg-[#121a2d] dark:shadow-none sm:p-6">
       <h2 class="text-[1.4rem] font-semibold tracking-tight text-slate-950 dark:text-white">{currentLang === 'en' ? 'Technologies' : 'Tecnologías'}</h2>
-      <div class="mt-6 space-y-6">
-        {technologyGroups.map((group) => (
-          <div class="space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{group.title}</p>
-            <div class="grid grid-cols-3 gap-x-5 gap-y-6 sm:grid-cols-4 xl:grid-cols-5">
-              {group.items.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div class="flex flex-col items-center gap-2 text-center">
-                    <span class="tech-mark" aria-hidden="true" style={`color: ${item.color};`}>
-                      {Icon ? <Icon class="size-8" /> : <span class="tech-label">{item.shortLabel}</span>}
-                    </span>
-                    <span class="text-sm font-medium text-slate-600 dark:text-slate-300">{item.name}</span>
-                  </div>
-                );
-              })}
-            </div>
+      <div class="mt-5 grid grid-cols-3 gap-x-4 gap-y-5 sm:grid-cols-4 xl:grid-cols-5">
+        {technologies.map((item) => (
+          <div class="flex flex-col items-center gap-2 text-center">
+            <span class="tech-mark" aria-hidden="true">
+              <img class="tech-icon" src={item.icon} alt="" loading="lazy" />
+            </span>
+            <span class="text-sm font-medium leading-tight text-slate-600 dark:text-slate-300">{item.name}</span>
           </div>
         ))}
       </div>
@@ -340,20 +280,18 @@ const profileMeta = [
     width: 2.9rem;
     height: 2.9rem;
     border-radius: 9999px;
-    color: white;
-    font-size: 0;
     position: relative;
+    background: rgba(15, 23, 42, 0.04);
   }
 
-  .tech-mark :global(svg) {
-    width: 1.9rem;
-    height: 1.9rem;
+  :global(.dark) .tech-mark {
+    background: rgba(255, 255, 255, 0.06);
   }
 
-  .tech-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
+  .tech-icon {
+    width: 1.85rem;
+    height: 1.85rem;
+    object-fit: contain;
+    display: block;
   }
 </style>
