@@ -13,6 +13,14 @@ export interface FeaturedProject {
   role: string;
   architecture: string;
   decisions: string[];
+  detail: {
+    context: string;
+    frontendArchitecture: string;
+    stateManagement: string;
+    componentDesign: string;
+    uxDecisions: string;
+    improvementsNext: string;
+  };
   impact: string;
   stack: string[];
   links: {
@@ -159,7 +167,7 @@ export const homeContent: Record<Locale, HomeContent> = {
     featuredProjects: [
       {
         name: 'FitLog',
-        type: 'MVP funcional',
+        type: 'Nutrition tracker',
         summary:
           'Tracker de nutrición mobile-first centrado en registro diario, objetivos de macros y flujos de producto de baja fricción.',
         problem:
@@ -173,6 +181,20 @@ export const homeContent: Record<Locale, HomeContent> = {
           'Pantalla Today con resumen diario, metas de macros y navegación pensada para uso frecuente.',
           'Modo demo, onboarding y rutas de historial y perfil para que la experiencia funcione como app, no como demo estática.',
         ],
+        detail: {
+          context:
+            'Producto mobile-first para registrar comida, consultar progreso diario y trabajar con objetivos de macros sin fricción en sesiones rápidas.',
+          frontendArchitecture:
+            'La app está organizada por rutas de producto: landing, auth, onboarding, Today, agregar comida, búsqueda, alimento personalizado, historial y perfil.',
+          stateManagement:
+            'AppContext centraliza sesión, entradas del diario, alimentos personalizados y metas de macros para mantener un flujo consistente entre pantallas.',
+          componentDesign:
+            'Los componentes separan acciones frecuentes, resumen de macros, búsqueda y confirmación para que cada pantalla pueda iterar sin romper el flujo completo.',
+          uxDecisions:
+            'Prioricé navegación corta, modo demo, onboarding y una pantalla Today enfocada en la acción principal: registrar y revisar progreso.',
+          improvementsNext:
+            'Conectaría una API real de alimentos, añadiría edición avanzada de entradas y reforzaría pruebas sobre onboarding, logging y cálculo de macros.',
+        },
         impact:
           'Importa porque muestra una experiencia funcional de producto, no solo pantallas sueltas: entrada, onboarding, logging, resumen diario y rutas conectadas.',
         stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
@@ -183,7 +205,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
       {
         name: 'Dashboard Assistant',
-        type: 'Arquitectura frontend',
+        type: 'Conversational UI',
         summary:
           'Asistente embebido para dashboard, sin backend a propósito, enfocado en mensajes tipados y widgets reutilizables.',
         problem:
@@ -197,6 +219,20 @@ export const homeContent: Record<Locale, HomeContent> = {
           'TextMessage, RewardMessage y ChatMessage usan uniones discriminadas para renderizado con tipado seguro.',
           'RewardCard entra como widget interactivo dentro del flujo de mensajes, no como UI aislada.',
         ],
+        detail: {
+          context:
+            'Asistente conversacional embebido dentro de un dashboard, pensado para demostrar cómo una UI de chat puede convivir con widgets accionables.',
+          frontendArchitecture:
+            'La interfaz separa disparador, ventana, lista de mensajes, burbujas, renderizado por tipo y tarjetas interactivas para mantener límites claros.',
+          stateManagement:
+            'useChat funciona como fuente única de verdad para historial, carga inicial, estado de typing, envío de mensajes y canje de recompensas.',
+          componentDesign:
+            'MessageItem usa uniones discriminadas para decidir si renderiza texto o un widget, evitando condicionales débiles repartidos por la UI.',
+          uxDecisions:
+            'El asistente aparece como capa secundaria del dashboard, con feedback de typing y respuestas simuladas para comunicar flujo sin depender de backend.',
+          improvementsNext:
+            'Añadiría streaming real, persistencia de conversación, manejo de errores de API y pruebas de accesibilidad para foco, teclado y anuncios de estado.',
+        },
         impact:
           'Importa porque enseña arquitectura de UI y tipado para interfaces conversacionales, no solo un chat bonito.',
         stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API', 'Discriminated unions'],
@@ -208,7 +244,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
       {
         name: 'Kalanban',
-        type: 'UX e interacción',
+        type: 'Kanban app',
         summary:
           'Interfaz tipo kanban que usa un patrón conocido para demostrar pulido de UX, persistencia local y microinteracciones.',
         problem:
@@ -222,6 +258,20 @@ export const homeContent: Record<Locale, HomeContent> = {
           'Onboarding inicial, tutorial y modal de confirmación reutilizable para acciones destructivas.',
           'Animaciones con Framer Motion, tooltips personalizados y soporte para modo claro/oscuro.',
         ],
+        detail: {
+          context:
+            'Tablero kanban construido sobre un patrón conocido para centrar la evaluación en calidad de interacción, persistencia y claridad visual.',
+          frontendArchitecture:
+            'Board coordina columnas y tareas, mientras hooks y componentes de interacción mantienen separado el estado persistido, modales y onboarding.',
+          stateManagement:
+            'useLocalStorage conserva columnas y tareas entre recargas; el estado del tablero permanece local para demostrar un producto usable sin backend.',
+          componentDesign:
+            'Columnas, tarjetas, modales, tooltips y confirmaciones están modelados como piezas reutilizables para sostener acciones repetidas del tablero.',
+          uxDecisions:
+            'Incluí drag and drop, onboarding, tutorial, confirmaciones, microinteracciones y soporte claro/oscuro porque en un kanban el detalle de uso define la calidad.',
+          improvementsNext:
+            'El siguiente paso sería agregar sincronización multiusuario, historial de cambios, filtros y pruebas E2E sobre drag and drop y acciones destructivas.',
+        },
         impact:
           'Importa porque convierte un patrón familiar en una muestra clara de calidad de ejecución frontend y diseño de interacción.',
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'Pragmatic DnD', 'localStorage', 'Framer Motion'],
@@ -448,7 +498,7 @@ export const homeContent: Record<Locale, HomeContent> = {
     featuredProjects: [
       {
         name: 'FitLog',
-        type: 'Functional MVP',
+        type: 'Nutrition tracker',
         summary:
           'Functional mobile-first nutrition tracker focused on daily food logging, macro targets, and low-friction product flows.',
         problem:
@@ -462,6 +512,20 @@ export const homeContent: Record<Locale, HomeContent> = {
           'The Today dashboard keeps daily macro progress and logging actions one tap away.',
           'Demo mode, onboarding, history, and profile routes make the product flow feel functional rather than static.',
         ],
+        detail: {
+          context:
+            'A mobile-first product for food logging, daily progress, and macro goals, designed around quick repeated sessions.',
+          frontendArchitecture:
+            'The app is organized around product routes: landing, auth, onboarding, Today, add food, search, custom food, history, and profile.',
+          stateManagement:
+            'AppContext centralizes session state, diary entries, custom foods, and macro targets so the flow stays consistent across screens.',
+          componentDesign:
+            'Components separate frequent actions, macro summaries, search, and confirmation so each screen can evolve without breaking the full flow.',
+          uxDecisions:
+            'I prioritized short navigation, demo mode, onboarding, and a Today screen focused on the primary action: log food and review progress.',
+          improvementsNext:
+            'I would connect a real food API, add richer entry editing, and strengthen tests around onboarding, logging, and macro calculations.',
+        },
         impact:
           'It matters because it shows a working product flow, not just isolated screens: entry, onboarding, logging, daily summaries, and connected routes.',
         stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
@@ -472,7 +536,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
       {
         name: 'Dashboard Assistant',
-        type: 'Frontend Architecture',
+        type: 'Conversational UI',
         summary:
           'Dashboard-embedded assistant built without a backend on purpose, focused on typed messages and reusable widget rendering.',
         problem:
@@ -486,6 +550,20 @@ export const homeContent: Record<Locale, HomeContent> = {
           'TextMessage, RewardMessage, and ChatMessage use discriminated unions for type-safe rendering.',
           'RewardCard works as an interactive widget inside the conversation instead of a separate UI block.',
         ],
+        detail: {
+          context:
+            'A conversational assistant embedded inside a dashboard, built to show how chat UI can coexist with actionable widgets.',
+          frontendArchitecture:
+            'The interface separates trigger, window, message list, bubbles, type-based rendering, and interactive cards to keep boundaries clear.',
+          stateManagement:
+            'useChat acts as the single source of truth for initial history, loading, typing state, message sending, and reward redemption.',
+          componentDesign:
+            'MessageItem uses discriminated unions to render text or widgets without spreading fragile conditional logic across the UI.',
+          uxDecisions:
+            'The assistant works as a secondary dashboard layer, with typing feedback and mocked responses to communicate flow without depending on a backend.',
+          improvementsNext:
+            'I would add real streaming, conversation persistence, API error states, and accessibility tests for focus, keyboard use, and status announcements.',
+        },
         impact:
           'It matters because it shows frontend architecture and typed conversational UI, not just a chat-looking widget.',
         stack: ['Vue 3', 'TypeScript', 'Vite', 'Composition API', 'Discriminated unions'],
@@ -497,7 +575,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
       {
         name: 'Kalanban',
-        type: 'UX Showcase',
+        type: 'Kanban app',
         summary:
           'A familiar Kanban interface rebuilt to show UX polish, local persistence, and frontend microinteractions.',
         problem:
@@ -511,6 +589,20 @@ export const homeContent: Record<Locale, HomeContent> = {
           'Onboarding, guided tour, and a reusable confirmation modal make the UI easier to learn and safer to use.',
           'Framer Motion animations, custom tooltips, and light/dark mode improve interaction feedback.',
         ],
+        detail: {
+          context:
+            'A kanban board built around a familiar pattern so the evaluation centers on interaction quality, persistence, and visual clarity.',
+          frontendArchitecture:
+            'Board coordinates columns and tasks, while hooks and interaction components keep persisted state, modals, and onboarding separated.',
+          stateManagement:
+            'useLocalStorage preserves columns and tasks between reloads; board state stays local to demonstrate a usable product without a backend.',
+          componentDesign:
+            'Columns, cards, modals, tooltips, and confirmations are modeled as reusable pieces for repeated board actions.',
+          uxDecisions:
+            'I included drag and drop, onboarding, guided help, confirmations, microinteractions, and theme support because usability details define a kanban app.',
+          improvementsNext:
+            'Next I would add multi-user sync, change history, filters, and E2E tests around drag and drop plus destructive actions.',
+        },
         impact:
           'It matters because it turns a familiar pattern into a clear example of frontend execution quality and interaction design.',
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'Pragmatic DnD', 'localStorage', 'Framer Motion'],

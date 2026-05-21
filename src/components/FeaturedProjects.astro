@@ -17,19 +17,43 @@ const ui = currentLang === 'en'
   ? {
       title: 'Featured projects',
       moreExperience: 'See more experience',
-      challenge: 'Challenge',
+      problem: 'Problem',
+      technicalDecisions: 'Technical decisions',
       proves: 'What it proves',
-      whyItMatters: 'Why it matters',
-      frontendDecisions: 'Frontend decisions',
+      stack: 'Stack',
+      links: 'Links',
+      viewDetails: 'View technical detail',
+      closeDetails: 'Close detail',
     }
   : {
       title: 'Proyectos destacados',
       moreExperience: 'Ver más experiencia',
-      challenge: 'Reto',
+      problem: 'Problema',
+      technicalDecisions: 'Decisiones técnicas',
       proves: 'Qué demuestra',
-      whyItMatters: 'Por qué importa',
-      frontendDecisions: 'Decisiones frontend',
+      stack: 'Stack',
+      links: 'Links',
+      viewDetails: 'Ver detalle técnico',
+      closeDetails: 'Cerrar detalle',
     };
+
+const detailSections = currentLang === 'en'
+  ? ([
+      { key: 'context', label: 'Context' },
+      { key: 'frontendArchitecture', label: 'Frontend architecture' },
+      { key: 'stateManagement', label: 'State management' },
+      { key: 'componentDesign', label: 'Component design' },
+      { key: 'uxDecisions', label: 'UX decisions' },
+      { key: 'improvementsNext', label: 'What I would improve next' },
+    ] as const)
+  : ([
+      { key: 'context', label: 'Contexto' },
+      { key: 'frontendArchitecture', label: 'Arquitectura frontend' },
+      { key: 'stateManagement', label: 'Manejo de estado' },
+      { key: 'componentDesign', label: 'Diseño de componentes' },
+      { key: 'uxDecisions', label: 'Decisiones UX' },
+      { key: 'improvementsNext', label: 'Qué mejoraría después' },
+    ] as const);
 
 const tagStyles = {
   React: { class: 'bg-[#1e2127] text-white', icon: React },
@@ -75,6 +99,9 @@ const projectVisuals: Record<string, { image: string; imageAlt: { es: string; en
     },
   },
 };
+
+const createProjectId = (name: string) =>
+  `featured-project-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
 ---
 
 <div class="rounded-[1.75rem] border border-slate-200/70 bg-white/95 p-4 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0b1120]/95 dark:shadow-none sm:p-5">
@@ -95,76 +122,58 @@ const projectVisuals: Record<string, { image: string; imageAlt: { es: string; en
         const hasCode = Boolean(project.links.code && project.links.code !== '#');
         const hasPreview = Boolean(project.links.preview && project.links.preview !== '#');
         const accent = accentBadgeStyles[project.accent ?? 'slate'];
+        const modalId = createProjectId(project.name);
 
         return (
-          <article class="rounded-[1.4rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/8 dark:bg-white/[0.03] dark:hover:shadow-none">
-            <div class="space-y-4">
-              {visual && (
-                <div class="overflow-hidden rounded-[1rem] border border-slate-200/70 bg-slate-950/5 dark:border-white/8">
-                  <img
-                    src={visual.image}
-                    alt={visual.imageAlt[currentLang]}
-                    width="1200"
-                    height="760"
-                    loading="lazy"
-                    class="aspect-[16/10] w-full object-cover object-top"
-                  />
-                </div>
-              )}
+          <article class="flex h-full flex-col rounded-[1.4rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none">
+            {visual && (
+              <div class="overflow-hidden rounded-[1rem] border border-slate-200/70 bg-slate-950/5 dark:border-white/10">
+                <img
+                  src={visual.image}
+                  alt={visual.imageAlt[currentLang]}
+                  width="1200"
+                  height="760"
+                  loading="lazy"
+                  class="aspect-[16/10] w-full object-cover object-top"
+                />
+              </div>
+            )}
 
-              <div class="space-y-4 px-1 pb-1">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="space-y-3">
-                    <span class={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${accent}`}>
-                      {project.type}
-                    </span>
+            <div class="flex flex-1 flex-col gap-4 px-1 pb-1 pt-4">
+              <div class="space-y-3">
+                <span class={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${accent}`}>
+                  {project.type}
+                </span>
 
-                    <div>
-                      <h4 class="text-lg font-semibold tracking-tight text-slate-950 dark:text-white">{project.name}</h4>
-                      <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{project.summary}</p>
-                    </div>
-                  </div>
+                <h4 class="text-lg font-semibold tracking-tight text-slate-950 dark:text-white">{project.name}</h4>
+              </div>
 
-                  {hasPreview && (
-                    <a
-                      href={project.links.preview}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:text-white"
-                    >
-                      <Link class="size-4" />
-                    </a>
-                  )}
-                </div>
+              <div class="space-y-3">
+                <section>
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.problem}</p>
+                  <p class="mt-1.5 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.problem}</p>
+                </section>
 
-                <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
-                  <div class="rounded-[1rem] border border-slate-200/70 bg-slate-50/80 p-3 dark:border-white/10 dark:bg-white/[0.03]">
-                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.challenge}</p>
-                    <p class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.problem}</p>
-                  </div>
-                  <div class="rounded-[1rem] border border-slate-200/70 bg-slate-50/80 p-3 dark:border-white/10 dark:bg-white/[0.03]">
-                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.proves}</p>
-                    <p class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.role}</p>
-                  </div>
-                </div>
-
-                <div class="rounded-[1rem] border border-slate-200/70 bg-white p-3 dark:border-white/10 dark:bg-white/[0.02]">
-                  <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.whyItMatters}</p>
-                  <p class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.impact}</p>
-                </div>
-
-                <div class="space-y-2">
-                  <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.frontendDecisions}</p>
-                  <ul class="space-y-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                    {project.decisions.map((item) => (
+                <section>
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.technicalDecisions}</p>
+                  <ul class="mt-1.5 space-y-1.5 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                    {project.decisions.slice(0, 2).map((item) => (
                       <li class="flex items-start gap-2.5">
                         <span class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-400 dark:bg-slate-500"></span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </section>
 
+                <section>
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.proves}</p>
+                  <p class="mt-1.5 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.role}</p>
+                </section>
+              </div>
+
+              <section class="space-y-2">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.stack}</p>
                 <ul class="flex flex-wrap gap-2">
                   {project.stack.map((item) => {
                     const tag = tagStyles[item as keyof typeof tagStyles] || { class: 'bg-slate-700 text-white', icon: null };
@@ -179,8 +188,11 @@ const projectVisuals: Record<string, { image: string; imageAlt: { es: string; en
                     );
                   })}
                 </ul>
+              </section>
 
-                <div class="flex flex-wrap gap-2 pt-1">
+              <div class="mt-auto space-y-2 pt-1">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.links}</p>
+                <div class="flex flex-wrap gap-2">
                   {hasCode && (
                     <a
                       href={project.links.code}
@@ -203,6 +215,13 @@ const projectVisuals: Record<string, { image: string; imageAlt: { es: string; en
                       {content.labels.preview}
                     </a>
                   )}
+                  <button
+                    type="button"
+                    data-project-modal-trigger={modalId}
+                    class="inline-flex items-center rounded-xl bg-slate-950 px-3 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                  >
+                    {ui.viewDetails}
+                  </button>
                 </div>
               </div>
             </div>
@@ -211,4 +230,182 @@ const projectVisuals: Record<string, { image: string; imageAlt: { es: string; en
       })
     }
   </div>
+
+  {
+    content.featuredProjects.map((project) => {
+      const modalId = createProjectId(project.name);
+      const accent = accentBadgeStyles[project.accent ?? 'slate'];
+
+      return (
+        <div id={modalId} class="fixed inset-0 z-50 hidden" data-project-modal>
+          <div class="absolute inset-0 bg-slate-950/60 opacity-0 backdrop-blur-sm transition-opacity duration-200" data-project-modal-backdrop></div>
+          <div class="relative z-10 flex min-h-full items-end justify-center p-3 sm:items-center sm:p-6">
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={`${modalId}-title`}
+              class="max-h-[min(88vh,760px)] w-full max-w-3xl translate-y-4 scale-[0.98] overflow-hidden rounded-[1.35rem] border border-slate-200 bg-white opacity-0 shadow-2xl shadow-slate-950/20 transition duration-200 dark:border-white/10 dark:bg-[#0b1120] dark:shadow-slate-950/50"
+              data-project-modal-panel
+            >
+              <div class="flex items-start justify-between gap-4 border-b border-slate-200/70 p-5 dark:border-white/10 sm:p-6">
+                <div class="space-y-3">
+                  <span class={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${accent}`}>
+                    {project.type}
+                  </span>
+                  <div>
+                    <h4 id={`${modalId}-title`} class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white">{project.name}</h4>
+                    <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">{project.summary}</p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  data-project-modal-close
+                  aria-label={ui.closeDetails}
+                  class="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-2xl leading-none text-slate-700 transition hover:border-slate-300 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:text-white"
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+
+              <div class="max-h-[calc(88vh-11rem)] overflow-y-auto px-5 py-2 sm:px-6">
+                {detailSections.map((section) => (
+                  <section class="border-b border-slate-200/70 py-4 last:border-b-0 dark:border-white/10">
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{section.label}</p>
+                    <p class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.detail[section.key]}</p>
+                  </section>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      );
+    })
+  }
 </div>
+
+<style>
+  [data-project-modal].is-visible {
+    display: block;
+  }
+
+  [data-project-modal].is-open [data-project-modal-backdrop] {
+    opacity: 1;
+  }
+
+  [data-project-modal].is-open [data-project-modal-panel] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+</style>
+
+<script is:inline>
+  const initFeaturedProjectModals = () => {
+    const triggers = document.querySelectorAll('[data-project-modal-trigger]');
+    const modals = document.querySelectorAll('[data-project-modal]');
+    window.featuredProjectModalState = window.featuredProjectModalState || {
+      activeModal: null,
+      activeTrigger: null,
+      previousBodyOverflow: '',
+      keydownBound: false,
+    };
+
+    const state = window.featuredProjectModalState;
+
+    const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+    const getFocusable = (modal) => Array.from(modal.querySelectorAll(focusableSelector));
+
+    const closeModal = () => {
+      if (!state.activeModal) return;
+
+      const modal = state.activeModal;
+      modal.classList.remove('is-open');
+      document.body.style.overflow = state.previousBodyOverflow;
+
+      window.setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('is-visible');
+      }, 200);
+
+      state.activeTrigger?.focus();
+      state.activeModal = null;
+      state.activeTrigger = null;
+    };
+
+    const openModal = (modalId, trigger) => {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+
+      state.activeModal = modal;
+      state.activeTrigger = trigger;
+      state.previousBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      modal.classList.remove('hidden');
+      modal.classList.add('is-visible');
+
+      window.requestAnimationFrame(() => {
+        modal.classList.add('is-open');
+      });
+
+      const closeButton = modal.querySelector('[data-project-modal-close]');
+      closeButton?.focus();
+    };
+
+    triggers.forEach((trigger) => {
+      if (trigger.dataset.bound === 'true') return;
+      trigger.dataset.bound = 'true';
+
+      trigger.addEventListener('click', () => {
+        const modalId = trigger.getAttribute('data-project-modal-trigger');
+        if (!modalId) return;
+        openModal(modalId, trigger);
+      });
+    });
+
+    modals.forEach((modal) => {
+      if (modal.dataset.bound === 'true') return;
+      modal.dataset.bound = 'true';
+
+      modal.querySelectorAll('[data-project-modal-close]').forEach((button) => {
+        button.addEventListener('click', closeModal);
+      });
+
+      modal.querySelector('[data-project-modal-backdrop]')?.addEventListener('click', closeModal);
+    });
+
+    if (state.keydownBound === true) return;
+    state.keydownBound = true;
+
+    document.addEventListener('keydown', (event) => {
+      if (!state.activeModal) return;
+
+      if (event.key === 'Escape') {
+        closeModal();
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusable = getFocusable(state.activeModal);
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      }
+
+      if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+  };
+
+  if (document.readyState !== 'loading') initFeaturedProjectModals();
+  document.addEventListener('DOMContentLoaded', initFeaturedProjectModals, { once: true });
+  document.addEventListener('astro:page-load', initFeaturedProjectModals);
+</script>
