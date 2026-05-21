@@ -284,12 +284,6 @@ export const homeContent: Record<Locale, HomeContent> = {
     ],
     deployments: [
       {
-        name: 'Tatuajes en Valencia',
-        url: 'https://tatuajesenvalencia.com/',
-        summary: 'Sitio orientado a conversión y visibilidad local para servicio real.',
-        focus: ['Ejecución responsive', 'claridad comercial', 'SEO base', 'entrega usable'],
-      },
-      {
         name: 'Hivora Clothes',
         url: 'https://hivoraclothes.com/',
         summary: 'Implementación visual y de producto para una marca con foco en presentación y navegación limpia.',
@@ -306,6 +300,12 @@ export const homeContent: Record<Locale, HomeContent> = {
         url: 'https://www.pia-maria-coaching.com/',
         summary: 'Sitio orientado a captación y claridad de oferta para servicio profesional.',
         focus: ['Captación de leads', 'UX que genera confianza', 'entrega responsive limpia', 'claridad de contenido'],
+      },
+      {
+        name: 'Tatuajes en Valencia',
+        url: 'https://tatuajesenvalencia.com/',
+        summary: 'Sitio orientado a conversión y visibilidad local para servicio real.',
+        focus: ['Ejecución responsive', 'claridad comercial', 'SEO base', 'entrega usable'],
       },
     ],
     principles: [
@@ -615,12 +615,6 @@ export const homeContent: Record<Locale, HomeContent> = {
     ],
     deployments: [
       {
-        name: 'Tatuajes en Valencia',
-        url: 'https://tatuajesenvalencia.com/',
-        summary: 'A production site built for local visibility and service conversion.',
-        focus: ['Responsive execution', 'commercial clarity', 'baseline SEO', 'usable delivery'],
-      },
-      {
         name: 'Hivora Clothes',
         url: 'https://hivoraclothes.com/',
         summary: 'Visual and product implementation for a brand-focused web presence.',
@@ -637,6 +631,12 @@ export const homeContent: Record<Locale, HomeContent> = {
         url: 'https://www.pia-maria-coaching.com/',
         summary: 'A coaching site designed to improve clarity, trust, and lead generation.',
         focus: ['Lead capture', 'trust-building UX', 'clean responsive delivery', 'content clarity'],
+      },
+      {
+        name: 'Tatuajes en Valencia',
+        url: 'https://tatuajesenvalencia.com/',
+        summary: 'A production site built for local visibility and service conversion.',
+        focus: ['Responsive execution', 'commercial clarity', 'baseline SEO', 'usable delivery'],
       },
     ],
     principles: [
