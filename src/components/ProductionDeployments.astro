@@ -22,7 +22,7 @@ const { content } = Astro.props;
   <div class="grid gap-4 md:grid-cols-2">
     {
       content.deployments.map((deployment) => (
-        <article class="rounded-[1.4rem] border border-slate-200/70 bg-white/90 p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/8 dark:bg-white/[0.03] dark:hover:shadow-none lg:p-6">
+        <article class="rounded-[1.4rem] border border-slate-200/70 bg-white/90 p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none lg:p-6">
           <div class="space-y-5">
             <div>
               <h4 class="text-xl font-semibold text-slate-950 dark:text-white">{deployment.name}</h4>
