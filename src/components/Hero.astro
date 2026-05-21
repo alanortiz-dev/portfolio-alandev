@@ -64,15 +64,15 @@ const profileMeta = currentLang === 'en'
 <section class="space-y-6 lg:space-y-7">
   <div class="rounded-[2rem] border border-slate-200/70 bg-white/95 px-5 py-6 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0a1020]/95 dark:shadow-none sm:px-6 sm:py-7 lg:px-8 lg:py-8 xl:px-9 xl:py-9">
     <div class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_350px] lg:items-start xl:grid-cols-[minmax(0,1.4fr)_360px] xl:gap-10">
-      <div class="space-y-8">
-        <span class="relative inline-flex w-fit overflow-hidden rounded-full p-[1px]">
+      <div class="contents lg:order-1 lg:block lg:space-y-8">
+        <span class="relative order-1 inline-flex w-full overflow-hidden rounded-full p-[1px] lg:w-fit">
           <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(52,211,153,0)_0%,rgba(52,211,153,0.75)_18%,rgba(16,185,129,0.2)_38%,rgba(52,211,153,0)_62%,rgba(52,211,153,0.75)_82%,rgba(52,211,153,0)_100%)] opacity-70 motion-reduce:animate-none"></span>
-          <span class="relative inline-flex items-center rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700 dark:bg-[#0a1020] dark:text-emerald-300">
+          <span class="relative inline-flex w-full items-center justify-center rounded-full bg-emerald-50 px-4 py-1.5 text-center text-sm font-medium text-emerald-700 dark:bg-[#0a1020] dark:text-emerald-300 lg:w-auto lg:justify-start lg:text-left">
             {content.hero.eyebrow}
           </span>
         </span>
 
-        <div class="space-y-5">
+        <div class="order-3 space-y-5">
           <h1 class="max-w-[18rem] text-[1.75rem] font-semibold leading-[0.95] tracking-normal text-slate-950 sm:max-w-[34rem] sm:text-[2.3rem] lg:max-w-[42rem] lg:text-[2.85rem] dark:text-white">
             {
               currentLang === 'en' ? (
@@ -96,7 +96,7 @@ const profileMeta = currentLang === 'en'
           </p>
         </div>
 
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div class="order-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {proofCards.map((item, index) => (
             <article class={`rounded-[1.35rem] border border-slate-200/70 bg-slate-50/80 p-4 shadow-sm shadow-slate-200/15 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none sm:p-5 ${index === 2 ? 'md:col-span-2 xl:col-span-1' : ''}`}>
               <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-300">{item.label}</p>
@@ -105,7 +105,7 @@ const profileMeta = currentLang === 'en'
           ))}
         </div>
 
-        <nav class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <nav class="order-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
             href="#featured-engineering"
             class="inline-flex min-h-10 items-center justify-center rounded-2xl bg-emerald-400 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300 focus:outline-none focus-visible:ring focus-visible:ring-emerald-300 focus-visible:ring-offset-2"
@@ -123,7 +123,7 @@ const profileMeta = currentLang === 'en'
         </nav>
       </div>
 
-      <aside class="w-full max-w-[350px] justify-self-end rounded-[1.7rem] border border-slate-200/70 bg-white/92 px-5 py-6 dark:border-white/10 dark:bg-[#121a2d] sm:px-6 lg:mt-1 lg:px-6 lg:py-7 xl:mt-1">
+      <aside class="order-2 w-full max-w-none justify-self-stretch rounded-[1.7rem] border border-slate-200/70 bg-white/92 px-5 py-6 dark:border-white/10 dark:bg-[#121a2d] sm:px-6 lg:order-2 lg:mt-1 lg:max-w-[350px] lg:justify-self-end lg:px-6 lg:py-7 xl:mt-1">
         <div class="flex h-full flex-col justify-between gap-6 text-center">
           <div class="space-y-5">
             <div class="mx-auto inline-flex rounded-full bg-[radial-gradient(circle_at_30%_30%,#7090ff_0%,#5879ff_45%,#4164ff_100%)] p-2 shadow-[0_16px_36px_rgba(65,100,255,0.18)]">
