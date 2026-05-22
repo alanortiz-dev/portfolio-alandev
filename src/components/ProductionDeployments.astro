@@ -69,11 +69,11 @@ const deploymentVisuals: Record<
 
 <div class="rounded-[1.75rem] border border-slate-200/70 bg-white/95 p-4 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0b1120]/95 dark:shadow-none sm:p-5">
   <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
+    <div class="min-w-0 flex-1">
       <h3 class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white">
         {content.sectionTitles.deployments}
       </h3>
-      <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+      <p class="mt-3 max-w-6xl text-sm leading-6 text-slate-600 dark:text-slate-300">
         {content.sectionTitles.deploymentsIntro}
       </p>
     </div>
@@ -105,14 +105,16 @@ const deploymentVisuals: Record<
     {
       content.deployments.map((deployment) => {
         const visual = deploymentVisuals[deployment.name];
-        const displayUrl = deployment.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+        const displayUrl = deployment.url;
 
         return (
-          <article class="min-w-[82vw] max-w-[82vw] snap-start rounded-[1.2rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none sm:min-w-[320px] sm:max-w-[320px] md:min-w-[360px] md:max-w-[360px] lg:min-w-[410px] lg:max-w-[410px]">
-            <div class="space-y-3">
+          <article class="flex min-w-[82vw] max-w-[82vw] snap-start rounded-[1.2rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none sm:min-w-[320px] sm:max-w-[320px] md:min-w-[360px] md:max-w-[360px] lg:min-w-[410px] lg:max-w-[410px]">
+            <div class="flex h-full w-full flex-col gap-3">
               <div>
                 <h4 class="text-base font-semibold text-slate-950 dark:text-white">{deployment.name}</h4>
-                <p class="mt-1 truncate text-xs text-slate-500 dark:text-slate-400">{displayUrl}</p>
+                {deployment.category && (
+                  <p class="mt-1 text-sm font-medium leading-5 text-emerald-700 dark:text-emerald-300">{deployment.category}</p>
+                )}
               </div>
 
               {visual && (
@@ -141,24 +143,31 @@ const deploymentVisuals: Record<
                 </a>
               )}
 
-              <p class="text-sm leading-6 text-slate-600 dark:text-slate-300">{deployment.summary}</p>
+              <div class="space-y-2">
+                <p class="text-sm leading-6 text-slate-600 dark:text-slate-300">{deployment.summary}</p>
+                {deployment.description && (
+                  <p class="text-sm leading-6 text-slate-600 dark:text-slate-300">{deployment.description}</p>
+                )}
+              </div>
 
-              <ul class="flex flex-wrap gap-2">
-                {deployment.focus.map((item) => (
-                  <li class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 dark:bg-white/[0.06] dark:text-slate-200">{item}</li>
-                ))}
-              </ul>
+              <div class="mt-auto space-y-3">
+                <ul class="flex flex-wrap gap-2">
+                  {deployment.focus.map((item) => (
+                    <li class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 dark:bg-white/[0.06] dark:text-slate-200">{item}</li>
+                  ))}
+                </ul>
 
-              <a
-                href={deployment.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
-                aria-label={`${content.labels.visitSite}: ${deployment.name} (${currentLang === 'en' ? 'opens in a new tab' : 'abre en una nueva pestaña'})`}
-              >
-                <Link class="size-4" />
-                {content.labels.visitSite}
-              </a>
+                <a
+                  href={deployment.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-fit items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+                  aria-label={`${content.labels.visitSite}: ${deployment.name} (${currentLang === 'en' ? 'opens in a new tab' : 'abre en una nueva pestaña'})`}
+                >
+                  <Link class="size-4" />
+                  {content.labels.visitSite}
+                </a>
+              </div>
             </div>
           </article>
         );

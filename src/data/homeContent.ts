@@ -34,7 +34,9 @@ export interface FeaturedProject {
 export interface DeploymentItem {
   name: string;
   url: string;
+  category?: string;
   summary: string;
+  description?: string;
   focus: string[];
 }
 
@@ -154,9 +156,9 @@ export const homeContent: Record<Locale, HomeContent> = {
       production: 'Sitios en producción',
       productionIntro:
         'Sitios publicados y trabajo con clientes donde participé desde frontend, estructura visual e integraciones.',
-      deployments: 'Sitios en producción',
+      deployments: 'Sitios web para clientes reales',
       deploymentsIntro:
-        'Lanzamientos y trabajo con clientes donde participé desde implementación frontend, jerarquía visual y entrega usable.',
+        'Una selección de sitios web que he creado para negocios reales, combinando diseño responsive, arquitectura de información y enfoque comercial para comunicar mejor su propuesta y convertir visitas en oportunidades.',
       principles: 'Principios',
       principlesIntro:
         'Criterios que uso para diseñar interfaces mantenibles, decisiones de UX y arquitectura que aguanta cambios reales.',
@@ -288,26 +290,42 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Hivora Clothes',
         url: 'https://hivoraclothes.com/',
-        summary: 'Implementación visual y de producto para una marca con foco en presentación y navegación limpia.',
-        focus: ['Presentación de marca', 'UI responsive', 'flujo claro', 'entrega al cliente'],
+        category: 'E-commerce / marca de ropa personalizada',
+        summary:
+          'Sitio web para una marca de ropa y productos personalizados, pensado para presentar colecciones, destacar productos y facilitar la navegación hacia la compra o solicitud de piezas personalizadas.',
+        description:
+          'El enfoque estuvo en construir una experiencia visual clara, moderna y responsive, con una estructura orientada a producto y llamadas a la acción visibles.',
+        focus: ['E-commerce', 'Presentación de producto', 'Diseño responsive', 'Estructura comercial'],
       },
       {
         name: 'Spark Creative House',
         url: 'https://www.sparkcreativehouse.com/',
-        summary: 'Presencia web para estudio creativo con foco en comunicación clara y estructura profesional.',
-        focus: ['Jerarquía de información', 'implementación responsive', 'posicionamiento de negocio', 'calidad de lanzamiento'],
+        category: 'Sitio corporativo para agencia creativa y de marketing',
+        summary:
+          'Sitio web para una agencia creativa enfocado en comunicar sus servicios, áreas de especialización y propuesta de valor de forma clara y profesional.',
+        description:
+          'La estructura está pensada para reforzar credibilidad, ordenar la información comercial y guiar a potenciales clientes hacia el contacto.',
+        focus: ['Sitio corporativo', 'Arquitectura de información', 'Comunicación de servicios', 'Generación de leads'],
       },
       {
         name: 'Pia Maria Coaching',
         url: 'https://www.pia-maria-coaching.com/',
-        summary: 'Sitio orientado a captación y claridad de oferta para servicio profesional.',
-        focus: ['Captación de leads', 'UX que genera confianza', 'entrega responsive limpia', 'claridad de contenido'],
+        category: 'Sitio web para servicios de coaching',
+        summary:
+          'Sitio web para una práctica de coaching personal y profesional, diseñado para transmitir confianza, claridad y cercanía desde el primer contacto.',
+        description:
+          'La experiencia organiza servicios, recursos gratuitos y rutas de reserva para que los visitantes puedan entender la propuesta y agendar una primera conversación con menor fricción.',
+        focus: ['Servicios profesionales', 'Confianza de marca', 'Conversión a llamada', 'Experiencia responsive'],
       },
       {
         name: 'Tatuajes en Valencia',
         url: 'https://tatuajesenvalencia.com/',
-        summary: 'Sitio orientado a conversión y visibilidad local para servicio real.',
-        focus: ['Ejecución responsive', 'claridad comercial', 'SEO base', 'entrega usable'],
+        category: 'Sitio local para artista/taller de tatuajes',
+        summary:
+          'Sitio web orientado a posicionamiento local y conversión, creado para presentar el trabajo artístico, explicar los servicios y facilitar el contacto de personas interesadas en tatuarse en Valencia.',
+        description:
+          'La estructura combina contenido visual, información práctica, galería, secciones de servicio y rutas directas hacia consulta o contacto.',
+        focus: ['SEO local', 'Presentación visual', 'Contacto directo', 'Sitio responsive'],
       },
     ],
     principles: [
@@ -620,26 +638,42 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'Hivora Clothes',
         url: 'https://hivoraclothes.com/',
-        summary: 'Visual and product implementation for a brand-focused web presence.',
-        focus: ['Brand presentation', 'responsive UI', 'clear navigation', 'client delivery'],
+        category: 'E-commerce / Custom apparel brand',
+        summary:
+          'Website for a custom clothing and product brand, built to showcase collections, highlight products, and make it easy for users to explore items or request personalized pieces.',
+        description:
+          'The focus was on creating a clear, modern, and responsive experience with product-oriented structure and visible calls to action.',
+        focus: ['E-commerce', 'Product presentation', 'Responsive design', 'Commercial structure'],
       },
       {
         name: 'Spark Creative House',
         url: 'https://www.sparkcreativehouse.com/',
-        summary: 'Professional web presence for a creative studio with a clear information structure.',
-        focus: ['Information hierarchy', 'responsive build', 'business positioning', 'launch quality'],
+        category: 'Corporate website for a creative and marketing agency',
+        summary:
+          'Website for a creative agency, structured to communicate its services, areas of expertise, and value proposition in a clear and professional way.',
+        description:
+          'The experience is designed to strengthen credibility, organize commercial information, and guide potential clients toward getting in touch.',
+        focus: ['Corporate website', 'Information architecture', 'Service communication', 'Lead generation'],
       },
       {
         name: 'Pia Maria Coaching',
         url: 'https://www.pia-maria-coaching.com/',
-        summary: 'A coaching site designed to improve clarity, trust, and lead generation.',
-        focus: ['Lead capture', 'trust-building UX', 'clean responsive delivery', 'content clarity'],
+        category: 'Website for coaching services',
+        summary:
+          'Website for a personal and professional coaching practice, designed to communicate trust, clarity, and warmth from the first interaction.',
+        description:
+          'The experience organizes services, free resources, and booking paths so visitors can understand the offer and schedule a first conversation with less friction.',
+        focus: ['Professional services', 'Brand trust', 'Booking conversion', 'Responsive experience'],
       },
       {
         name: 'Tatuajes en Valencia',
         url: 'https://tatuajesenvalencia.com/',
-        summary: 'A production site built for local visibility and service conversion.',
-        focus: ['Responsive execution', 'commercial clarity', 'baseline SEO', 'usable delivery'],
+        category: 'Local website for a tattoo artist / studio',
+        summary:
+          'Local website focused on visibility and conversion, created to showcase the artist’s work, explain the services, and make it easy for people interested in getting tattooed in Valencia to get in touch.',
+        description:
+          'The structure combines visual content, practical information, gallery sections, service pages, and direct contact paths.',
+        focus: ['Local SEO', 'Visual presentation', 'Direct contact', 'Responsive website'],
       },
     ],
     principles: [
