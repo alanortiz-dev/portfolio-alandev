@@ -78,20 +78,20 @@ const deploymentVisuals: Record<
       </p>
     </div>
 
-    <div class="flex shrink-0 gap-2" aria-hidden="false">
+    <div class="hidden shrink-0 gap-2 md:flex" aria-hidden="false">
       <button
         type="button"
-        data-production-carousel-prev
+        data-production-carousel-control="-1"
         aria-label={ui.previous}
-        class="inline-flex size-9 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-700 transition hover:border-slate-300 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+        class="inline-flex size-9 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-700 transition hover:border-slate-300 hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:text-slate-700 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white dark:disabled:hover:bg-white/[0.03] dark:disabled:hover:text-slate-200"
       >
         <span aria-hidden="true">←</span>
       </button>
       <button
         type="button"
-        data-production-carousel-next
+        data-production-carousel-control="1"
         aria-label={ui.next}
-        class="inline-flex size-9 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-700 transition hover:border-slate-300 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+        class="inline-flex size-9 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-700 transition hover:border-slate-300 hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:text-slate-700 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white dark:disabled:hover:bg-white/[0.03] dark:disabled:hover:text-slate-200"
       >
         <span aria-hidden="true">→</span>
       </button>
@@ -108,7 +108,7 @@ const deploymentVisuals: Record<
         const displayUrl = deployment.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
         return (
-          <article class="min-w-[245px] max-w-[245px] snap-start rounded-[1.2rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none sm:min-w-[285px] sm:max-w-[285px] md:min-w-[360px] md:max-w-[360px] lg:min-w-[410px] lg:max-w-[410px]">
+          <article class="min-w-[82vw] max-w-[82vw] snap-start rounded-[1.2rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none sm:min-w-[320px] sm:max-w-[320px] md:min-w-[360px] md:max-w-[360px] lg:min-w-[410px] lg:max-w-[410px]">
             <div class="space-y-3">
               <div>
                 <h4 class="text-base font-semibold text-slate-950 dark:text-white">{deployment.name}</h4>
@@ -141,11 +141,11 @@ const deploymentVisuals: Record<
                 </a>
               )}
 
-              <p class="hidden text-sm leading-6 text-slate-600 dark:text-slate-300 md:block">{deployment.summary}</p>
+              <p class="text-sm leading-6 text-slate-600 dark:text-slate-300">{deployment.summary}</p>
 
               <ul class="flex flex-wrap gap-2">
-                {deployment.focus.map((item, index) => (
-                  <li class={`rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 dark:bg-white/[0.06] dark:text-slate-200 ${index > 1 ? 'hidden md:inline-flex' : ''}`}>{item}</li>
+                {deployment.focus.map((item) => (
+                  <li class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 dark:bg-white/[0.06] dark:text-slate-200">{item}</li>
                 ))}
               </ul>
 
@@ -164,6 +164,27 @@ const deploymentVisuals: Record<
         );
       })
     }
+  </div>
+
+  <div class="mt-4 grid grid-cols-2 gap-2 md:hidden">
+    <button
+      type="button"
+      data-production-carousel-control="-1"
+      aria-label={ui.previous}
+      class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200"
+    >
+      <span aria-hidden="true">←</span>
+      {ui.previous}
+    </button>
+    <button
+      type="button"
+      data-production-carousel-control="1"
+      aria-label={ui.next}
+      class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 py-2 text-sm font-medium text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 focus:outline-none focus-visible:ring focus-visible:ring-slate-400 focus-visible:ring-offset-2 dark:bg-white dark:text-slate-950"
+    >
+      {ui.next}
+      <span aria-hidden="true">→</span>
+    </button>
   </div>
 </div>
 
@@ -190,23 +211,60 @@ const deploymentVisuals: Record<
 <script is:inline>
   const initProductionCarousel = () => {
     const carousel = document.querySelector('[data-production-carousel]');
-    const prevButton = document.querySelector('[data-production-carousel-prev]');
-    const nextButton = document.querySelector('[data-production-carousel-next]');
+    const controls = document.querySelectorAll('[data-production-carousel-control]');
 
-    if (!carousel || !prevButton || !nextButton || carousel.dataset.bound === 'true') return;
+    if (!carousel || controls.length === 0 || carousel.dataset.bound === 'true') return;
     carousel.dataset.bound = 'true';
 
+    const getCards = () => Array.from(carousel.querySelectorAll('article'));
+
+    const getCurrentIndex = () => {
+      const cards = getCards();
+      if (cards.length === 0) return 0;
+
+      const firstCard = cards[0];
+      const secondCard = cards[1];
+      const step = secondCard ? secondCard.offsetLeft - firstCard.offsetLeft : firstCard.getBoundingClientRect().width;
+
+      return Math.min(cards.length - 1, Math.max(0, Math.round(carousel.scrollLeft / step)));
+    };
+
+    const updateControls = () => {
+      const currentIndex = getCurrentIndex();
+      const lastIndex = getCards().length - 1;
+
+      controls.forEach((button) => {
+        const direction = Number(button.getAttribute('data-production-carousel-control')) || 1;
+        button.disabled = direction < 0 ? currentIndex === 0 : currentIndex >= lastIndex;
+      });
+    };
+
     const scrollCarousel = (direction) => {
-      const card = carousel.querySelector('article');
-      const cardWidth = card?.getBoundingClientRect().width || 280;
-      carousel.scrollBy({
-        left: direction * (cardWidth + 16),
+      const cards = getCards();
+      if (cards.length === 0) return;
+
+      const currentIndex = getCurrentIndex();
+      const targetIndex = Math.min(cards.length - 1, Math.max(0, currentIndex + direction));
+
+      if (targetIndex === currentIndex) return;
+
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const targetLeft = Math.min(cards[targetIndex].offsetLeft - carousel.offsetLeft, maxScroll);
+
+      carousel.scrollTo({
+        left: targetLeft,
         behavior: 'smooth',
       });
     };
 
-    prevButton.addEventListener('click', () => scrollCarousel(-1));
-    nextButton.addEventListener('click', () => scrollCarousel(1));
+    controls.forEach((button) => {
+      const direction = Number(button.getAttribute('data-production-carousel-control')) || 1;
+      button.addEventListener('click', () => scrollCarousel(direction));
+    });
+
+    carousel.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls);
+    updateControls();
   };
 
   if (document.readyState !== 'loading') initProductionCarousel();
