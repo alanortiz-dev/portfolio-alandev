@@ -6,10 +6,73 @@ export interface Props {
 }
 
 const { content } = Astro.props;
+const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
+const initialParagraphs = content.about.slice(0, 2);
+const remainingParagraphs = content.about.slice(2);
+const hasMoreContent = remainingParagraphs.length > 0;
+const moreContentId = `about-more-${currentLang}`;
+const buttonLabel = currentLang === 'en' ? 'Keep reading' : 'Seguir leyendo';
+const buttonExpandedLabel = currentLang === 'en' ? 'Show less' : 'Mostrar menos';
 ---
 
-<article class="space-y-6 rounded-[2rem] bg-white/70 p-6 shadow-sm shadow-slate-200/10 ring-1 ring-slate-200/60 dark:bg-white/[0.02] dark:ring-white/10 dark:shadow-none lg:p-8">
-  <div class="max-w-3xl space-y-5 text-pretty text-base leading-8 text-slate-600 dark:text-slate-300">
-    {content.about.map((paragraph) => <p>{paragraph}</p>)}
+<article class="rounded-[1.75rem] border border-slate-200/70 bg-white/95 p-4 shadow-sm shadow-slate-200/20 dark:border-white/10 dark:bg-[#0b1120]/95 dark:shadow-none sm:p-5">
+  <div class="mb-5">
+    <h3 class="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white">
+      {content.sectionTitles.about}
+    </h3>
   </div>
+
+  <div class="w-full space-y-5 text-pretty text-justify text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-left">
+    {initialParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+
+    {hasMoreContent && (
+      <div id={moreContentId} class="space-y-5" hidden>
+        {remainingParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    )}
+  </div>
+
+  {hasMoreContent && (
+    <button
+      type="button"
+      class="mt-5 inline-flex min-h-10 items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+      aria-expanded="false"
+      aria-controls={moreContentId}
+      data-about-toggle
+      data-collapsed-label={buttonLabel}
+      data-expanded-label={buttonExpandedLabel}
+    >
+      <span data-about-toggle-label>{buttonLabel}</span>
+      <span class="ml-2 text-base leading-none transition-transform" aria-hidden="true" data-about-toggle-icon>↓</span>
+    </button>
+  )}
 </article>
+
+<script is:inline>
+  const initAboutToggle = () => {
+    document.querySelectorAll('[data-about-toggle]').forEach((button) => {
+      if (button.dataset.bound === 'true') return;
+      button.dataset.bound = 'true';
+
+      button.addEventListener('click', () => {
+        const panelId = button.getAttribute('aria-controls');
+        if (!panelId) return;
+
+        const panel = document.getElementById(panelId);
+        if (!panel) return;
+
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        panel.hidden = expanded;
+        button.setAttribute('aria-expanded', String(!expanded));
+        const label = button.querySelector('[data-about-toggle-label]');
+        const icon = button.querySelector('[data-about-toggle-icon]');
+        if (label) label.textContent = expanded ? button.dataset.collapsedLabel || '' : button.dataset.expandedLabel || '';
+        if (icon) icon.classList.toggle('rotate-180', !expanded);
+      });
+    });
+  };
+
+  if (document.readyState !== 'loading') initAboutToggle();
+  document.addEventListener('DOMContentLoaded', initAboutToggle, { once: true });
+  document.addEventListener('astro:page-load', initAboutToggle);
+</script>

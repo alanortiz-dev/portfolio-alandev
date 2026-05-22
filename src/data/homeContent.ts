@@ -408,8 +408,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
     ],
     about: [
-      'Soy frontend/product engineer con experiencia construyendo interfaces para e-commerce, fintech y operaciones digitales. Me interesa especialmente la parte donde producto, UX e ingeniería se cruzan: flujos claros, sistemas mantenibles y software que realmente ayuda a operar mejor.',
-      'Actualmente estoy enfocando mi perfil hacia frontend systems, automatización e interfaces con IA aplicada.',
+      'Mi nombre es Alan Ortiz, tengo 30 años. Empecé en el mundo de la programación porque desde niño me gustaban mucho los videojuegos. Siempre me daba mucha curiosidad entender cómo algo en una pantalla podía moverse, responder y convertirse en una experiencia real para una persona.',
+      'Posteriormente descubrí que quizás el desarrollo de videojuegos no sería mi campo profesional, porque descubrí la programación web y eso terminó llevándome al frontend. Hoy trabajo principalmente con React, Vue.js y TypeScript. Siempre me gusta poner mucha pasión en la construcción de interfaces y en la experiencia de usuario para productos reales.',
+      'En 2023 me mudé a España para trabajar con equipos internacionales en proyectos de e-commerce para distintos mercados europeos. Esa experiencia me ayudó a ver el frontend no solo como código, sino como una mezcla de producto, negocio, usuarios y colaboración.',
+      'Hoy me gusta construir cosas que se sientan simples para quien las usa, aunque por detrás tengan lógica sumamente compleja.',
     ],
     labels: {
       problem: 'Problema',
@@ -724,8 +726,10 @@ export const homeContent: Record<Locale, HomeContent> = {
       },
     ],
     about: [
-      'I am a frontend/product engineer with experience building interfaces for e-commerce, fintech, and digital operations. I am especially interested in the space where product, UX, and engineering meet: clear flows, maintainable systems, and software that genuinely helps teams operate better.',
-      'Right now I am focusing my profile toward frontend systems, automation, and applied AI interfaces.',
+      'My name is Alan Ortiz, and I’m 30 years old. I first got into programming because I loved videogames as a kid. I was always curious about how something on a screen could move, react, and turn into a real experience for someone.',
+      'Later on, I realized that game development might not be the professional path for me. Then I discovered web development, and that eventually led me to frontend. Today, I mainly work with React, Vue.js, and TypeScript. I care a lot about building interfaces with intention and creating user experiences that feel useful, clear, and real.',
+      'In 2023, I moved to Spain to work with international teams on e-commerce projects for different European markets. That experience changed the way I see frontend. For me, it is not just about code anymore, but about product, business, users, and collaboration.',
+      'Today, I enjoy building things that feel simple for the people using them, even when there is a lot of complex logic behind the scenes.',
     ],
     labels: {
       problem: 'Problem',
