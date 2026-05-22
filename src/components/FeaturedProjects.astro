@@ -121,6 +121,7 @@ const createProjectId = (name: string) =>
         const visual = projectVisuals[project.name];
         const hasCode = Boolean(project.links.code && project.links.code !== '#');
         const hasPreview = Boolean(project.links.preview && project.links.preview !== '#');
+        const hasStatus = Boolean(project.status);
         const accent = accentBadgeStyles[project.accent ?? 'slate'];
         const modalId = createProjectId(project.name);
 
@@ -191,6 +192,14 @@ const createProjectId = (name: string) =>
               </section>
 
               <div class="mt-auto space-y-2 pt-1">
+                {hasStatus && (
+                  <span class="relative inline-flex w-fit overflow-hidden rounded-xl p-[1px]">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(251,191,36,0)_0%,rgba(251,191,36,0.85)_18%,rgba(245,158,11,0.2)_38%,rgba(251,191,36,0)_62%,rgba(251,191,36,0.85)_82%,rgba(251,191,36,0)_100%)] opacity-80 motion-reduce:animate-none"></span>
+                    <span class="relative inline-flex items-center rounded-[0.7rem] bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 dark:bg-[#0b1120] dark:text-amber-200">
+                      {project.status}
+                    </span>
+                  </span>
+                )}
                 <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.links}</p>
                 <div class="flex flex-wrap gap-2">
                   {hasCode && (

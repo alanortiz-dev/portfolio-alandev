@@ -8,6 +8,7 @@ export interface HeroMetric {
 export interface FeaturedProject {
   name: string;
   type: string;
+  status?: string;
   summary: string;
   problem: string;
   role: string;
@@ -168,6 +169,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'FitLog',
         type: 'Nutrition tracker',
+        status: 'En desarrollo',
         summary:
           'Tracker de nutrición mobile-first centrado en registro diario, objetivos de macros y flujos de producto de baja fricción.',
         problem:
@@ -499,6 +501,7 @@ export const homeContent: Record<Locale, HomeContent> = {
       {
         name: 'FitLog',
         type: 'Nutrition tracker',
+        status: 'In development',
         summary:
           'Functional mobile-first nutrition tracker focused on daily food logging, macro targets, and low-friction product flows.',
         problem:
