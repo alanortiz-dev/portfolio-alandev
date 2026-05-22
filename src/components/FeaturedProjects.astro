@@ -24,6 +24,10 @@ const ui = currentLang === 'en'
       links: 'Links',
       viewDetails: 'View technical detail',
       closeDetails: 'Close detail',
+      previousProject: 'Previous project',
+      nextProject: 'Next project',
+      expandProject: 'More details',
+      collapseProject: 'Hide details',
     }
   : {
       title: 'Proyectos destacados',
@@ -35,6 +39,10 @@ const ui = currentLang === 'en'
       links: 'Links',
       viewDetails: 'Ver detalle técnico',
       closeDetails: 'Cerrar detalle',
+      previousProject: 'Proyecto anterior',
+      nextProject: 'Siguiente proyecto',
+      expandProject: 'Más detalles',
+      collapseProject: 'Ocultar detalles',
     };
 
 const detailSections = currentLang === 'en'
@@ -115,7 +123,10 @@ const createProjectId = (name: string) =>
     </a>
   </div>
 
-  <div class="grid gap-4 xl:grid-cols-3">
+  <div
+    class="featured-project-carousel -mx-1 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-1 pb-2 xl:mx-0 xl:grid xl:grid-cols-3 xl:overflow-visible xl:px-0 xl:pb-0"
+    data-featured-project-carousel
+  >
     {
       content.featuredProjects.map((project) => {
         const visual = projectVisuals[project.name];
@@ -126,7 +137,7 @@ const createProjectId = (name: string) =>
         const modalId = createProjectId(project.name);
 
         return (
-          <article class="flex h-full flex-col rounded-[1.4rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none">
+          <article class="flex h-full min-w-[84vw] max-w-[84vw] snap-start flex-col rounded-[1.4rem] border border-slate-200/70 bg-white/90 p-3 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/20 dark:border-white/10 dark:bg-white/[0.03] dark:hover:shadow-none sm:min-w-[390px] sm:max-w-[390px] md:min-w-[430px] md:max-w-[430px] xl:min-w-0 xl:max-w-none">
             {visual && (
               <div class="overflow-hidden rounded-[1rem] border border-slate-200/70 bg-slate-950/5 dark:border-white/10">
                 <img
@@ -147,9 +158,44 @@ const createProjectId = (name: string) =>
                 </span>
 
                 <h4 class="text-lg font-semibold tracking-tight text-slate-950 dark:text-white">{project.name}</h4>
+                <p class="text-sm leading-6 text-slate-600 dark:text-slate-300 xl:hidden">{project.summary}</p>
               </div>
 
-              <div class="space-y-3">
+              <details class="group rounded-2xl border border-slate-200/70 bg-slate-50/80 xl:hidden dark:border-white/10 dark:bg-white/[0.03]">
+                <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:text-slate-200 dark:hover:text-white [&::-webkit-details-marker]:hidden">
+                  <span>
+                    <span class="group-open:hidden">{ui.expandProject}</span>
+                    <span class="hidden group-open:inline">{ui.collapseProject}</span>
+                  </span>
+                  <span class="text-lg leading-none transition group-open:rotate-45" aria-hidden="true">+</span>
+                </summary>
+
+                <div class="space-y-3 border-t border-slate-200/70 px-3 pb-3 pt-3 dark:border-white/10">
+                  <section>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.problem}</p>
+                    <p class="mt-1.5 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.problem}</p>
+                  </section>
+
+                  <section>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.technicalDecisions}</p>
+                    <ul class="mt-1.5 space-y-1.5 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                      {project.decisions.slice(0, 2).map((item) => (
+                        <li class="flex items-start gap-2.5">
+                          <span class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-400 dark:bg-slate-500"></span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  <section>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.proves}</p>
+                    <p class="mt-1.5 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.role}</p>
+                  </section>
+                </div>
+              </details>
+
+              <div class="hidden space-y-3 xl:block">
                 <section>
                   <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{ui.problem}</p>
                   <p class="mt-1.5 text-sm leading-6 text-slate-700 dark:text-slate-300">{project.problem}</p>
@@ -240,6 +286,27 @@ const createProjectId = (name: string) =>
     }
   </div>
 
+  <div class="mt-4 grid grid-cols-2 gap-2 xl:hidden">
+    <button
+      type="button"
+      data-featured-project-carousel-control="-1"
+      aria-label={ui.previousProject}
+      class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200"
+    >
+      <span aria-hidden="true">←</span>
+      {ui.previousProject}
+    </button>
+    <button
+      type="button"
+      data-featured-project-carousel-control="1"
+      aria-label={ui.nextProject}
+      class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 py-2 text-sm font-medium text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100 focus:outline-none focus-visible:ring focus-visible:ring-slate-400 focus-visible:ring-offset-2 dark:bg-white dark:text-slate-950"
+    >
+      {ui.nextProject}
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
+
   {
     content.featuredProjects.map((project) => {
       const modalId = createProjectId(project.name);
@@ -294,6 +361,24 @@ const createProjectId = (name: string) =>
 </div>
 
 <style>
+  .featured-project-carousel {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(148 163 184 / 0.6) transparent;
+  }
+
+  .featured-project-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .featured-project-carousel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .featured-project-carousel::-webkit-scrollbar-thumb {
+    background: rgb(148 163 184 / 0.45);
+    border-radius: 999px;
+  }
+
   [data-project-modal].is-visible {
     display: block;
   }
@@ -309,6 +394,64 @@ const createProjectId = (name: string) =>
 </style>
 
 <script is:inline>
+  const initFeaturedProjectCarousel = () => {
+    const carousel = document.querySelector('[data-featured-project-carousel]');
+    const controls = document.querySelectorAll('[data-featured-project-carousel-control]');
+
+    if (!carousel || controls.length === 0 || carousel.dataset.carouselBound === 'true') return;
+    carousel.dataset.carouselBound = 'true';
+
+    const getCards = () => Array.from(carousel.querySelectorAll('article'));
+
+    const getCurrentIndex = () => {
+      const cards = getCards();
+      if (cards.length === 0) return 0;
+
+      const firstCard = cards[0];
+      const secondCard = cards[1];
+      const step = secondCard ? secondCard.offsetLeft - firstCard.offsetLeft : firstCard.getBoundingClientRect().width;
+
+      return Math.min(cards.length - 1, Math.max(0, Math.round(carousel.scrollLeft / step)));
+    };
+
+    const updateControls = () => {
+      const currentIndex = getCurrentIndex();
+      const lastIndex = getCards().length - 1;
+
+      controls.forEach((button) => {
+        const direction = Number(button.getAttribute('data-featured-project-carousel-control')) || 1;
+        button.disabled = direction < 0 ? currentIndex === 0 : currentIndex >= lastIndex;
+      });
+    };
+
+    const scrollCarousel = (direction) => {
+      const cards = getCards();
+      if (cards.length === 0) return;
+
+      const currentIndex = getCurrentIndex();
+      const targetIndex = Math.min(cards.length - 1, Math.max(0, currentIndex + direction));
+
+      if (targetIndex === currentIndex) return;
+
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const targetLeft = Math.min(cards[targetIndex].offsetLeft - carousel.offsetLeft, maxScroll);
+
+      carousel.scrollTo({
+        left: targetLeft,
+        behavior: 'smooth',
+      });
+    };
+
+    controls.forEach((button) => {
+      const direction = Number(button.getAttribute('data-featured-project-carousel-control')) || 1;
+      button.addEventListener('click', () => scrollCarousel(direction));
+    });
+
+    carousel.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls);
+    updateControls();
+  };
+
   const initFeaturedProjectModals = () => {
     const triggers = document.querySelectorAll('[data-project-modal-trigger]');
     const modals = document.querySelectorAll('[data-project-modal]');
@@ -414,7 +557,12 @@ const createProjectId = (name: string) =>
     });
   };
 
-  if (document.readyState !== 'loading') initFeaturedProjectModals();
-  document.addEventListener('DOMContentLoaded', initFeaturedProjectModals, { once: true });
-  document.addEventListener('astro:page-load', initFeaturedProjectModals);
+  const initFeaturedProjects = () => {
+    initFeaturedProjectCarousel();
+    initFeaturedProjectModals();
+  };
+
+  if (document.readyState !== 'loading') initFeaturedProjects();
+  document.addEventListener('DOMContentLoaded', initFeaturedProjects, { once: true });
+  document.addEventListener('astro:page-load', initFeaturedProjects);
 </script>

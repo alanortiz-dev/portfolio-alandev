@@ -40,11 +40,6 @@ export interface DeploymentItem {
   focus: string[];
 }
 
-export interface PrincipleItem {
-  title: string;
-  body: string;
-}
-
 export interface ExperienceItem {
   period: string;
   role: string;
@@ -70,7 +65,6 @@ export interface HomeContent {
   nav: {
     featured: string;
     experience: string;
-    principles: string;
     timeline: string;
     contact: string;
   };
@@ -91,15 +85,12 @@ export interface HomeContent {
     productionIntro: string;
     deployments: string;
     deploymentsIntro: string;
-    principles: string;
-    principlesIntro: string;
     timeline: string;
     timelineIntro: string;
     about: string;
   };
   featuredProjects: FeaturedProject[];
   deployments: DeploymentItem[];
-  principles: PrincipleItem[];
   experiences: ExperienceItem[];
   about: string[];
   labels: {
@@ -130,7 +121,6 @@ export const homeContent: Record<Locale, HomeContent> = {
     nav: {
       featured: 'Proyectos',
       experience: 'Lanzamientos',
-      principles: 'Habilidades',
       timeline: 'Experiencia',
       contact: 'Contacto',
     },
@@ -159,9 +149,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       deployments: 'Sitios web para clientes reales',
       deploymentsIntro:
         'Una selección de sitios web que he creado para negocios reales, combinando diseño responsive, arquitectura de información y enfoque comercial para comunicar mejor su propuesta y convertir visitas en oportunidades.',
-      principles: 'Principios',
-      principlesIntro:
-        'Criterios que uso para diseñar interfaces mantenibles, decisiones de UX y arquitectura que aguanta cambios reales.',
       timeline: 'Experiencia profesional',
       timelineIntro:
         'Experiencia construyendo interfaces, integraciones y sistemas frontend para productos y operaciones reales.',
@@ -203,6 +190,7 @@ export const homeContent: Record<Locale, HomeContent> = {
           'Importa porque muestra una experiencia funcional de producto, no solo pantallas sueltas: entrada, onboarding, logging, resumen diario y rutas conectadas.',
         stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
         links: {
+          preview: 'https://fitlog-nutrition-tracker.vercel.app/',
           code: 'https://github.com/alanortiz-dev/fitlog-nutrition-tracker',
         },
         accent: 'emerald',
@@ -328,43 +316,22 @@ export const homeContent: Record<Locale, HomeContent> = {
         focus: ['SEO local', 'Presentación visual', 'Contacto directo', 'Sitio responsive'],
       },
     ],
-    principles: [
-      {
-        title: 'Interfaces que sobreviven releases',
-        body: 'Prefiero sistemas de UI con piezas reutilizables, contratos claros e integraciones entendibles. Lo importante no es solo entregar rápido, sino poder iterar sin romper flujos críticos.',
-      },
-      {
-        title: 'UX como ingeniería, no maquillaje',
-        body: 'Performance, accesibilidad, jerarquía visual y comportamiento consistente forman parte del diseño del sistema. Una buena UX también reduce soporte, errores y fricción operativa.',
-      },
-      {
-        title: 'Frontend conectado al negocio',
-        body: 'Trabajo pensando en formularios, automatizaciones, CMS, handoffs operativos, testing y estabilidad. El frontend no vive aislado; sostiene procesos reales.',
-      },
-      {
-        title: 'Escalar con criterio, no con complejidad gratuita',
-        body: 'Busco separar UI, lógica, tipos y datos cuando aporta mantenibilidad real. La meta no es sobrearquitectura, sino una base que permita crecer sin rehacer todo.',
-      },
-    ],
     experiences: [
       {
         period: '06/2025 – Actualidad',
-        role: 'Independent Product / Frontend Engineer',
+        role: 'Frontend Developer / Consultor técnico',
         company: 'Profesional independiente',
         location: 'España · Austria',
         link: 'https://alanortizconsulting.com/',
-        defaultOpen: true,
-        stack: ['JavaScript', 'TypeScript', 'Vue.js', 'Formularios', 'CMS', 'Make', 'n8n'],
+        defaultOpen: false,
+        stack: ['JavaScript', 'TypeScript', 'Vue.js', 'CMS', 'Formularios', 'Make', 'n8n', 'Automatización', 'UX operativa'],
         summary:
-          'Trabajo independiente enfocado en mejoras frontend, formularios, sitios para clientes e integraciones con automatización.',
+          'Trabajo en proyectos frontend, sitios para clientes y automatizaciones donde la prioridad es que la experiencia sea clara, funcional y útil para el negocio. Me enfoco en mejorar interfaces reales, formularios, flujos de usuario y procesos operativos conectando frontend, CMS, automatización y herramientas de comunicación.',
         highlights: [
-          'Implementé mejoras en interfaces de producción, formularios y flujos de usuario con JavaScript y TypeScript.',
-          'Construí una interfaz conversacional modular en Vue.js y TypeScript con separación clara entre UI, lógica y tipos.',
-          'Conecté formularios, CMS y automatizaciones para mejorar captura de leads y traspasos.',
-        ],
-        technicalDetails: [
-          'Trabajo con responsive UI, comportamiento de formularios e integraciones con CMS.',
-          'Uso Make y n8n para reducir pasos manuales en procesos de cara al cliente.',
+          'Mejoré interfaces, formularios y flujos web en entornos reales usando JavaScript y TypeScript.',
+          'Construí una interfaz conversacional modular con Vue.js y TypeScript, separando UI, lógica y tipos para facilitar mantenimiento y crecimiento.',
+          'Conecté formularios, CMS y herramientas de automatización para mejorar captación de leads, comunicación y seguimiento operativo.',
+          'Implementé flujos con Make y n8n para reducir tareas manuales en procesos de atención, seguimiento y operación diaria.',
         ],
       },
       {
@@ -372,18 +339,16 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'IT Globers',
         location: 'Valencia, España',
-        defaultOpen: true,
-        stack: ['React', 'TypeScript', 'VTEX IO', 'REST APIs', 'GraphQL', 'Playwright'],
+        defaultOpen: false,
+        stack: ['VTEX IO', 'React', 'TypeScript', 'REST APIs', 'GraphQL', 'Playwright', 'E-commerce', 'Testing', 'Producción', 'Colaboración internacional'],
         summary:
-          'Desarrollo de storefronts en VTEX IO para e-commerce de alto tráfico con React, TypeScript e integraciones con APIs.',
+          'Trabajé en proyectos internacionales de e-commerce sobre VTEX IO, colaborando con equipos distribuidos y con el equipo de VTEX Rumanía en iniciativas para mercados como Alemania, Reino Unido, Italia, Francia y España. Mi trabajo se enfocó en construir y mantener storefronts de alto tráfico con React y TypeScript, integrando APIs, cuidando flujos críticos y mejorando estabilidad en producción.',
         highlights: [
-          'Desarrollé funcionalidades customer-facing en storefronts de producción con React y TypeScript.',
-          'Integré servicios REST y GraphQL en login, checkout y gestión de pedidos.',
-          'Mantuve cobertura E2E con Playwright para recorridos de compra y gestión de pedidos.',
-        ],
-        technicalDetails: [
-          'Trabajé en responsive UI, accesibilidad y estabilidad de releases dentro de VTEX IO.',
-          'Corregí issues de producción y ajustes de interfaz para mejorar consistencia y rendimiento.',
+          'Construí y mantuve funcionalidades para storefronts de e-commerce en VTEX IO usando React y TypeScript.',
+          'Colaboré en proyectos internacionales con equipos de VTEX y clientes en distintos mercados europeos.',
+          'Integré servicios REST y GraphQL en flujos orientados al cliente, manteniendo consistencia entre releases.',
+          'Protegí recorridos críticos como login, checkout y gestión de pedidos con pruebas end-to-end usando Playwright.',
+          'Atendí incidencias de producción y apliqué mejoras puntuales en responsividad, accesibilidad y estabilidad de despliegues.',
         ],
         link: 'https://www.itglobers.com/',
       },
@@ -392,18 +357,16 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Frontend Developer',
         company: 'Grupo Salinas',
         location: 'Ciudad de México, México',
-        defaultOpen: true,
-        stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'UI responsive', 'Accesibilidad'],
+        defaultOpen: false,
+        stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'Figma to UI', 'Responsive design', 'Accesibilidad', 'Performance'],
         summary:
-          'Desarrollo frontend para Elektra con React, JavaScript y Tailwind CSS en interfaces de alto tráfico.',
+          'Trabajé en interfaces de alto tráfico para Elektra, convirtiendo diseños en pantallas reales, responsivas y listas para producción. El foco estuvo en construir una experiencia consistente para usuarios finales, conectando frontend con APIs y cuidando accesibilidad, rendimiento y comportamiento móvil.',
         highlights: [
-          'Construí interfaces de alto tráfico conectadas a APIs para flujos de compra y navegación.',
-          'Convertí diseños de Figma en pantallas accesibles y responsive listas para producción.',
-          'Creé componentes reutilizables y patrones compartidos para acelerar cambios de interfaz.',
-        ],
-        technicalDetails: [
-          'Trabajé en performance, experiencia móvil y accesibilidad.',
-          'Colaboré sobre módulos frontend orientados a consistencia visual y mantenimiento.',
+          'Desarrollé interfaces para Elektra con React, JavaScript y Tailwind CSS.',
+          'Integré servicios backend mediante APIs REST en flujos orientados al cliente.',
+          'Convertí diseños de Figma en pantallas responsivas, accesibles y listas para producción.',
+          'Construí módulos reutilizables para acelerar entregas y mantener consistencia visual entre secciones.',
+          'Mejoré accesibilidad, experiencia móvil y tiempos de carga en flujos clave.',
         ],
         link: 'https://www.gruposalinas.com/',
       },
@@ -413,17 +376,15 @@ export const homeContent: Record<Locale, HomeContent> = {
         company: 'Layer 7',
         location: 'Ciudad de México, México',
         defaultOpen: false,
-        stack: ['PHP', 'Laravel', 'Symfony', 'SQL', 'REST APIs', 'PHPUnit'],
+        stack: ['PHP', 'Laravel', 'Symfony', 'SQL', 'REST APIs', 'Dashboards', 'Autenticación', 'Cifrado', 'PHPUnit', 'Sistemas críticos'],
         summary:
-          'Desarrollo fullstack para microservicios, dashboards internos y procesamiento operativo con PHP, Laravel, Symfony y SQL.',
+          'Trabajé en sistemas operativos de gran escala, combinando backend, microservicios, dashboards y procesamiento de datos. Fue una experiencia fuerte en entornos críticos, donde el rendimiento, la seguridad y la confiabilidad no eran "nice to have", eran parte central del producto.',
         highlights: [
-          'Microservicios con PHP, Laravel y Symfony para campañas que enrutan más de 400M llamadas al mes.',
-          'Optimicé consultas SQL y dashboards internos para monitoreo y procesamiento.',
-          'Integré servicios REST con autenticación y cifrado.',
-        ],
-        technicalDetails: [
-          'Trabajé con Laravel, Symfony, SQL y pruebas automatizadas con PHPUnit.',
-          'Participé en herramientas internas enfocadas en monitoreo, seguridad y operación.',
+          'Desarrollé microservicios con PHP, Laravel y Symfony para gestionar colas de campañas y enrutar más de 400M de llamadas mensuales.',
+          'Diseñé y optimicé consultas SQL para procesamiento de datos a gran escala.',
+          'Construí dashboards operativos para visualizar información crítica y apoyar la toma de decisiones.',
+          'Integré servicios REST y reforcé seguridad mediante autenticación y cifrado.',
+          'Implementé pruebas automatizadas con PHPUnit para mejorar la confiabilidad del sistema.',
         ],
         link: 'https://www.layer7.mx/',
       },
@@ -434,23 +395,23 @@ export const homeContent: Record<Locale, HomeContent> = {
         location: 'Ciudad de México, México',
         link: 'https://www.blumonpay.com/',
         defaultOpen: false,
-        stack: ['Vue.js', 'JavaScript', 'REST APIs', 'Dashboards', 'Selenium', 'POS'],
+        stack: ['Vue.js', 'JavaScript', 'REST APIs', 'Dashboards', 'Fintech', 'POS', 'Monitoreo', 'KPIs', 'Selenium', 'Procesos bancarios'],
         summary:
-          'Construcción de dashboards internos y aplicaciones web para procesos POS y bancarios.',
+          'Trabajé en productos internos para fintech, operaciones POS y procesos bancarios, construyendo dashboards, servicios e interfaces enfocadas en claridad, estabilidad y monitoreo operativo. Fue una etapa clave para entender cómo se construyen herramientas donde la información debe ser confiable y fácil de leer.',
         highlights: [
-          'Construí dashboards internos y aplicaciones web para monitoreo y soporte operativo.',
-          'Desarrollé interfaces en Vue.js y JavaScript conectadas a servicios REST.',
-          'Implementé vistas en tiempo real y paneles de KPIs para seguimiento de procesos.',
-        ],
-        technicalDetails: [
-          'Trabajé con dashboards, formularios y procesos internos relacionados con POS y banca.',
-          'Automaticé pruebas funcionales con Selenium.',
+          'Desarrollé aplicaciones web y dashboards internos para operaciones POS y procesos bancarios.',
+          'Construí interfaces con Vue.js y JavaScript conectadas a servicios REST.',
+          'Creé vistas de monitoreo en tiempo real y dashboards de KPIs para mejorar visibilidad operativa.',
+          'Participé en el mantenimiento de servicios backend y mejoras de confiabilidad del sistema.',
+          'Automaticé pruebas funcionales con Selenium para reducir riesgo de regresión en formularios y dashboards sensibles.',
         ],
       },
     ],
     about: [
-      'Soy frontend/product engineer con experiencia construyendo interfaces para e-commerce, fintech y operaciones digitales. Me interesa especialmente la parte donde producto, UX e ingeniería se cruzan: flujos claros, sistemas mantenibles y software que realmente ayuda a operar mejor.',
-      'Actualmente estoy enfocando mi perfil hacia frontend systems, automatización e interfaces con IA aplicada.',
+      'Mi nombre es Alan Ortiz, tengo 30 años. Empecé en el mundo de la programación porque desde niño me gustaban mucho los videojuegos. Siempre me daba mucha curiosidad entender cómo algo en una pantalla podía moverse, responder y convertirse en una experiencia real para una persona.',
+      'Posteriormente descubrí que quizás el desarrollo de videojuegos no sería mi campo profesional, porque descubrí la programación web y eso terminó llevándome al frontend. Hoy trabajo principalmente con React, Vue.js y TypeScript. Siempre me gusta poner mucha pasión en la construcción de interfaces y en la experiencia de usuario para productos reales.',
+      'En 2023 me mudé a España para trabajar con equipos internacionales en proyectos de e-commerce para distintos mercados europeos. Esa experiencia me ayudó a ver el frontend no solo como código, sino como una mezcla de producto, negocio, usuarios y colaboración.',
+      'Hoy me gusta construir cosas que se sientan simples para quien las usa, aunque por detrás tengan lógica sumamente compleja.',
     ],
     labels: {
       problem: 'Problema',
@@ -478,7 +439,6 @@ export const homeContent: Record<Locale, HomeContent> = {
     nav: {
       featured: 'Work',
       experience: 'Launches',
-      principles: 'Skills',
       timeline: 'Experience',
       contact: 'Contact',
     },
@@ -507,9 +467,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       deployments: 'Production websites',
       deploymentsIntro:
         'Client launches and published work where I contributed through frontend implementation, hierarchy, and usable delivery.',
-      principles: 'Principles',
-      principlesIntro:
-        'The criteria I use when shaping maintainable interfaces, UX decisions, and frontend systems that need to hold up in real use.',
       timeline: 'Professional experience',
       timelineIntro:
         'Experience building interfaces, integrations, and frontend systems across real products and operational environments.',
@@ -551,6 +508,7 @@ export const homeContent: Record<Locale, HomeContent> = {
           'It matters because it shows a working product flow, not just isolated screens: entry, onboarding, logging, daily summaries, and connected routes.',
         stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
         links: {
+          preview: 'https://fitlog-nutrition-tracker.vercel.app/',
           code: 'https://github.com/alanortiz-dev/fitlog-nutrition-tracker',
         },
         accent: 'emerald',
@@ -676,43 +634,22 @@ export const homeContent: Record<Locale, HomeContent> = {
         focus: ['Local SEO', 'Visual presentation', 'Direct contact', 'Responsive website'],
       },
     ],
-    principles: [
-      {
-        title: 'Interfaces that survive releases',
-        body: 'I prefer UI systems with reusable parts, clear contracts, and understandable integrations. Shipping fast matters, but being able to iterate without breaking critical flows matters more.',
-      },
-      {
-        title: 'UX as engineering, not decoration',
-        body: 'Performance, accessibility, hierarchy, and consistent behavior are part of system design. Good UX also reduces support load, mistakes, and operational friction.',
-      },
-      {
-        title: 'Frontend connected to business workflows',
-        body: 'I think in terms of forms, automations, CMS flows, operational handoffs, testing, and stability. Frontend is not isolated; it supports real processes.',
-      },
-      {
-        title: 'Scale with judgment, not free complexity',
-        body: 'I separate UI, logic, types, and data when it creates real maintainability. The goal is not over-architecture, but a foundation that can grow without constant rewrites.',
-      },
-    ],
     experiences: [
       {
         period: '06/2025 – Present',
-        role: 'Independent Product / Frontend Engineer',
+        role: 'Frontend Developer / Technical Consultant',
         company: 'Independent Professional',
         location: 'Spain · Austria',
         link: 'https://alanortizconsulting.com/',
-        defaultOpen: true,
-        stack: ['JavaScript', 'TypeScript', 'Vue.js', 'Forms', 'CMS', 'Make', 'n8n'],
+        defaultOpen: false,
+        stack: ['JavaScript', 'TypeScript', 'Vue.js', 'CMS', 'forms', 'Make', 'n8n', 'automation', 'operational UX'],
         summary:
-          'Independent work focused on frontend improvements, forms, client websites, and automation integrations.',
+          'I work on frontend projects, client websites, and automation flows where the priority is making the experience clear, functional, and useful for the business. My focus is on improving real interfaces, forms, user flows, and operational processes by connecting frontend work with CMS platforms, automation tools, and communication workflows.',
         highlights: [
-          'Delivered improvements to production interfaces, forms, and user flows using JavaScript and TypeScript.',
-          'Built a modular conversational interface in Vue.js and TypeScript with clear separation between UI, logic, and types.',
-          'Connected forms, CMS content, and automations to improve lead capture and handoffs.',
-        ],
-        technicalDetails: [
-          'Worked with responsive UI, form behavior, and CMS integrations.',
-          'Used Make and n8n to reduce manual steps in customer-facing processes.',
+          'Improved production web interfaces, forms, and user flows using JavaScript and TypeScript.',
+          'Built a modular conversational interface with Vue.js and TypeScript, keeping UI, logic, and types clearly separated.',
+          'Connected forms, CMS tools, and automation platforms to improve lead capture, communication, and follow-up processes.',
+          'Created Make and n8n workflows to reduce manual work in customer-facing and operational tasks.',
         ],
       },
       {
@@ -720,18 +657,16 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'IT Globers',
         location: 'Valencia, Spain',
-        defaultOpen: true,
-        stack: ['React', 'TypeScript', 'VTEX IO', 'REST APIs', 'GraphQL', 'Playwright'],
+        defaultOpen: false,
+        stack: ['VTEX IO', 'React', 'TypeScript', 'REST APIs', 'GraphQL', 'Playwright', 'e-commerce', 'testing', 'production support', 'international collaboration'],
         summary:
-          'Built VTEX IO storefronts for high-traffic e-commerce using React, TypeScript, and API integrations.',
+          'I worked on international e-commerce projects built on VTEX IO, collaborating with distributed teams and with the VTEX Romania team on projects for Germany, the UK, Italy, France, and Spain. My work focused on building and maintaining high-traffic storefronts with React and TypeScript, integrating APIs, protecting critical user flows, and improving production stability.',
         highlights: [
-          'Developed customer-facing storefront features in production with React and TypeScript.',
-          'Integrated REST and GraphQL services into login, checkout, and order management flows.',
-          'Maintained Playwright E2E coverage for purchasing and order-management journeys.',
-        ],
-        technicalDetails: [
-          'Worked on responsive UI, accessibility, and release stability inside VTEX IO.',
-          'Handled production issues and interface fixes to improve consistency and performance.',
+          'Built and maintained VTEX IO storefront features using React and TypeScript for high-traffic e-commerce environments.',
+          'Collaborated with international teams across European markets, including projects connected to Germany, the UK, Italy, France, and Spain.',
+          'Integrated REST and GraphQL services into customer-facing flows to keep the frontend consistent across releases.',
+          'Protected critical journeys such as login, checkout, and order management with Playwright end-to-end tests.',
+          'Fixed production issues and improved responsiveness, accessibility, and release stability through targeted frontend work.',
         ],
         link: 'https://www.itglobers.com/',
       },
@@ -740,18 +675,16 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Frontend Developer',
         company: 'Grupo Salinas',
         location: 'Mexico City, Mexico',
-        defaultOpen: true,
-        stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'Responsive UI', 'Accessibility'],
+        defaultOpen: false,
+        stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'Figma to UI', 'responsive design', 'accessibility', 'performance'],
         summary:
-          'Frontend development for Elektra using React, JavaScript, and Tailwind CSS across high-traffic interfaces.',
+          'I worked on high-traffic interfaces for Elektra, turning product designs into responsive, accessible, production-ready screens. The work was focused on building a consistent customer experience, connecting frontend flows with APIs, and improving usability, mobile behavior, and performance.',
         highlights: [
-          'Built high-traffic interfaces connected to APIs for shopping and navigation flows.',
-          'Turned Figma designs into accessible, responsive, production-ready screens.',
-          'Created reusable components and shared patterns to speed up interface changes.',
-        ],
-        technicalDetails: [
-          'Worked on performance, mobile responsiveness, and accessibility.',
-          'Contributed to frontend modules focused on visual consistency and maintainability.',
+          'Built customer-facing interfaces for Elektra using React, JavaScript, and Tailwind CSS.',
+          'Integrated backend services through REST APIs in user-facing flows.',
+          'Translated Figma designs into responsive, accessible, production-ready screens.',
+          'Created reusable modules and shared UI patterns to speed up delivery and keep the experience consistent.',
+          'Improved accessibility, mobile responsiveness, and load performance across key frontend flows.',
         ],
         link: 'https://www.gruposalinas.com/',
       },
@@ -761,17 +694,15 @@ export const homeContent: Record<Locale, HomeContent> = {
         company: 'Layer 7',
         location: 'Mexico City, Mexico',
         defaultOpen: false,
-        stack: ['PHP', 'Laravel', 'Symfony', 'SQL', 'REST APIs', 'PHPUnit'],
+        stack: ['PHP', 'Laravel', 'Symfony', 'SQL', 'REST APIs', 'dashboards', 'authentication', 'encryption', 'PHPUnit', 'critical systems'],
         summary:
-          'Fullstack development for microservices, internal dashboards, and operational processing with PHP, Laravel, Symfony, and SQL.',
+          'I worked on large-scale operational systems, combining backend services, microservices, dashboards, and data processing. This was a strong experience in critical environments where performance, security, and reliability were not optional, they were part of the product.',
         highlights: [
-          'Built PHP, Laravel, and Symfony microservices routing 400M+ calls per month.',
-          'Optimized SQL queries and internal dashboards for monitoring and processing.',
-          'Integrated REST services with authentication and encryption.',
-        ],
-        technicalDetails: [
-          'Worked with Laravel, Symfony, SQL, and automated testing with PHPUnit.',
-          'Contributed to internal tools focused on monitoring, security, and operations.',
+          'Built PHP, Laravel, and Symfony microservices to manage campaign queues and route more than 400M calls per month.',
+          'Designed and optimized SQL queries for large-scale data processing.',
+          'Created operational dashboards to visualize critical information and support business decisions.',
+          'Integrated REST services and strengthened security through authentication and encryption.',
+          'Added PHPUnit tests to improve reliability in critical software environments.',
         ],
         link: 'https://www.layer7.mx/',
       },
@@ -782,23 +713,23 @@ export const homeContent: Record<Locale, HomeContent> = {
         location: 'Mexico City, Mexico',
         link: 'https://www.blumonpay.com/',
         defaultOpen: false,
-        stack: ['Vue.js', 'JavaScript', 'REST APIs', 'Dashboards', 'Selenium', 'POS'],
+        stack: ['Vue.js', 'JavaScript', 'REST APIs', 'dashboards', 'fintech', 'POS', 'monitoring', 'KPIs', 'Selenium', 'banking-related processes'],
         summary:
-          'Built internal dashboards and web applications for POS and banking-related processes.',
+          'I worked on internal fintech products for POS operations and banking-related processes, building dashboards, services, and interfaces focused on clarity, stability, and operational monitoring. This experience helped me understand how to build tools where information needs to be reliable, easy to read, and useful for daily business decisions.',
         highlights: [
-          'Built internal dashboards and web apps for monitoring and operational support.',
+          'Built internal web applications and dashboards for POS operations and banking-related processes.',
           'Developed Vue.js and JavaScript interfaces connected to REST services.',
-          'Implemented real-time monitoring views and KPI dashboards for process tracking.',
-        ],
-        technicalDetails: [
-          'Worked with dashboards, forms, and internal processes related to POS and banking.',
-          'Automated functional testing with Selenium.',
+          'Created real-time monitoring views and KPI dashboards to improve operational visibility.',
+          'Contributed to backend maintenance and reliability improvements.',
+          'Automated functional tests with Selenium to reduce regression risk in sensitive forms and dashboards.',
         ],
       },
     ],
     about: [
-      'I am a frontend/product engineer with experience building interfaces for e-commerce, fintech, and digital operations. I am especially interested in the space where product, UX, and engineering meet: clear flows, maintainable systems, and software that genuinely helps teams operate better.',
-      'Right now I am focusing my profile toward frontend systems, automation, and applied AI interfaces.',
+      'My name is Alan Ortiz, and I’m 30 years old. I first got into programming because I loved videogames as a kid. I was always curious about how something on a screen could move, react, and turn into a real experience for someone.',
+      'Later on, I realized that game development might not be the professional path for me. Then I discovered web development, and that eventually led me to frontend. Today, I mainly work with React, Vue.js, and TypeScript. I care a lot about building interfaces with intention and creating user experiences that feel useful, clear, and real.',
+      'In 2023, I moved to Spain to work with international teams on e-commerce projects for different European markets. That experience changed the way I see frontend. For me, it is not just about code anymore, but about product, business, users, and collaboration.',
+      'Today, I enjoy building things that feel simple for the people using them, even when there is a lot of complex logic behind the scenes.',
     ],
     labels: {
       problem: 'Problem',

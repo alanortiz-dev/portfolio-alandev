@@ -24,6 +24,33 @@ const currentLang = Astro.currentLocale || 'es';
     <title>{title}</title>
     <script is:inline>
       (() => {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+
+        const scrollToPageTop = () => {
+          if (window.location.hash) return;
+          const root = document.documentElement;
+          const previousScrollBehavior = root.style.scrollBehavior;
+          root.style.scrollBehavior = 'auto';
+          window.scrollTo(0, 0);
+          root.style.scrollBehavior = previousScrollBehavior;
+        };
+
+        const scheduleScrollToPageTop = () => {
+          requestAnimationFrame(() => {
+            scrollToPageTop();
+            requestAnimationFrame(scrollToPageTop);
+          });
+        };
+
+        if (!window.__siteScrollControllerBound) {
+          window.__siteScrollControllerBound = true;
+          window.addEventListener('pageshow', scheduleScrollToPageTop);
+          window.addEventListener('load', scheduleScrollToPageTop);
+          document.addEventListener('astro:page-load', scheduleScrollToPageTop);
+        }
+
         const getStoredTheme = () => {
           const saved = localStorage.getItem('theme');
           if (saved === 'dark' || saved === 'light') return saved;
