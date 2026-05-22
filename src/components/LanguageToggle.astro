@@ -1,108 +1,76 @@
 ---
-import { useTranslations } from "../i18n/utils";
-import { languageList } from "../i18n/ui";
-import CheckIcon from "@/components/icons/CheckIcon.astro";
+import { languageList } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
 
 const LANGUAGES = [
-  { label: "🇪🇸 Español", value: "es" },
-  { label: "🇬🇧 English", value: "en" }
+  { label: 'ES', name: 'Español', value: 'es' },
+  { label: 'EN', name: 'English', value: 'en' },
 ];
 
-const currentLang = Astro.url.pathname.split("/")[1] || "es";
-const translatedLabels = useTranslations(currentLang as keyof typeof languageList);
+const currentLang = (Astro.currentLocale || Astro.url.pathname.split('/')[1] || 'es') as keyof typeof languageList;
+const translatedLabels = useTranslations(currentLang);
+
+const getLocalizedPath = (lang: string) => {
+  const pathWithoutLocale = Astro.url.pathname.replace(/^\/(es|en)(?=\/|$)/, '');
+  return `/${lang}${pathWithoutLocale || '/'}`;
+};
 ---
 
-<div class="relative">
-  <button
-    id="language-toggle-btn"
-    class="block w-full px-2 py-1.5 text-left hover:text-blue-500 dark:hover:text-blue-400"
-  >
-    {translatedLabels("language.title")}
-  </button>
+<section class="space-y-1" data-language-toggle>
+  <p class="px-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+    {translatedLabels('settings.language')}
+  </p>
 
-  <div
-    id="languages-menu"
-    class="absolute hidden left-0 top-0 translate-y-8 w-44 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg text-sm backdrop-blur-md p-1 z-50"
-  >
-    <ul>
-      {LANGUAGES.map((lang) => (
-        <li
-          class={`flex justify-between items-center languages-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm ${currentLang === lang.value ? "font-bold text-blue-500 dark:text-blue-400" : ""}`}
-          data-lang={lang.value}
-        >
-          {lang.label}
-          {currentLang === lang.value && (
-            <CheckIcon class="size-4 text-blue-500 dark:text-blue-400 animate-fade-in ml-2" />
-          )}
-        </li>
-      ))}
-    </ul>
-    <hr class="my-1 border-gray-300 dark:border-gray-700" />
-    <button
-      id="back-to-settings-from-lang"
-      class="block w-full px-2 py-1.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-500"
-    >
-      {translatedLabels("settings.back") || "Volver"}
-    </button>
+  <div class="grid grid-cols-2 gap-1" role="group" aria-label={translatedLabels('language.choose')}>
+    {LANGUAGES.map((lang) => (
+      <a
+        href={getLocalizedPath(lang.value)}
+        class="language-option inline-flex min-h-7 items-center justify-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-1.5 py-1 text-[11px] font-medium text-slate-700 transition hover:border-slate-300 hover:bg-white hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white"
+        data-language-option={lang.value}
+        data-active={String(currentLang === lang.value)}
+        aria-current={currentLang === lang.value ? 'page' : undefined}
+      >
+        <span class="text-[10px] font-semibold tracking-[0.12em]">{lang.label}</span>
+        <span>{lang.name}</span>
+      </a>
+    ))}
   </div>
-</div>
+</section>
 
 <script is:inline>
-  const langBtn = document.getElementById("language-toggle-btn");
-  const langMenu = document.getElementById("languages-menu");
-  const backBtn = document.getElementById("back-to-settings-from-lang");
-  langBtn?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    langMenu?.classList.add("open");
-  });
+  (() => {
+    const initLanguageToggle = () => {
+      document.querySelectorAll('[data-language-option]').forEach((option) => {
+        if (option.dataset.languageBound === 'true') return;
+        option.dataset.languageBound = 'true';
 
-  backBtn?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    langMenu?.classList.remove("open");
-  });
+        option.addEventListener('click', () => {
+          const language = option.getAttribute('data-language-option');
+          if (language) localStorage.setItem('language', language);
+        });
+      });
+    };
 
-  document.querySelectorAll(".languages-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      const option = e.currentTarget;
-      if (option instanceof HTMLElement) {
-        const lang = option.getAttribute("data-lang");
-        if (lang) {
-          localStorage.setItem("language", lang);
-          let newPath = window.location.pathname;
-          if (newPath.startsWith("/es") || newPath.startsWith("/en")) {
-            newPath = newPath.substring(3);
-          }
-          window.location.href = `/${lang}${newPath || "/"}`;
-        }
-      }
-    });
-  });
+    if (!window.__languageToggleBound) {
+      window.__languageToggleBound = true;
+      document.addEventListener('astro:page-load', initLanguageToggle);
+      document.addEventListener('astro:after-swap', initLanguageToggle);
+    }
 
-  document.addEventListener("astro:after-swap", () => {
-    langMenu?.classList.remove("open");
-    window.scrollTo({ top: 0, behavior: "instant" });
-  });
-
-  document.addEventListener("click", () => langMenu?.classList.remove("open"));
+    initLanguageToggle();
+  })();
 </script>
 
 <style>
-  #languages-menu.open {
-    display: block;
-    animation: scale-up-center 0.15s ease-out both;
+  .language-option[data-active='true'] {
+    border-color: rgba(16, 185, 129, 0.45);
+    background: rgba(209, 250, 229, 0.72);
+    color: rgb(6, 95, 70);
   }
 
-  @keyframes scale-up-center {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
-  .animate-fade-in {
-    animation: fade-in-scale 0.2s ease-out forwards;
-  }
-
-  @keyframes fade-in-scale {
-    from { opacity: 0; transform: scale(0.7); }
-    to { opacity: 1; transform: scale(1); }
+  :global(.dark) .language-option[data-active='true'] {
+    border-color: rgba(52, 211, 153, 0.35);
+    background: rgba(16, 185, 129, 0.12);
+    color: rgb(167, 243, 208);
   }
 </style>

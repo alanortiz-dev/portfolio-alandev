@@ -22,6 +22,37 @@ const currentLang = Astro.currentLocale || 'es';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      (() => {
+        const getStoredTheme = () => {
+          const saved = localStorage.getItem('theme');
+          if (saved === 'dark' || saved === 'light') return saved;
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+
+        const applyTheme = (theme = getStoredTheme()) => {
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+          document.documentElement.style.colorScheme = theme;
+          return theme;
+        };
+
+        window.__applySiteTheme = applyTheme;
+        applyTheme();
+
+        if (window.__siteThemeControllerBound) return;
+        window.__siteThemeControllerBound = true;
+
+        document.addEventListener('astro:before-swap', (event) => {
+          const theme = getStoredTheme();
+          event.newDocument.documentElement.classList.toggle('dark', theme === 'dark');
+          event.newDocument.documentElement.style.colorScheme = theme;
+        });
+
+        document.addEventListener('astro:after-swap', () => {
+          window.__applySiteTheme?.();
+        });
+      })();
+    </script>
     <ClientRouter />
   </head>
 

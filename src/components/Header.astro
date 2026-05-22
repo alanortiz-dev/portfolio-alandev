@@ -61,10 +61,13 @@ const cvLabel = currentLang === 'en' ? 'Download CV' : 'Descargar CV';
         <div
           id={settingsMenuId}
           data-settings-menu
-          class="absolute right-0 top-11 z-50 hidden w-44 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg shadow-slate-200/40 dark:border-white/10 dark:bg-slate-900"
+          class="absolute right-0 top-12 z-50 hidden w-48 rounded-lg border border-slate-200 bg-white p-1.5 shadow-lg shadow-slate-200/35 dark:border-white/10 dark:bg-slate-900 dark:shadow-slate-950/30"
         >
-          <LanguageToggle />
-          <ThemeToggle />
+          <div class="space-y-2">
+            <LanguageToggle />
+            <div class="h-px bg-slate-200/80 dark:bg-white/10"></div>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </div>
@@ -74,12 +77,12 @@ const cvLabel = currentLang === 'en' ? 'Download CV' : 'Descargar CV';
 <style>
   [data-settings-menu].open {
     display: block;
-    animation: scale-up-center 0.15s ease-out both;
+    animation: scale-up-center 0.025s linear both;
   }
 
   @keyframes scale-up-center {
     from {
-      transform: scale(0.8);
+      transform: scale(0.99);
       opacity: 0;
     }
     to {
@@ -90,30 +93,56 @@ const cvLabel = currentLang === 'en' ? 'Download CV' : 'Descargar CV';
 </style>
 
 <script is:inline>
-  const root = document.querySelector('[data-settings-root]');
-  const btn = root?.querySelector('[data-settings-button]');
-  const menu = root?.querySelector('[data-settings-menu]');
+  (() => {
+    const closeAllSettingsMenus = () => {
+      document.querySelectorAll('[data-settings-root]').forEach((root) => {
+        root.querySelector('[data-settings-menu]')?.classList.remove('open');
+        root.querySelector('[data-settings-button]')?.setAttribute('aria-expanded', 'false');
+      });
+    };
 
-  const closeMenu = () => {
-    menu?.classList.remove('open');
-    btn?.setAttribute('aria-expanded', 'false');
-  };
+    const initSettingsMenus = () => {
+      document.querySelectorAll('[data-settings-root]').forEach((root) => {
+        if (root.dataset.settingsBound === 'true') return;
+        root.dataset.settingsBound = 'true';
 
-  btn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = menu?.classList.contains('open');
-    if (isOpen) {
-      closeMenu();
-      return;
+        const btn = root.querySelector('[data-settings-button]');
+        const menu = root.querySelector('[data-settings-menu]');
+
+        btn?.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const isOpen = menu?.classList.contains('open');
+          closeAllSettingsMenus();
+
+          if (!isOpen) {
+            menu?.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        menu?.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+      });
+    };
+
+    window.__closeSiteSettingsMenus = closeAllSettingsMenus;
+
+    if (!window.__siteSettingsBound) {
+      window.__siteSettingsBound = true;
+
+      document.addEventListener('click', () => window.__closeSiteSettingsMenus?.());
+      document.addEventListener('site-settings-close', () => window.__closeSiteSettingsMenus?.());
+      document.addEventListener('astro:page-load', initSettingsMenus);
+      document.addEventListener('astro:after-swap', () => {
+        initSettingsMenus();
+        window.__closeSiteSettingsMenus?.();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') window.__closeSiteSettingsMenus?.();
+      });
     }
 
-    menu?.classList.add('open');
-    btn?.setAttribute('aria-expanded', 'true');
-  });
-
-  document.addEventListener('click', () => closeMenu());
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
-  });
-  document.addEventListener('astro:after-swap', () => closeMenu());
+    initSettingsMenus();
+  })();
 </script>
