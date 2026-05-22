@@ -190,6 +190,7 @@ export const homeContent: Record<Locale, HomeContent> = {
           'Importa porque muestra una experiencia funcional de producto, no solo pantallas sueltas: entrada, onboarding, logging, resumen diario y rutas conectadas.',
         stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
         links: {
+          preview: 'https://fitlog-nutrition-tracker.vercel.app/',
           code: 'https://github.com/alanortiz-dev/fitlog-nutrition-tracker',
         },
         accent: 'emerald',
@@ -505,6 +506,7 @@ export const homeContent: Record<Locale, HomeContent> = {
           'It matters because it shows a working product flow, not just isolated screens: entry, onboarding, logging, daily summaries, and connected routes.',
         stack: ['React', 'TypeScript', 'Vite', 'AppContext', 'Mobile-first UI'],
         links: {
+          preview: 'https://fitlog-nutrition-tracker.vercel.app/',
           code: 'https://github.com/alanortiz-dev/fitlog-nutrition-tracker',
         },
         accent: 'emerald',
