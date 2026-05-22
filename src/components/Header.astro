@@ -1,4 +1,5 @@
 ---
+import DownloadIcon from './icons/Download.astro';
 import SettingsIcon from './icons/SettingsIcon.astro';
 import LanguageToggle from './LanguageToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
@@ -40,10 +41,21 @@ const cvLabel = currentLang === 'en' ? 'Download CV' : 'Descargar CV';
       <a
         href={cvHref}
         download={cvDownload}
+        aria-label={cvLabel}
+        title={cvLabel}
+        class="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full border border-slate-200/80 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white sm:hidden"
+      >
+        {cvLabel}
+        <DownloadIcon class="size-4" aria-hidden="true" />
+      </a>
+
+      <a
+        href={cvHref}
+        download={cvDownload}
         class="hidden min-h-9 items-center justify-center rounded-full border border-slate-200/80 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950 focus:outline-none focus-visible:ring focus-visible:ring-slate-300 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-white sm:inline-flex"
       >
         {cvLabel}
-        <span aria-hidden="true" class="ml-2">↓</span>
+        <DownloadIcon class="ml-2 size-4" aria-hidden="true" />
       </a>
 
       <div class="relative flex items-center gap-2" data-settings-root>
