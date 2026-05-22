@@ -43,7 +43,7 @@ const THEMES = currentLang === 'en'
     const getPreferredTheme = () => {
       const saved = localStorage.getItem('theme');
       if (saved === 'dark' || saved === 'light') return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return 'dark';
     };
 
     const updateThemeControls = (theme = getPreferredTheme()) => {
@@ -91,9 +91,9 @@ const THEMES = currentLang === 'en'
 
 <style>
   .theme-option[data-active='true'] {
-    border-color: rgba(16, 185, 129, 0.45);
-    background: rgba(209, 250, 229, 0.72);
-    color: rgb(6, 95, 70);
+    border-color: rgba(217, 70, 239, 0.34);
+    background: rgba(250, 232, 255, 0.78);
+    color: rgb(126, 34, 206);
   }
 
   :global(.dark) .theme-option[data-active='true'] {

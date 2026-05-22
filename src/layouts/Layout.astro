@@ -54,7 +54,7 @@ const currentLang = Astro.currentLocale || 'es';
         const getStoredTheme = () => {
           const saved = localStorage.getItem('theme');
           if (saved === 'dark' || saved === 'light') return saved;
-          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          return 'dark';
         };
 
         const applyTheme = (theme = getStoredTheme()) => {
@@ -83,8 +83,8 @@ const currentLang = Astro.currentLocale || 'es';
     <ClientRouter />
   </head>
 
-  <body class="min-h-screen bg-[#f8fafc] font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-white">
-    <div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.04),transparent_45%),linear-gradient(to_bottom,rgba(255,255,255,0.65),rgba(248,250,252,1))] dark:bg-[radial-gradient(circle_at_top,rgba(148,163,184,0.10),transparent_30%),linear-gradient(to_bottom,rgba(2,6,23,0.98),rgba(2,6,23,1))]"></div>
+  <body class="min-h-screen bg-[#f6eef4] font-sans text-slate-950 antialiased dark:bg-slate-950 dark:text-white">
+    <div class="fixed inset-0 -z-10 bg-[linear-gradient(135deg,rgba(246,238,244,1)_0%,rgba(239,235,244,0.97)_48%,rgba(250,244,248,1)_100%)] dark:bg-[radial-gradient(circle_at_top,rgba(148,163,184,0.10),transparent_30%),linear-gradient(to_bottom,rgba(2,6,23,0.98),rgba(2,6,23,1))]"></div>
     <Header />
     <slot />
     <Footer />
@@ -109,8 +109,125 @@ const currentLang = Astro.currentLocale || 'es';
         letter-spacing: -0.01em;
       }
 
+      html:not(.dark) body {
+        background: #f6eef4;
+        color: #211c2b;
+      }
+
+      html:not(.dark) .bg-white {
+        background-color: rgb(250 245 248 / var(--tw-bg-opacity, 1));
+      }
+
+      html:not(.dark) .bg-white\/95 {
+        background-color: rgb(250 245 248 / 0.95);
+      }
+
+      html:not(.dark) .bg-white\/92 {
+        background-color: rgb(250 245 248 / 0.92);
+      }
+
+      html:not(.dark) .bg-white\/90 {
+        background-color: rgb(250 245 248 / 0.9);
+      }
+
+      html:not(.dark) .bg-white\/85 {
+        background-color: rgb(250 245 248 / 0.85);
+      }
+
+      html:not(.dark) .bg-slate-50 {
+        background-color: rgb(244 235 242 / var(--tw-bg-opacity, 1));
+      }
+
+      html:not(.dark) .bg-slate-50\/80 {
+        background-color: rgb(244 235 242 / 0.82);
+      }
+
+      html:not(.dark) .bg-slate-100 {
+        background-color: rgb(235 224 234 / var(--tw-bg-opacity, 1));
+      }
+
+      html:not(.dark) .border-slate-200 {
+        border-color: rgb(225 205 219 / var(--tw-border-opacity, 1));
+      }
+
+      html:not(.dark) .border-slate-200\/70 {
+        border-color: rgb(225 205 219 / 0.74);
+      }
+
+      html:not(.dark) .border-slate-200\/80 {
+        border-color: rgb(225 205 219 / 0.84);
+      }
+
+      html:not(.dark) .ring-slate-200\/70 {
+        --tw-ring-color: rgb(225 205 219 / 0.74);
+      }
+
+      html:not(.dark) .shadow-slate-200\/12 {
+        --tw-shadow-color: rgb(139 88 118 / 0.1);
+        --tw-shadow: var(--tw-shadow-colored);
+      }
+
+      html:not(.dark) .shadow-slate-200\/15 {
+        --tw-shadow-color: rgb(139 88 118 / 0.12);
+        --tw-shadow: var(--tw-shadow-colored);
+      }
+
+      html:not(.dark) .shadow-slate-200\/20 {
+        --tw-shadow-color: rgb(139 88 118 / 0.14);
+        --tw-shadow: var(--tw-shadow-colored);
+      }
+
+      html:not(.dark) .shadow-slate-200\/35 {
+        --tw-shadow-color: rgb(139 88 118 / 0.2);
+        --tw-shadow: var(--tw-shadow-colored);
+      }
+
+      html:not(.dark) .text-slate-950 {
+        color: #211c2b;
+      }
+
+      html:not(.dark) .text-slate-800 {
+        color: #342d40;
+      }
+
+      html:not(.dark) .text-slate-700 {
+        color: #4b4258;
+      }
+
+      html:not(.dark) .text-slate-600 {
+        color: #62566d;
+      }
+
+      html:not(.dark) .text-slate-500 {
+        color: #817389;
+      }
+
+      html:not(.dark) .hover\:bg-slate-50:hover {
+        background-color: rgb(240 229 238 / var(--tw-bg-opacity, 1));
+      }
+
+      html:not(.dark) .hover\:bg-slate-100:hover {
+        background-color: rgb(232 219 231 / var(--tw-bg-opacity, 1));
+      }
+
+      html:not(.dark) .hover\:border-slate-300:hover {
+        border-color: rgb(198 158 184 / 0.86);
+      }
+
+      html:not(.dark) .hover\:text-slate-950:hover {
+        color: #171220;
+      }
+
+      html:not(.dark) .focus-visible\:ring-slate-300:focus-visible {
+        --tw-ring-color: rgb(168 85 247 / 0.32);
+      }
+
+      html:not(.dark) .focus-visible\:ring-offset-2:focus-visible {
+        --tw-ring-offset-color: #f6eef4;
+      }
+
       ::selection {
-        background: rgba(148, 163, 184, 0.25);
+        background: rgba(168, 85, 247, 0.18);
       }
     </style>
   </body>
