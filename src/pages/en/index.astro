@@ -1,6 +1,5 @@
 ---
 import AboutMe from '@/components/AboutMe.astro';
-import EngineeringPrinciples from '@/components/EngineeringPrinciples.astro';
 import Experience from '@/components/Experience.astro';
 import FeaturedProjects from '@/components/FeaturedProjects.astro';
 import Hero from '@/components/Hero.astro';
@@ -26,10 +25,6 @@ const content = homeContent.en;
 
       <SectionContainer id="production-deployments" class="pt-6 lg:pt-7">
         <ProductionDeployments content={content} />
-      </SectionContainer>
-
-      <SectionContainer id="engineering-principles" class="pt-6 pb-20 lg:pt-7 md:pb-28">
-        <EngineeringPrinciples content={content} />
       </SectionContainer>
 
       <SectionContainer id="experience-timeline" class="pt-8 pb-20 md:pt-10 md:pb-28">

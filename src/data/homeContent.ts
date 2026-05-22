@@ -40,11 +40,6 @@ export interface DeploymentItem {
   focus: string[];
 }
 
-export interface PrincipleItem {
-  title: string;
-  body: string;
-}
-
 export interface ExperienceItem {
   period: string;
   role: string;
@@ -70,7 +65,6 @@ export interface HomeContent {
   nav: {
     featured: string;
     experience: string;
-    principles: string;
     timeline: string;
     contact: string;
   };
@@ -91,15 +85,12 @@ export interface HomeContent {
     productionIntro: string;
     deployments: string;
     deploymentsIntro: string;
-    principles: string;
-    principlesIntro: string;
     timeline: string;
     timelineIntro: string;
     about: string;
   };
   featuredProjects: FeaturedProject[];
   deployments: DeploymentItem[];
-  principles: PrincipleItem[];
   experiences: ExperienceItem[];
   about: string[];
   labels: {
@@ -130,7 +121,6 @@ export const homeContent: Record<Locale, HomeContent> = {
     nav: {
       featured: 'Proyectos',
       experience: 'Lanzamientos',
-      principles: 'Habilidades',
       timeline: 'Experiencia',
       contact: 'Contacto',
     },
@@ -159,9 +149,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       deployments: 'Sitios web para clientes reales',
       deploymentsIntro:
         'Una selección de sitios web que he creado para negocios reales, combinando diseño responsive, arquitectura de información y enfoque comercial para comunicar mejor su propuesta y convertir visitas en oportunidades.',
-      principles: 'Principios',
-      principlesIntro:
-        'Criterios que uso para diseñar interfaces mantenibles, decisiones de UX y arquitectura que aguanta cambios reales.',
       timeline: 'Experiencia profesional',
       timelineIntro:
         'Experiencia construyendo interfaces, integraciones y sistemas frontend para productos y operaciones reales.',
@@ -328,24 +315,6 @@ export const homeContent: Record<Locale, HomeContent> = {
         focus: ['SEO local', 'Presentación visual', 'Contacto directo', 'Sitio responsive'],
       },
     ],
-    principles: [
-      {
-        title: 'Interfaces que sobreviven releases',
-        body: 'Prefiero sistemas de UI con piezas reutilizables, contratos claros e integraciones entendibles. Lo importante no es solo entregar rápido, sino poder iterar sin romper flujos críticos.',
-      },
-      {
-        title: 'UX como ingeniería, no maquillaje',
-        body: 'Performance, accesibilidad, jerarquía visual y comportamiento consistente forman parte del diseño del sistema. Una buena UX también reduce soporte, errores y fricción operativa.',
-      },
-      {
-        title: 'Frontend conectado al negocio',
-        body: 'Trabajo pensando en formularios, automatizaciones, CMS, handoffs operativos, testing y estabilidad. El frontend no vive aislado; sostiene procesos reales.',
-      },
-      {
-        title: 'Escalar con criterio, no con complejidad gratuita',
-        body: 'Busco separar UI, lógica, tipos y datos cuando aporta mantenibilidad real. La meta no es sobrearquitectura, sino una base que permita crecer sin rehacer todo.',
-      },
-    ],
     experiences: [
       {
         period: '06/2025 – Actualidad',
@@ -478,7 +447,6 @@ export const homeContent: Record<Locale, HomeContent> = {
     nav: {
       featured: 'Work',
       experience: 'Launches',
-      principles: 'Skills',
       timeline: 'Experience',
       contact: 'Contact',
     },
@@ -507,9 +475,6 @@ export const homeContent: Record<Locale, HomeContent> = {
       deployments: 'Production websites',
       deploymentsIntro:
         'Client launches and published work where I contributed through frontend implementation, hierarchy, and usable delivery.',
-      principles: 'Principles',
-      principlesIntro:
-        'The criteria I use when shaping maintainable interfaces, UX decisions, and frontend systems that need to hold up in real use.',
       timeline: 'Professional experience',
       timelineIntro:
         'Experience building interfaces, integrations, and frontend systems across real products and operational environments.',
@@ -674,24 +639,6 @@ export const homeContent: Record<Locale, HomeContent> = {
         description:
           'The structure combines visual content, practical information, gallery sections, service pages, and direct contact paths.',
         focus: ['Local SEO', 'Visual presentation', 'Direct contact', 'Responsive website'],
-      },
-    ],
-    principles: [
-      {
-        title: 'Interfaces that survive releases',
-        body: 'I prefer UI systems with reusable parts, clear contracts, and understandable integrations. Shipping fast matters, but being able to iterate without breaking critical flows matters more.',
-      },
-      {
-        title: 'UX as engineering, not decoration',
-        body: 'Performance, accessibility, hierarchy, and consistent behavior are part of system design. Good UX also reduces support load, mistakes, and operational friction.',
-      },
-      {
-        title: 'Frontend connected to business workflows',
-        body: 'I think in terms of forms, automations, CMS flows, operational handoffs, testing, and stability. Frontend is not isolated; it supports real processes.',
-      },
-      {
-        title: 'Scale with judgment, not free complexity',
-        body: 'I separate UI, logic, types, and data when it creates real maintainability. The goal is not over-architecture, but a foundation that can grow without constant rewrites.',
       },
     ],
     experiences: [
