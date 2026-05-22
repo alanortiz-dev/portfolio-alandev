@@ -322,7 +322,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         company: 'Profesional independiente',
         location: 'España · Austria',
         link: 'https://alanortizconsulting.com/',
-        defaultOpen: false,
+        defaultOpen: true,
         stack: ['JavaScript', 'TypeScript', 'Vue.js', 'Formularios', 'CMS', 'Make', 'n8n'],
         summary:
           'Trabajo independiente enfocado en mejoras frontend, formularios, sitios para clientes e integraciones con automatización.',
@@ -341,7 +341,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'IT Globers',
         location: 'Valencia, España',
-        defaultOpen: false,
+        defaultOpen: true,
         stack: ['React', 'TypeScript', 'VTEX IO', 'REST APIs', 'GraphQL', 'Playwright'],
         summary:
           'Desarrollo de storefronts en VTEX IO para e-commerce de alto tráfico con React, TypeScript e integraciones con APIs.',
@@ -361,7 +361,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Frontend Developer',
         company: 'Grupo Salinas',
         location: 'Ciudad de México, México',
-        defaultOpen: false,
+        defaultOpen: true,
         stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'UI responsive', 'Accesibilidad'],
         summary:
           'Desarrollo frontend para Elektra con React, JavaScript y Tailwind CSS en interfaces de alto tráfico.',
@@ -648,7 +648,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         company: 'Independent Professional',
         location: 'Spain · Austria',
         link: 'https://alanortizconsulting.com/',
-        defaultOpen: false,
+        defaultOpen: true,
         stack: ['JavaScript', 'TypeScript', 'Vue.js', 'Forms', 'CMS', 'Make', 'n8n'],
         summary:
           'Independent work focused on frontend improvements, forms, client websites, and automation integrations.',
@@ -667,7 +667,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Fullstack Developer',
         company: 'IT Globers',
         location: 'Valencia, Spain',
-        defaultOpen: false,
+        defaultOpen: true,
         stack: ['React', 'TypeScript', 'VTEX IO', 'REST APIs', 'GraphQL', 'Playwright'],
         summary:
           'Built VTEX IO storefronts for high-traffic e-commerce using React, TypeScript, and API integrations.',
@@ -687,7 +687,7 @@ export const homeContent: Record<Locale, HomeContent> = {
         role: 'Frontend Developer',
         company: 'Grupo Salinas',
         location: 'Mexico City, Mexico',
-        defaultOpen: false,
+        defaultOpen: true,
         stack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'Responsive UI', 'Accessibility'],
         summary:
           'Frontend development for Elektra using React, JavaScript, and Tailwind CSS across high-traffic interfaces.',
